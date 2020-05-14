@@ -1,14 +1,12 @@
 backend:
-  name: github
-  repo: duffnath/Blog
-  squash_merges: true
-  open_authoring: true
-  site_domain: duffsitestore.z14.web.core.windows.net
-  base_url: https://api.netlify.com
-
-local_backend: false
-
-site_url: https://duffsitestore.z14.web.core.windows.net/
+  name: git-gateway
+  branch: master
+  commit_messages:
+    create: 'Create {{collection}} “{{slug}}”'
+    update: 'Update {{collection}} “{{slug}}”'
+    delete: 'Delete {{collection}} “{{slug}}”'
+    uploadMedia: '[skip ci] Upload “{{path}}”'
+    deleteMedia: '[skip ci] Delete “{{path}}”'
 
 media_folder: static/img
 public_folder: /img

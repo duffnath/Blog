@@ -3,7 +3,7 @@ backend:
   repo: duffnath/Blog
   squash_merges: true
   open_authoring: true
-  site_domain: duffsitestore.z14.web.core.windows.net
+  site_domain: blog.nateduff.com
   base_url: https://api.netlify.com
   commit_messages:
     create: 'Create {{collection}} “{{slug}}”'
@@ -13,7 +13,7 @@ backend:
     deleteMedia: '[skip ci] Delete “{{path}}”'
 
 local_backend: false
-site_url: https://duffsitestore.z14.web.core.windows.net
+site_url: https://blog.nateduff.com
 publish_mode: editorial_workflow
 
 media_folder: static/img

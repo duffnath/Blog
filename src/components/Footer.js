@@ -47,7 +47,7 @@ const Footer = class extends React.Component {
                     <li>
                       <a
                         className="navbar-item"
-                        href="/admin/"
+                        href="https://duffsitestore.z14.web.core.windows.net/admin/"
                         target="_blank"
                         rel="noopener noreferrer"
                       >

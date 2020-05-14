@@ -10,6 +10,80 @@ $primary-invert: $kaldi-red-invert
 $body-color: #333
 $black: #2b2523
 
+body
+  --bg: white;
+  --textNormal: #222;
+  --textTitle: #222;
+  --textLink: blue;
+  --hr: hsla(0, 0%, 0%, 0.2);
+  background-color: var(--bg);
+
+body.dark
+  -webkit-font-smoothing: antialiased;
+  --bg: darkslategray;
+  --textNormal: rgba(255, 255, 255, 0.88);
+  --textTitle: white;
+  --textLink: yellow;
+  --hr: hsla(0, 0%, 100%, 0.2);
+
+#darkModeSwitch
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-top: 8px;
+
+#darkModeSwitch input
+  opacity: 0;
+  width: 0;
+  height: 0;
+
+.slider
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;  
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+
+.slider:before
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+
+input:checked + .slider
+  background-color: #2196F3;
+
+input:focus + .slider
+  box-shadow: 0 0 1px #2196F3;
+
+input:checked + .slider:before
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+
+.round 
+  border-radius: 34px;
+
+
+.round:before
+  border-radius: 50%;
+
+nav.navbar
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  top: 0;
+
 .navbar .navbar-menu
   box-shadow:none !important
 

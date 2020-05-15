@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
-import ThemeToggler from '../components/ThemeToggler';
+import DarkModeToggle from '../components/DarkModeToggle';
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -78,7 +78,7 @@ const Navbar = class extends React.Component {
               </Link>
             </div>          
             <div className="navbar-end has-text-centered">
-              <ThemeToggler></ThemeToggler>
+              <DarkModeToggle />
             </div>
           </div>
         </div>

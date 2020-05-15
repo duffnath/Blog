@@ -5,7 +5,21 @@ module.exports = {
       'This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.',
   },
   plugins: [
-    'gatsby-plugin-dark-mode',
+    'gatsby-plugin-use-dark-mode',
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "Nate Duff Blog",
+        short_name: "DuffBlog",
+        start_url: "/",
+        background_color: "#08a03e",
+        theme_color: "#08a03e",
+        display: "standalone",
+        icon: "src/img/logo.svg",
+        crossOrigin: `use-credentials`,
+      },
+    },
+    'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {

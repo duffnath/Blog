@@ -10,73 +10,137 @@ $primary-invert: $kaldi-red-invert
 $body-color: #333
 $black: #2b2523
 
+
 body
-  --bg: white;
-  --textNormal: #222;
-  --textTitle: #222;
-  --textLink: blue;
-  --hr: hsla(0, 0%, 0%, 0.2);
-  background-color: var(--bg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-body.dark
-  -webkit-font-smoothing: antialiased;
-  --bg: darkslategray;
-  --textNormal: rgba(255, 255, 255, 0.88);
-  --textTitle: white;
-  --textLink: yellow;
-  --hr: hsla(0, 0%, 100%, 0.2);
+body.light-mode 
+  background-color: #fff;
+  color: #333;
+  transition: background-color 0.3s ease;
 
-#darkModeSwitch
+body.dark-mode 
+  background-color: #10171d;
+  color: #dfdfdf;
+
+  .navbar 
+    background-color: #1b2938;
+  
+
+  .dark-mode-toggle > button 
+    color: #999;
+    &:last-child 
+      color: lightblue;
+    
+
+.content 
+
+  h1 
+    font-size: 2rem;
+  
+
+  img 
+    width: 100%;
+  
+
+  code 
+    background-color: #cbe9ff;
+    border-radius: 2px;
+    font-size: 1em;
+    padding: 0 5px;
+  
+
+  a 
+    text-decoration: none;
+    color: #006688;
+  
+
+  button 
+    color: #006688;
+    background-color: transparent;
+    border: none;
+    font-size: 1em;
+    padding: 0;
+  
+
+
+body.dark-mode .content code 
+  background-color: #1b2938;
+
+
+body.dark-mode .content a 
+  color: #ee09;
+
+
+body.dark-mode .content button 
+  color: #ee09;
+
+
+.dark-mode-toggle 
+  display: flex;
+  margin: 0 auto;
+  & > button 
+    font-size: 1.2em;
+    background: none;
+    border: none;
+    color: #ffe600;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    &:last-child 
+      color: #666;
+    
+
+    &:focus 
+      outline: none;
+    
+  
+
+
+.toggle-control 
   position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-  margin-top: 8px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
 
-#darkModeSwitch input
-  opacity: 0;
-  width: 0;
-  height: 0;
 
-.slider
-  position: absolute;
+input[type='checkbox'].dmcheck 
+  width: 40px;
+  height: 10px;
+  background: #555;
+  position: relative;
+  border-radius: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;  
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  vertical-align: 2px;
+  outline: none;
 
-.slider:before
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  &:checked + label 
+    left: 30px;
+  
 
-input:checked + .slider
-  background-color: #2196F3;
+  &:focus-visible 
+    outline: solid 2px white;
+  
 
-input:focus + .slider
-  box-shadow: 0 0 1px #2196F3;
-
-input:checked + .slider:before
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-
-.round 
-  border-radius: 34px;
+  & + label 
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: absolute;
+    left: 2px;
+    background: #fff;
+    opacity: 0.9;
+    background-color: #f6f6f6;
+  
 
 
-.round:before
-  border-radius: 50%;
 
 nav.navbar
   position: fixed;

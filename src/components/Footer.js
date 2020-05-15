@@ -7,6 +7,8 @@ import instagram from '../img/social/instagram.svg'
 import twitter from '../img/social/twitter.svg'
 import vimeo from '../img/social/vimeo.svg'
 
+import { BrowserView } from 'react-device-detect';
+
 const Footer = class extends React.Component {
   render() {
     return (
@@ -44,16 +46,12 @@ const Footer = class extends React.Component {
                         Form Examples
                       </Link>
                     </li>
-                    <li>
-                      <a
-                        className="navbar-item"
+                    <BrowserView>
+                        <li><a className="navbar-item"
                         href="https://duffsitestore.z14.web.core.windows.net/admin/"
                         target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Admin
-                      </a>
-                    </li>
+                        rel="noopener noreferrer">Admin</a></li>
+                     </BrowserView>          
                   </ul>
                 </section>
               </div>

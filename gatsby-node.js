@@ -88,7 +88,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 exports.onCreateWebpackConfig = ({stage, plugins, actions}) => {
   if (stage === 'build-html') {
-    actions.setWebpackConfig({
+    actions.setWebpackConfig({      
       plugins: [
         plugins.define({
           window: undefined,

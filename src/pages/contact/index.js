@@ -1,6 +1,13 @@
 import React from 'react'
 import { navigate } from 'gatsby-link'
 import Layout from '../../components/Layout'
+import { ApplicationInsights } from '@microsoft/applicationinsights-web'
+
+const appInsights = new ApplicationInsights({ config: {
+  connectionString: "InstrumentationKey=837dcc30-21da-4252-8d67-d27f19a0c049"
+} });
+
+appInsights.loadAppInsights();
 
 function encode(data) {
   return Object.keys(data)
@@ -34,6 +41,9 @@ export default class Index extends React.Component {
   }
 
   render() {
+
+    appInsights.trackPageView();
+
     return (
       <Layout>
         <section className="section">

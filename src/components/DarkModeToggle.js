@@ -13,13 +13,29 @@ appInsights.loadAppInsights();
 const DarkModeToggle = () => {
   const darkMode = useDarkMode(false);
 
+  const handleToggle = event => {
+    //event.preventDefault(); //this forces 2nd click...dont
+
+    let action = 'Enable';
+    
+    if (darkMode.value) {
+      action = 'Disable'
+    }
+
+    if (_adalInstance?._user) {
+      appInsights.trackEvent({ name: 'DarkMode', properties: { 'Action': action, 'User': _adalInstance._user.userName } })
+    } else {
+      appInsights.trackEvent({ name: 'DarkMode', properties: { 'Action': action } })
+    }
+  }
+
   return (
-    <div className="dark-mode-toggle">
-      <button type="button" onClick={darkMode.disable && darkMode.value ? null : appInsights.trackEvent({ name: 'DarkMode', properties: { 'Action': 'Disable' } })}>
+    <div className="dark-mode-toggle" onChange={handleToggle}>
+      <button type="button">
         ☀
       </button>
       <Toggle checked={darkMode.value} onChange={darkMode.toggle} />
-      <button type="button" onClick={darkMode.enable && darkMode.value ? appInsights.trackEvent({ name: 'DarkMode', properties: { 'Action': 'Enable' } }) : null}>
+      <button>
         ☾
       </button>
     </div>

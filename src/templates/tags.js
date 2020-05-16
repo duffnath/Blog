@@ -2,9 +2,18 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
+import { ApplicationInsights } from '@microsoft/applicationinsights-web'
+
+const appInsights = new ApplicationInsights({ config: {
+  connectionString: "InstrumentationKey=837dcc30-21da-4252-8d67-d27f19a0c049"
+} });
+
+appInsights.loadAppInsights();
 
 class TagRoute extends React.Component {
   render() {
+    appInsights.trackPageView();
+
     const posts = this.props.data.allMarkdownRemark.edges
     const postLinks = posts.map((post) => (
       <li key={post.node.fields.slug}>

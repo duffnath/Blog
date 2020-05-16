@@ -4,6 +4,16 @@ import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
 import DarkModeToggle from '../components/DarkModeToggle';
 
+import AdalConfig from '../config/AdalConfig'
+import AuthContext from '../services/Auth'
+import { ApplicationInsights } from '@microsoft/applicationinsights-web'
+
+const appInsights = new ApplicationInsights({ config: {
+  connectionString: "InstrumentationKey=837dcc30-21da-4252-8d67-d27f19a0c049"
+} });
+
+appInsights.loadAppInsights();
+
 const Navbar = class extends React.Component {
   constructor(props) {
     super(props)
@@ -33,7 +43,25 @@ const Navbar = class extends React.Component {
     )
   }
 
-  render() {
+  render() {      
+    const handleLogout = event => {    
+      event.preventDefault();
+
+      if (typeof _adalInstance !== 'undefined') {
+        appInsights.trackEvent({ name: 'Logout', properties: { 'User': _adalInstance._user.userName } });
+      }
+
+      AuthContext.logOut();
+    };
+
+    const handleLogin = event => {    
+      event.preventDefault();
+
+      appInsights.trackEvent({ name: 'Login' });
+
+      AuthContext.login();
+    };
+
     return (
       <nav
         className="navbar is-transparent"
@@ -76,6 +104,16 @@ const Navbar = class extends React.Component {
               <Link className="navbar-item" to="/contact/examples">
                 Form Examples
               </Link>
+              {this.props.isAuthenticated ? 
+              <Link className="navbar-item" 
+                // to=".auth/logout?post_logout_redirect_uri=/"
+                onClick={handleLogout}>
+                Logout
+              </Link> : <Link className="navbar-item" 
+                // to=".auth/login/aad?post_login_redirect_url=/"
+                onClick={handleLogin}>
+                Login
+              </Link>}
             </div>          
             <div className="navbar-end has-text-centered">
               <DarkModeToggle />

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { Link } from 'gatsby'
 
 import logo from '../img/logo.svg'
@@ -7,8 +7,6 @@ import instagram from '../img/social/instagram.svg'
 import twitter from '../img/social/twitter.svg'
 import vimeo from '../img/social/vimeo.svg'
 
-import { BrowserView } from 'react-device-detect';
-
 const Footer = class extends React.Component {
   render() {
     return (
@@ -16,7 +14,7 @@ const Footer = class extends React.Component {
         <div className="content has-text-centered">
           <img
             src={logo}
-            alt="Kaldi"
+            alt="NateDuffBlogSite"
             style={{ width: '14em', height: '10em' }}
           />
         </div>
@@ -46,12 +44,6 @@ const Footer = class extends React.Component {
                         Form Examples
                       </Link>
                     </li>
-                    <BrowserView>
-                        <li><a className="navbar-item"
-                        href="https://duffsitestore.z14.web.core.windows.net/admin/"
-                        target="_blank"
-                        rel="noopener noreferrer">Admin</a></li>
-                     </BrowserView>          
                   </ul>
                 </section>
               </div>

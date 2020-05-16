@@ -3,9 +3,22 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
+import { ApplicationInsights } from '@microsoft/applicationinsights-web'
+
+const appInsights = new ApplicationInsights({ config: {
+  connectionString: "InstrumentationKey=837dcc30-21da-4252-8d67-d27f19a0c049"
+} });
+
+appInsights.loadAppInsights();
 
 export const AboutPageTemplate = ({ title, content, contentComponent }) => {
   const PageContent = contentComponent || Content
+
+  function navClicked (e) {
+    e.preventDefault();
+
+    appInsights.trackEvent({ name: 'Navigate', properties: { 'Page': 'X' } })
+  }
 
   return (
     <section className="section section--gradient">
@@ -34,7 +47,9 @@ AboutPageTemplate.propTypes = {
 const AboutPage = ({ data }) => {
   const { markdownRemark: post } = data
 
-  return (
+  appInsights.trackPageView();
+
+  return (    
     <Layout>
       <AboutPageTemplate
         contentComponent={HTMLContent}

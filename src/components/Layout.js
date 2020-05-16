@@ -6,7 +6,17 @@ import './all.sass'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
 
-import DarkModeStatus from './DarkModeStatus';
+import AdalConfig from '../config/AdalConfig'
+import AuthContext from '../services/Auth'
+
+import { BrowserView } from 'react-device-detect';
+import { ApplicationInsights } from '@microsoft/applicationinsights-web'
+
+const appInsights = new ApplicationInsights({ config: {
+  connectionString: "InstrumentationKey=837dcc30-21da-4252-8d67-d27f19a0c049"
+} });
+
+appInsights.loadAppInsights();
 
 export const onServiceWorkerUpdateReady = () => {
   const answer = window.confirm(
@@ -20,6 +30,27 @@ export const onServiceWorkerUpdateReady = () => {
 
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata()
+  let isAuthenticated = false;
+
+  AuthContext.handleWindowCallback()
+
+  if (typeof window !== 'undefined' && (window === window.parent) && window === window.top && !AuthContext.isCallback(window.location.hash)) {
+    if (!AuthContext.getCachedToken(AdalConfig.clientId) || !AuthContext.getCachedUser()) {
+      console.log('Not logged in');
+
+      appInsights.trackPageView({name: window.title, uri: window.location.href, isLoggedIn: false})
+    } else {
+      AuthContext.acquireToken(AdalConfig.endpoints.api, (message, token, msg) => {
+        if (token) {
+          appInsights.setAuthenticatedUserContext(_adalInstance._user.profile.oid, _adalInstance._user.profile.upn, true);
+
+          isAuthenticated = true;
+
+          appInsights.trackPageView({name: window.title, uri: window.location.href, isLoggedIn: true, properties: {User: _adalInstance._user.profile.upn}})
+        }
+      })
+    }
+  }
 
   return (
       <div className="content">      
@@ -62,8 +93,8 @@ const TemplateWrapper = ({ children }) => {
           />
         </Helmet>
         
-          <Navbar />
-          <DarkModeStatus />
+          <Navbar isAuthenticated={isAuthenticated}/>
+
           <div>{children}</div>
 
           <Helmet 
@@ -100,14 +131,6 @@ const TemplateWrapper = ({ children }) => {
                 var isDarkMode = document.body.classList.contains(classNameDark);\
                 localStorage.setItem('darkMode', JSON.stringify(isDarkMode));\
               }}"}]} />
-              <Helmet script={[{
-                type: 'text/javascript', 
-                innerHTML: "var appInsights = window.appInsights || function (a) {\
-                  function b(a) { c[a] = function () { var b = arguments; c.queue.push(function () { c[a].apply(c, b) }) } } var c = { config: a }, d = document, e = window; setTimeout(function () { var b = d.createElement('script'); b.src = a.url || 'https://az416426.vo.msecnd.net/scripts/a/ai.0.js', d.getElementsByTagName('script')[0].parentNode.appendChild(b) }); try { c.cookie = d.cookie } catch (a) { } c.queue = []; for (var f = ['Event', 'Exception', 'Metric', 'PageView', 'Trace', 'Dependency']; f.length;)b('track' + f.pop()); if (b('setAuthenticatedUserContext'), b('clearAuthenticatedUserContext'), b('startTrackEvent'), b('stopTrackEvent'), b('startTrackPage'), b('stopTrackPage'), b('flush'), !a.disableExceptionTracking) { f = 'onerror', b('_' + f); var g = e[f]; e[f] = function (a, b, d, e, h) { var i = g && g(a, b, d, e, h); return !0 !== i && c['_' + f](a, b, d, e, h), i } } return c\
-                  }({\
-                  instrumentationKey: '837dcc30-21da-4252-8d67-d27f19a0c049'\
-                  });"
-              }]} />
 
           <Footer />   
       </div>

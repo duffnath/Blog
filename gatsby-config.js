@@ -19,7 +19,12 @@ module.exports = {
         crossOrigin: `use-credentials`,
       },
     },
-    'gatsby-plugin-offline',
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        appendScript: require.resolve(`./src/custom-sw.js`),
+      },
+    },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {

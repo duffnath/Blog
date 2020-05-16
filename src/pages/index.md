@@ -1,11 +1,11 @@
 ---
 templateKey: index-page
-title: Great coffee with a conscience
+title: Nate Duff Blog | Home
 image: /img/home-jumbotron.jpg
-heading: Great coffee with a conscience
-subheading: Support sustainable farming while enjoying a cup
+heading: Welcome to the blog!
+subheading: Stick around if you have any interest in web and automation technology and practices
 mainpitch:
-  title: Why Kaldi
+  title: About Me
   description: >
     Damn Kaldi is the coffee store for everyone who believes that great coffee
     shouldn't just taste good, it should do good too. We source all of our beans

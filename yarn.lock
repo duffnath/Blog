@@ -1548,16 +1548,6 @@
     "@microsoft/applicationinsights-core-js" "2.5.4"
     tslib "^1.11.1"
 
-"@microsoft/applicationinsights-react-js@^2.5.4":
-  version "2.5.4"
-  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-react-js/-/applicationinsights-react-js-2.5.4.tgz#e54820dd8613e5deabb10ef88cf705299e87fcb3"
-  integrity sha512-BB8Od5ikGYkaN6VqxciUycfF3xY/8V2/sdoIyLZVz4310kQLamogwQtcMu1bb3gI9qpreSD/JzkiSSQa9GkQ2g==
-  dependencies:
-    "@microsoft/applicationinsights-common" "2.5.4"
-    "@microsoft/applicationinsights-core-js" "2.5.4"
-    history "^4.9.0"
-    tslib "^1.11.1"
-
 "@microsoft/applicationinsights-web@^2.5.4":
   version "2.5.4"
   resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-web/-/applicationinsights-web-2.5.4.tgz#3186d1d3822ee0b0221703f288dacbe6931a45f8"
@@ -2133,6 +2123,11 @@ acorn@^7.1.1:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.2.0.tgz#17ea7e40d7c8640ff54a694c889c26f31704effe"
   integrity sha512-apwXVmYVpQ34m/i71vrApRrRKCWQnZZF1+npOD0WV5xZFfwWOmKGQ2RWlfdy9vWITsenisM8M0Qeq8agcFHNiQ==
+
+adal-angular@^1.0.17:
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/adal-angular/-/adal-angular-1.0.17.tgz#6e936e0e41f91d3b2a88e7ffca9c2f6f6f562cc4"
+  integrity sha1-bpNuDkH5HTsqiOf/ypwvb29WLMQ=
 
 address@1.0.3:
   version "1.0.3"
@@ -7813,7 +7808,7 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
 
-history@^4.7.2, history@^4.9.0:
+history@^4.7.2:
   version "4.10.1"
   resolved "https://registry.yarnpkg.com/history/-/history-4.10.1.tgz#33371a65e3a83b267434e2b3f3b1b4c58aad4cf3"
   integrity sha512-36nwAD620w12kuzPAsyINPWJqlNbij+hpK1k9XRloDtym8mxzGYl2c17LnV6IAGB2Dmg4tEa7G7DlawS0+qjew==

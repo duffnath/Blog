@@ -1,0 +1,36 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
+
+steps:
+- task: Cache@2
+  inputs:
+    key: 'yarn | "$(Agent.OS)" | yarn.lock'
+    restoreKeys: |
+       yarn | "$(Agent.OS)"
+       yarn
+    path: $(YARN_CACHE_FOLDER)
+  displayName: Cache Yarn packages
+  condition: ne(variables['Build.Reason'], 'PullRequest')
+
+- script: yarn install --prefer-offline
+  displayName: 'Install App'
+  workingDirectory: 'website'
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+
+- script: yarn build
+  displayName: 'Build'
+  workingDirectory: 'website'
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'website/public'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))

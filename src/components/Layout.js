@@ -10,6 +10,13 @@ import AdalConfig from '../config/AdalConfig'
 import AuthContext from '../services/Auth'
 
 import { BrowserView } from 'react-device-detect';
+
+// import * as firebase from 'firebase/app';
+// import 'firebase/messaging';
+// import * as toastr from 'toastr';
+
+// import messaging from '../fcm';
+
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 
 const appInsights = new ApplicationInsights({ config: {
@@ -131,7 +138,59 @@ const TemplateWrapper = ({ children }) => {
                 var isDarkMode = document.body.classList.contains(classNameDark);\
                 localStorage.setItem('darkMode', JSON.stringify(isDarkMode));\
               }}"}]} />
+              \
 
+          <Helmet>
+            <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-messaging.js"></script>
+          </Helmet>
+
+
+          <Helmet
+            script={[{
+              type: 'text/javascript', 
+              innerHTML: "var firebaseConfig = {\
+                apiKey: 'AIzaSyAyiEi2fGHUVCafFOnjIABB94iibC1Oq8c',\
+                authDomain: 'nateduffpwa.firebaseapp.com',\
+                databaseURL: 'https://nateduffpwa.firebaseio.com',\
+                projectId: 'nateduffpwa',\
+                storageBucket: 'nateduffpwa.appspot.com',\
+                messagingSenderId: '275924356890',\
+                appId: '1:275924356890:web:0e7f2a1d04922879',\
+              };\
+              if ('serviceWorker' in navigator) {\
+                navigator.serviceWorker.register('/sw.js').then(\
+                  function (registration) {\
+                    console.log('Registration successful, scope is:', registration.scope);\
+                    console.log('Setting up Firebase');\
+                    firebase.initializeApp(firebaseConfig);\
+                    const messaging = firebase.messaging();\
+                    messaging.usePublicVapidKey(\
+                      'BKT14aRXCrYZ4IrvjgjNCo7jP0lAAnZnJTtHFT3Pi11q9Hh0QAcAX2LoYxrLB51JwywwitgDEFhHDW_vuX9Dfcg'\
+                    );\
+                    messaging.useServiceWorker(registration);\
+                    messaging.onTokenRefresh(() => {\
+                      messaging\
+                        .getToken()\
+                        .then((refreshedToken) => {\
+                          console.log('Token refreshed.');\
+                          console.log(refreshedToken);\
+                        })\
+                        .catch((err) => {\
+                          console.log('Unable to retrieve refreshed token ', err);\
+                        });\
+                    });\
+                    messaging.onMessage((payload) => {\
+                      console.log('Message received. ', payload);\
+                    });\
+                    messaging.requestPermission();\
+                  },\
+                  function (err) {\
+                    console.log('ServiceWorker registration failed: ', err);\
+                  }\
+                );\
+                }" 
+            }]}/>
           <Footer />   
       </div>
   )

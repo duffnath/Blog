@@ -86,7 +86,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
-exports.onCreateWebpackConfig = ({stage, plugins, actions}) => {
+exports.onCreateWebpackConfig = ({stage, actions, plugins, getConfig}) => {
   if (stage === 'build-html') {
     actions.setWebpackConfig({      
       plugins: [
@@ -95,6 +95,15 @@ exports.onCreateWebpackConfig = ({stage, plugins, actions}) => {
           XMLHttpRequest: undefined
         }),
       ],
+      externals: getConfig().externals.concat(function(_context, request, callback) {
+        // Exclude bundling firebase* and react-firebase*
+        // These are instead required at runtime.
+        if (/^@?(react-)?firebase(.*)/.test(request)) {
+          console.log('Excluding bundling of: ' + request);
+          return callback(null, 'umd ' + request);
+        }
+        callback();
+      }),
     })
   }
 }

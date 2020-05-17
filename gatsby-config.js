@@ -17,12 +17,13 @@ module.exports = {
         display: "standalone",
         icon: "src/img/logo.svg",
         crossOrigin: `use-credentials`,
+        gcm_sender_id: "275924356890"
       },
     },
     {
       resolve: `gatsby-plugin-offline`,
       options: {
-        appendScript: require.resolve(`./src/custom-sw.js`),
+        appendScript: require.resolve(`./src/custom-swrk.js`),
       },
     },
     'gatsby-plugin-react-helmet',
@@ -84,6 +85,20 @@ module.exports = {
       options: {
         modulePath: `${__dirname}/src/cms/cms.js`,
       },
+    },
+    {
+      resolve: "gatsby-plugin-firebase",
+      options: {
+        credentials: {
+          apiKey: "AIzaSyAyiEi2fGHUVCafFOnjIABB94iibC1Oq8c",
+          authDomain: "nateduffpwa.firebaseapp.com",
+          databaseURL: "https://nateduffpwa.firebaseio.com",
+          projectId: "nateduffpwa",
+          storageBucket: "nateduffpwa.appspot.com",
+          messagingSenderId: "275924356890",
+          appId: "1:275924356890:web:0e7f2a1d04922879"
+        }
+      }
     },
     {
       resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules

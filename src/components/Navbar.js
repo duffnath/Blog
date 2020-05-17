@@ -4,6 +4,8 @@ import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
 import DarkModeToggle from '../components/DarkModeToggle'
 
+import { BrowserView } from 'react-device-detect'
+
 import AdalConfig from '../config/AdalConfig'
 import AuthContext from '../services/Auth'
 
@@ -99,10 +101,11 @@ const Navbar = class extends React.Component {
               <Link className="navbar-item" to="/contact/examples">
                 Form Examples
               </Link>
+              <BrowserView>
               {this.props.isAuthenticated ? 
               <Link className="navbar-item" to="https://duffsitestore.z14.web.core.windows.net/admin/#">
                 Admin
-              </Link> : null}
+              </Link> : null}</BrowserView>
               {this.props.isAuthenticated ? 
               <Link className="navbar-item" 
                 onClick={handleLogout}>

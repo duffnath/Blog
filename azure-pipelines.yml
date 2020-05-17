@@ -18,7 +18,7 @@ steps:
   displayName: Cache Yarn packages
   condition: ne(variables['Build.Reason'], 'PullRequest')
 
-- script: yarn install --prefer-offline
+- script: yarn install
   displayName: 'Install App'
   condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
 

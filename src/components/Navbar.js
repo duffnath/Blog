@@ -100,7 +100,7 @@ const Navbar = class extends React.Component {
                 Form Examples
               </Link>
               {this.props.isAuthenticated ? 
-              <Link className="navbar-item" to="/admin">
+              <Link className="navbar-item" to="https://duffsitestore.z14.web.core.windows.net/admin/#">
                 Admin
               </Link> : null}
               {this.props.isAuthenticated ? 

@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 import { appInsights } from '../telemetry'
+import useSiteMetadata from '../components/SiteMetadata'
 
 export const AboutPageTemplate = ({ title, content, contentComponent, helmet }) => {
   const PageContent = contentComponent || Content
@@ -48,7 +49,7 @@ const AboutPage = ({ data }) => {
         content={post.html}
         helmet={
           <Helmet titleTemplate="%s | About">
-            <title>{`${post.frontmatter.title}`}</title>
+            <title>{`${useSiteMetadata().title}`}</title>
             <meta
               name="description"
               content={`${post.frontmatter.description}`}

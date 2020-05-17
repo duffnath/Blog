@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 
 import Layout from '../components/Layout'
 import Features from '../components/Features'
@@ -14,6 +15,7 @@ export const IndexPageTemplate = ({
   mainpitch,
   description,
   intro,
+  helmet,
 }) => (
   <div>
     <div
@@ -64,6 +66,7 @@ export const IndexPageTemplate = ({
         </h3>
       </div>
     </div>
+    {helmet || ''}
     <section className="section section--gradient">
       <div className="container">
         <div className="section">
@@ -124,6 +127,7 @@ IndexPageTemplate.propTypes = {
   intro: PropTypes.shape({
     blurbs: PropTypes.array,
   }),
+  helmet: PropTypes.object,
 }
 
 const IndexPage = ({ data }) => {
@@ -133,12 +137,21 @@ const IndexPage = ({ data }) => {
     <Layout>
       <IndexPageTemplate
         image={frontmatter.image}
-        title={frontmatter.title + " | Home"}
+        title={frontmatter.title}
         heading={frontmatter.heading}
         subheading={frontmatter.subheading}
         mainpitch={frontmatter.mainpitch}
         description={frontmatter.description}
         intro={frontmatter.intro}
+        helmet={
+          <Helmet titleTemplate="%s | Home">
+            <title>{`${frontmatter.title}`}</title>
+            <meta
+              name="description"
+              content={`${frontmatter.description}`}
+            />
+          </Helmet>
+        }
       />
     </Layout>
   )

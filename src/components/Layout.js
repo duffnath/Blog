@@ -163,10 +163,7 @@ const TemplateWrapper = ({ children }) => {
                   function (registration) {\
                     console.log('Registration successful, scope is:', registration.scope);\
                     console.log('Setting up Firebase');\
-                    if (typeof messaging !== 'undefined') {\
-                      \
-                    }\
-                    messaging.useServiceWorker(registration);\
+                    firebase.messaging.useServiceWorker(registration);\
                   },\
                   function (err) {\
                     console.log('ServiceWorker registration failed: ', err);\
@@ -191,7 +188,12 @@ const TemplateWrapper = ({ children }) => {
                     messaging.onMessage((payload) => {\
                       console.log('Message received. ', payload);\
                     });\
-                    messaging.requestPermission();\
+                    messaging\
+                        .getToken()\
+                        .then((token) => {\
+                          console.log('Token retrieved.');\
+                          console.log(token);\
+                        });\
                 });\
                 }" 
             }]}/>

@@ -59,6 +59,12 @@ const Navbar = class extends React.Component {
       AuthContext.login();
     };
 
+    const openAdmin = event => {
+      event.preventDefault();
+      
+      window.location.href = "https://duffsitestore.z14.web.core.windows.net/admin/#"
+    }
+
     return (
       <nav
         className="navbar is-transparent"
@@ -103,7 +109,7 @@ const Navbar = class extends React.Component {
               </Link>
               <BrowserView>
               {this.props.isAuthenticated ? 
-              <Link className="navbar-item" to="https://duffsitestore.z14.web.core.windows.net/admin/#">
+              <Link className="navbar-item" onClick={openAdmin}>
                 Admin
               </Link> : null}</BrowserView>
               {this.props.isAuthenticated ? 

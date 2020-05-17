@@ -1,5 +1,5 @@
 import React from 'react'
-import { withPrefix, Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import './all.sass'
@@ -189,13 +189,6 @@ const TemplateWrapper = ({ children }) => {
                   }\
                 )}" 
             }]}/>
-
-            <Helmet
-              script={[{
-                type: 'text/javascript',
-                innerHTML: "var adminButton = document.getElementById('adminButton');\
-                  "
-              }]} />
 
           <Footer />   
       </div>

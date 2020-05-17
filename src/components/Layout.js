@@ -38,6 +38,7 @@ export const onServiceWorkerUpdateReady = () => {
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata()
   let isAuthenticated = false;
+  let pushToken = localStorage?.token;
 
   AuthContext.handleWindowCallback()
 
@@ -45,7 +46,7 @@ const TemplateWrapper = ({ children }) => {
     if (!AuthContext.getCachedToken(AdalConfig.clientId) || !AuthContext.getCachedUser()) {
       console.log('Not logged in');
 
-      appInsights.trackPageView({name: window.title, uri: window.location.href, isLoggedIn: false})
+      appInsights.trackPageView({name: window.title, uri: window.location.href, isLoggedIn: false, properties: {Token: pushToken}})
     } else {
       AuthContext.acquireToken(AdalConfig.endpoints.api, (message, token, msg) => {
         if (token) {
@@ -53,7 +54,7 @@ const TemplateWrapper = ({ children }) => {
 
           isAuthenticated = true;
 
-          appInsights.trackPageView({name: window.title, uri: window.location.href, isLoggedIn: true, properties: {User: _adalInstance._user.profile.upn}})
+          appInsights.trackPageView({name: window.title, uri: window.location.href, isLoggedIn: true, properties: {User: _adalInstance._user.profile.upn, Token: pushToken}})
         }
       })
     }

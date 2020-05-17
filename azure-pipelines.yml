@@ -20,17 +20,15 @@ steps:
 
 - script: yarn install --prefer-offline
   displayName: 'Install App'
-  workingDirectory: 'website'
   condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
 
 - script: yarn build
   displayName: 'Build'
-  workingDirectory: 'website'
   condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: 'website/public'
+    PathtoPublish: 'public'
     ArtifactName: 'drop'
     publishLocation: 'Container'
   condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))

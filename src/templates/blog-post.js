@@ -6,6 +6,7 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 import { appInsights } from '../telemetry'
+import useSiteMetadata from '../components/SiteMetadata'
 
 export const BlogPostTemplate = ({
   content,
@@ -68,7 +69,7 @@ const BlogPost = ({ data }) => {
         description={post.frontmatter.description}
         helmet={
           <Helmet>
-            <title>{`${frontmatter.title} | ${post.frontmatter.title}`}</title>
+            <title>{`${useSiteMetadata().title} | ${post.frontmatter.title}`}</title>
             <meta
               name="description"
               content={`${post.frontmatter.description}`}

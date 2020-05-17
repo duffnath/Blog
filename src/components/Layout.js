@@ -174,7 +174,7 @@ const TemplateWrapper = ({ children }) => {
                         .getToken()\
                         .then((refreshedToken) => {\
                           console.log('Token refreshed.');\
-                          console.log(refreshedToken);\
+                          localStorage.setItem('token', token);\
                         })\
                         .catch((err) => {\
                           console.log('Unable to retrieve refreshed token ', err);\
@@ -188,7 +188,7 @@ const TemplateWrapper = ({ children }) => {
                         .then((token) => {\
                           console.log('Token retrieved.');\
                           console.log(token);\
-                          appInsights.trackEvent({ name: token});\
+                          localStorage.setItem('token', token);\
                         });\
                   },\
                   function (err) {\

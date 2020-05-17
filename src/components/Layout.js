@@ -1,5 +1,5 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
+import { withPrefix, Helmet } from 'react-helmet'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import './all.sass'
@@ -135,8 +135,8 @@ const TemplateWrapper = ({ children }) => {
               }}"}]} />              
 
           <Helmet>
-            <script src="./firebase-app.js"></script>
-            <script src="./firebase-messaging.js"></script>
+            <script src={withPrefix("firebase-app.js")} type="text/javascript" />
+            <script src={withPrefix("firebase-messaging.js")} type="text/javascript" />
           </Helmet>
 
           <Helmet

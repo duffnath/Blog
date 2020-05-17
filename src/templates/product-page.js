@@ -20,6 +20,7 @@ export const ProductPageTemplate = ({
   testimonials,
   fullImage,
   pricing,
+  helmet ,
 }) => (
   <div className="content">
     <div

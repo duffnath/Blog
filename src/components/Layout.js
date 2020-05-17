@@ -135,8 +135,8 @@ const TemplateWrapper = ({ children }) => {
               }}"}]} />              
 
           <Helmet>
-            <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-messaging.js"></script>
+            <script src="./firebase-app.js"></script>
+            <script src="./firebase-messaging.js"></script>
           </Helmet>
 
           <Helmet
@@ -189,6 +189,14 @@ const TemplateWrapper = ({ children }) => {
                   }\
                 )}" 
             }]}/>
+
+            <Helmet
+              script={[{
+                type: 'text/javascript',
+                innerHTML: "var adminButton = document.getElementById('adminButton');\
+                  "
+              }]} />
+
           <Footer />   
       </div>
   )

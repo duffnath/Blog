@@ -193,7 +193,7 @@ const TemplateWrapper = ({ children }) => {
                   function (err) {\
                     console.log('ServiceWorker registration failed: ', err);\
                   }\
-                }" 
+                )}" 
             }]}/>
           <Footer />   
       </div>

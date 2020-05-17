@@ -5,13 +5,7 @@ import { Helmet } from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
-import { ApplicationInsights } from '@microsoft/applicationinsights-web'
-
-const appInsights = new ApplicationInsights({ config: {
-  connectionString: "InstrumentationKey=837dcc30-21da-4252-8d67-d27f19a0c049"
-} });
-
-appInsights.loadAppInsights();
+import appInsights from '../telemetry'
 
 export const BlogPostTemplate = ({
   content,

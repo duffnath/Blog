@@ -6,13 +6,7 @@ import Features from '../components/Features'
 import Testimonials from '../components/Testimonials'
 import Pricing from '../components/Pricing'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
-import { ApplicationInsights } from '@microsoft/applicationinsights-web'
-
-const appInsights = new ApplicationInsights({ config: {
-  connectionString: "InstrumentationKey=837dcc30-21da-4252-8d67-d27f19a0c049"
-} });
-
-appInsights.loadAppInsights();
+import appInsights from '../telemetry'
 
 export const ProductPageTemplate = ({
   image,

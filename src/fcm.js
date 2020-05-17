@@ -13,6 +13,7 @@ const firebaseConfig = {
 const initializedFirebaseApp = firebase.initializeApp(firebaseConfig);
 
 const messaging = initializedFirebaseApp.messaging();
+
 messaging.usePublicVapidKey(
   'BKT14aRXCrYZ4IrvjgjNCo7jP0lAAnZnJTtHFT3Pi11q9Hh0QAcAX2LoYxrLB51JwywwitgDEFhHDW_vuX9Dfcg'
 );

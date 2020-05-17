@@ -9,21 +9,11 @@ import { withPrefix } from 'gatsby'
 import AdalConfig from '../config/AdalConfig'
 import AuthContext from '../services/Auth'
 
-import { BrowserView } from 'react-device-detect';
+import { BrowserView } from 'react-device-detect'
 
-// import * as firebase from 'firebase/app';
-// import 'firebase/messaging';
-// import * as toastr from 'toastr';
+// import * as toastr from 'toastr'
 
-// import messaging from '../fcm';
-
-import { ApplicationInsights } from '@microsoft/applicationinsights-web'
-
-const appInsights = new ApplicationInsights({ config: {
-  connectionString: "InstrumentationKey=837dcc30-21da-4252-8d67-d27f19a0c049"
-} });
-
-appInsights.loadAppInsights();
+import appInsights from '../telemetry'
 
 export const onServiceWorkerUpdateReady = () => {
   const answer = window.confirm(
@@ -142,14 +132,12 @@ const TemplateWrapper = ({ children }) => {
               } else {\
                 var isDarkMode = document.body.classList.contains(classNameDark);\
                 localStorage.setItem('darkMode', JSON.stringify(isDarkMode));\
-              }}"}]} />
-              \
+              }}"}]} />              
 
           <Helmet>
             <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
             <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-messaging.js"></script>
           </Helmet>
-
 
           <Helmet
             script={[{

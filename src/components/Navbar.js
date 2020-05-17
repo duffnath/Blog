@@ -2,17 +2,12 @@ import React from 'react'
 import { Link } from 'gatsby'
 import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
-import DarkModeToggle from '../components/DarkModeToggle';
+import DarkModeToggle from '../components/DarkModeToggle'
 
 import AdalConfig from '../config/AdalConfig'
 import AuthContext from '../services/Auth'
-import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 
-const appInsights = new ApplicationInsights({ config: {
-  connectionString: "InstrumentationKey=837dcc30-21da-4252-8d67-d27f19a0c049"
-} });
-
-appInsights.loadAppInsights();
+import appInsights from '../telemetry'
 
 const Navbar = class extends React.Component {
   constructor(props) {

@@ -2,13 +2,7 @@ import React from 'react'
 
 import Layout from '../../components/Layout'
 import BlogRoll from '../../components/BlogRoll'
-import { ApplicationInsights } from '@microsoft/applicationinsights-web'
-
-const appInsights = new ApplicationInsights({ config: {
-  connectionString: "InstrumentationKey=837dcc30-21da-4252-8d67-d27f19a0c049"
-} });
-
-appInsights.loadAppInsights();
+import appInsights from '../../telemetry'
 
 export default class BlogIndexPage extends React.Component {
   render() {

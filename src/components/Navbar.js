@@ -107,8 +107,7 @@ const Navbar = class extends React.Component {
               {this.props.isAuthenticated ? 
               <Link className="navbar-item" to="/admin">
                 Admin
-              </Link>
-              <Link className="navbar-item" 
+              </Link> && <Link className="navbar-item" 
                 // to=".auth/logout?post_logout_redirect_uri=/"
                 onClick={handleLogout}>
                 Logout

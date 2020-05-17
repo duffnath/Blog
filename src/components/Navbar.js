@@ -7,7 +7,7 @@ import DarkModeToggle from '../components/DarkModeToggle'
 import AdalConfig from '../config/AdalConfig'
 import AuthContext from '../services/Auth'
 
-import appInsights from '../telemetry'
+import * as appInsights from '../telemetry'
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -102,12 +102,12 @@ const Navbar = class extends React.Component {
               {this.props.isAuthenticated ? 
               <Link className="navbar-item" to="/admin">
                 Admin
-              </Link> && <Link className="navbar-item" 
-                // to=".auth/logout?post_logout_redirect_uri=/"
+              </Link> : null}
+              {this.props.isAuthenticated ? 
+              <Link className="navbar-item" 
                 onClick={handleLogout}>
                 Logout
               </Link> : <Link className="navbar-item" 
-                // to=".auth/login/aad?post_login_redirect_url=/"
                 onClick={handleLogin}>
                 Login
               </Link>}

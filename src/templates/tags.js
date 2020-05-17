@@ -2,7 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import appInsights from '../telemetry'
+import * as appInsights from '../telemetry'
 
 class TagRoute extends React.Component {
   render() {

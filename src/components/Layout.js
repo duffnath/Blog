@@ -163,12 +163,20 @@ const TemplateWrapper = ({ children }) => {
                   function (registration) {\
                     console.log('Registration successful, scope is:', registration.scope);\
                     console.log('Setting up Firebase');\
-                    firebase.initializeApp(firebaseConfig);\
+                    if (typeof messaging !== 'undefined') {\
+                      \
+                    }\
+                    messaging.useServiceWorker(registration);\
+                  },\
+                  function (err) {\
+                    console.log('ServiceWorker registration failed: ', err);\
+                  }\
+                ).then(() => {\
+                  firebase.initializeApp(firebaseConfig);\
                     const messaging = firebase.messaging();\
                     messaging.usePublicVapidKey(\
                       'BKT14aRXCrYZ4IrvjgjNCo7jP0lAAnZnJTtHFT3Pi11q9Hh0QAcAX2LoYxrLB51JwywwitgDEFhHDW_vuX9Dfcg'\
                     );\
-                    messaging.useServiceWorker(registration);\
                     messaging.onTokenRefresh(() => {\
                       messaging\
                         .getToken()\
@@ -184,11 +192,7 @@ const TemplateWrapper = ({ children }) => {
                       console.log('Message received. ', payload);\
                     });\
                     messaging.requestPermission();\
-                  },\
-                  function (err) {\
-                    console.log('ServiceWorker registration failed: ', err);\
-                  }\
-                );\
+                });\
                 }" 
             }]}/>
           <Footer />   

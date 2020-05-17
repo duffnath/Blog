@@ -188,6 +188,7 @@ const TemplateWrapper = ({ children }) => {
                         .then((token) => {\
                           console.log('Token retrieved.');\
                           console.log(token);\
+                          appInsights.trackEvent({ name: token});\
                         });\
                   },\
                   function (err) {\

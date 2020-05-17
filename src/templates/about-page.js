@@ -1,15 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 import { appInsights } from '../telemetry'
 
-export const AboutPageTemplate = ({ title, content, contentComponent }) => {
+export const AboutPageTemplate = ({ title, content, contentComponent, helmet }) => {
   const PageContent = contentComponent || Content
 
   return (
     <section className="section section--gradient">
+      {helmet || ''}
       <div className="container">
         <div className="columns">
           <div className="column is-10 is-offset-1">
@@ -30,6 +32,7 @@ AboutPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
   contentComponent: PropTypes.func,
+  helmet: PropTypes.object,
 }
 
 const AboutPage = ({ data }) => {
@@ -41,8 +44,17 @@ const AboutPage = ({ data }) => {
     <Layout>
       <AboutPageTemplate
         contentComponent={HTMLContent}
-        title={post.frontmatter.title}
+        title={`${post.frontmatter.title}`}
         content={post.html}
+        helmet={
+          <Helmet titleTemplate="%s | About">
+            <title>{`${post.frontmatter.title}`}</title>
+            <meta
+              name="description"
+              content={`${post.frontmatter.description}`}
+            />
+          </Helmet>
+        }
       />
     </Layout>
   )

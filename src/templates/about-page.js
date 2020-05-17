@@ -14,12 +14,6 @@ appInsights.loadAppInsights();
 export const AboutPageTemplate = ({ title, content, contentComponent }) => {
   const PageContent = contentComponent || Content
 
-  function navClicked (e) {
-    e.preventDefault();
-
-    appInsights.trackEvent({ name: 'Navigate', properties: { 'Page': 'X' } })
-  }
-
   return (
     <section className="section section--gradient">
       <div className="container">

@@ -135,8 +135,8 @@ const TemplateWrapper = ({ children }) => {
               }}"}]} />              
 
           <Helmet>
-            <script src={withPrefix("firebase-app.js")} type="text/javascript" />
-            <script src={withPrefix("firebase-messaging.js")} type="text/javascript" />
+            <script src={`${withPrefix('/')}firebase-app.js`} type="text/javascript" />
+            <script src={`${withPrefix('/')}firebase-messaging.js`} type="text/javascript" />
           </Helmet>
 
           <Helmet

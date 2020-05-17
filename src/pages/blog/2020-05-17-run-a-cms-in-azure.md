@@ -10,6 +10,8 @@ tags:
   - cms
   - lorem ipsum
 ---
+![Blog Screenshot](/img/blog_screenshot.png "Blog Screenshot")
+
 ## Blog Sub-Header
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam volutpat commodo sed egestas. Diam maecenas sed enim ut sem. Quam adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus. Eget mauris pharetra et ultrices neque ornare aenean. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Augue mauris augue neque gravida in fermentum et. In hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Vel pharetra vel turpis nunc eget lorem dolor. Elementum tempus egestas sed sed risus pretium. *Augue neque gravida in fermentum et sollicitudin ac. Erat pellentesque adipiscing commodo elit at.*

@@ -109,7 +109,7 @@ const Navbar = class extends React.Component {
               </Link>
               <BrowserView>
               {this.props.isAuthenticated ? 
-              <Link className="navbar-item" onClick={openAdmin} style="align-items: center; display: flex;">
+              <Link className="navbar-item" onClick={openAdmin}>
                 Admin
               </Link> : null}</BrowserView>
               {this.props.isAuthenticated ? 

@@ -71,11 +71,11 @@ self.addEventListener("notificationclick", function (e) {
 });
 
 // register a custom navigation route
-// const customRoute = new workbox.routing.NavigationRoute(({ event }) => {
+const customRoute = new workbox.routing.NavigationRoute(({ event }) => {
     
-// }, 
-// {
-//     blacklist: [/^(?!\/.auth\/)/]
-// })
+}, 
+{
+    whitelist: [/^(?!\/admin\/)/]
+})
 
-// workbox.routing.registerRoute(customRoute)
+workbox.routing.registerRoute(customRoute)

@@ -1,9 +1,9 @@
 ---
 templateKey: index-page
-title: Nate Duff Blog | Home
+title: Nate Duff Blog
 image: /img/home-jumbotron.jpg
-heading: Welcome to the blog!
-subheading: Stick around if you have any interest in web and automation technology and practices
+heading: Welcome to the Nate Duff Blog!
+subheading: Focusing on M365, SharePoint, Azure DevOps, PowerShell, & Web Technologies
 mainpitch:
   title: About Me
   description: >

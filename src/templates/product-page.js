@@ -7,6 +7,8 @@ import Testimonials from '../components/Testimonials'
 import Pricing from '../components/Pricing'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 import { appInsights } from '../telemetry'
+import useSiteMetadata from '../components/SiteMetadata'
+import { Helmet } from 'react-helmet'
 
 export const ProductPageTemplate = ({
   image,
@@ -40,6 +42,7 @@ export const ProductPageTemplate = ({
         {title}
       </h2>
     </div>
+    {helmet || ''}
     <section className="section section--gradient">
       <div className="container">
         <div className="section">
@@ -127,6 +130,7 @@ ProductPageTemplate.propTypes = {
     description: PropTypes.string,
     plans: PropTypes.array,
   }),
+  helmet: PropTypes.object,
 }
 
 const ProductPage = ({ data }) => {
@@ -146,6 +150,15 @@ const ProductPage = ({ data }) => {
         testimonials={frontmatter.testimonials}
         fullImage={frontmatter.full_image}
         pricing={frontmatter.pricing}
+        helmet={
+          <Helmet titleTemplate="%s | Products">
+            <title>{`${useSiteMetadata().title}`}</title>
+            <meta
+              name="description"
+              content={`${frontmatter.description}`}
+            />
+          </Helmet>
+        }
       />
     </Layout>
   )

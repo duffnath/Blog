@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet'
 import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
+import useSiteMetadata from '../components/SiteMetadata'
 
 export const IndexPageTemplate = ({
   image,
@@ -145,7 +146,7 @@ const IndexPage = ({ data }) => {
         intro={frontmatter.intro}
         helmet={
           <Helmet titleTemplate="%s | Home">
-            <title>{`${frontmatter.title}`}</title>
+            <title>{`${useSiteMetadata().title}`}</title>
             <meta
               name="description"
               content={`${frontmatter.description}`}

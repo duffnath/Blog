@@ -61,7 +61,7 @@ const Navbar = class extends React.Component {
 
     const openAdmin = event => {
       event.preventDefault();
-      
+
       window.location.href = "https://duffsitestore.z14.web.core.windows.net/admin/#"
     }
 
@@ -109,7 +109,7 @@ const Navbar = class extends React.Component {
               </Link>
               <BrowserView>
               {this.props.isAuthenticated ? 
-              <Link className="navbar-item" onClick={openAdmin}>
+              <Link className="navbar-item" id="adminButton">
                 Admin
               </Link> : null}</BrowserView>
               {this.props.isAuthenticated ? 

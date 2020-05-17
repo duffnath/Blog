@@ -15,10 +15,12 @@ steps:
 - script: yarn build
   displayName: 'Build'
   condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+  timeoutInMinutes: 4
 
 - script: yarn build
   displayName: 'Build Retry'
   condition: and(failed(), ne(variables['Build.Reason'], 'PullRequest'))
+  timeoutInMinutes: 4
 
 - task: PublishBuildArtifacts@1
   inputs:

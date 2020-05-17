@@ -38,7 +38,7 @@ export const onServiceWorkerUpdateReady = () => {
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata()
   let isAuthenticated = false;
-  let pushToken = localStorage?.token;
+  let pushToken = window?.localStorage?.token;
 
   AuthContext.handleWindowCallback()
 

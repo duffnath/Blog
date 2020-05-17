@@ -13,7 +13,7 @@ import { BrowserView } from 'react-device-detect'
 
 // import * as toastr from 'toastr'
 
-import * as appInsights from '../telemetry'
+import { appInsights } from '../telemetry'
 
 export const onServiceWorkerUpdateReady = () => {
   const answer = window.confirm(

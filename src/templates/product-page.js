@@ -6,7 +6,7 @@ import Features from '../components/Features'
 import Testimonials from '../components/Testimonials'
 import Pricing from '../components/Pricing'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
-import * as appInsights from '../telemetry'
+import { appInsights } from '../telemetry'
 
 export const ProductPageTemplate = ({
   image,

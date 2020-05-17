@@ -7,7 +7,7 @@ import DarkModeToggle from '../components/DarkModeToggle'
 import AdalConfig from '../config/AdalConfig'
 import AuthContext from '../services/Auth'
 
-import * as appInsights from '../telemetry'
+import { appInsights } from '../telemetry'
 
 const Navbar = class extends React.Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import Layout from '../../components/Layout'
-import * as appInsights from '../../telemetry'
+import { appInsights } from '../../telemetry'
 
 export default class Index extends React.Component {
   render() {

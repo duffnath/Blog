@@ -2,7 +2,7 @@ import React from 'react';
 
 import Toggle from './Toggle';
 import useDarkMode from 'use-dark-mode';
-import * as appInsights from '../telemetry'
+import { appInsights } from '../telemetry'
 
 const DarkModeToggle = () => {
   const darkMode = useDarkMode(false);

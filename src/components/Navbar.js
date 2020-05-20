@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import github from '../img/github-icon.svg'
-import logo from '../img/logo.svg'
+// import logo from '../img/logo.svg'
+import logo from '../img/DCS_LOGO_BLUE-03.png'
 import DarkModeToggle from '../components/DarkModeToggle'
 
 import { BrowserView } from 'react-device-detect'

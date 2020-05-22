@@ -2,7 +2,7 @@
 
 // Config vars
 // Kaldi logo brand color: #FD461E
-$kaldi-red: #D64000
+$kaldi-red: #2b5837
 $kaldi-red-invert: #fff
 
 $primary: $kaldi-red
@@ -71,16 +71,18 @@ body.dark-mode .content code
 
 
 body.dark-mode .content a 
-  color: #ee09;
+  color: #9bbcc6;
 
 
 body.dark-mode .content button 
-  color: #ee09;
+  color: #9bbcc6;
 
 
 .dark-mode-toggle 
   display: flex;
   margin: 0 auto;
+  button:nth-child(1)
+    color: #ee09 !important;
   & > button 
     font-size: 1.2em;
     background: none;
@@ -146,6 +148,10 @@ nav.navbar
   width: 100%;
   overflow: hidden;
   top: 0;
+  height: 5.5rem;
+
+.navbar-item img 
+  max-height: 4rem !important;
 
 .navbar .navbar-menu
   box-shadow:none !important  
@@ -198,10 +204,10 @@ nav.navbar
     border-radius: .25rem
     text-decoration: none
     font-weight: 700
-    color: #CC3700
+    color: #2b5837
     text-align: center
-    -webkit-box-shadow: inset 0 0 0 2px #CC3700
-    box-shadow: inset 0 0 0 2px #f40
+    -webkit-box-shadow: inset 0 0 0 2px #2b5837
+    box-shadow: inset 0 0 0 2px #2b5837
     -webkit-transition: all .15s ease
     transition: all .15s ease
 
@@ -218,7 +224,7 @@ nav.navbar
 .navbar-brand .navbar-item.logo
   padding: 0 1rem
 footer.footer
-  padding: 3rem 0rem 0rem
+  padding: 0rem 0rem 0rem
   background-color: transparent
 
 //Menu overrides
@@ -288,3 +294,13 @@ html
 
 .light-mode .darkLogo
   display: none;
+
+.light-mode nav.navbar.is-transparent 
+  background-color: #f1f1f1;
+
+footer.footer.has-background-black div
+  background-color: #2b5837 !important;
+
+.footer .content.has-text-centered:nth-child(1) 
+  margin-bottom: 0.5rem;
+  padding-top: 2rem;

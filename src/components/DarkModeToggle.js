@@ -16,11 +16,11 @@ const DarkModeToggle = () => {
       action = 'Disable'
     }
 
-    if (_adalInstance?._user) {
-      appInsights.trackEvent({ name: 'DarkMode', properties: { 'Action': action, 'User': _adalInstance._user.userName } })
-    } else {
-      appInsights.trackEvent({ name: 'DarkMode', properties: { 'Action': action } })
-    }
+    // if (_adalInstance?._user) {
+    //   appInsights.trackEvent({ name: 'DarkMode', properties: { 'Action': action, 'User': _adalInstance._user.userName } })
+    // } else {
+    //   appInsights.trackEvent({ name: 'DarkMode', properties: { 'Action': action } })
+    // }
   }
 
   return (

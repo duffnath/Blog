@@ -17,13 +17,13 @@ const Footer = class extends React.Component {
           <img
             src={logo}
             alt="NateDuffBlogSite"
-            className="lightLogo"
+            className="darkLogo"
             style={{ width: '14em', height: '10em' }}
           />
           <img
             src={darkLogo}
             alt="NateDuffBlogSiteDark"
-            className="darkLogo"
+            className="lightLogo"
             style={{ width: '14em', height: '10em' }}
           />
         </div>

@@ -1,6 +1,6 @@
 // src/services/Auth.js
-// import AuthenticationContext from '../adal' //
-import AuthenticationContext from 'adal-angular' 
+import AuthenticationContext from '../adal' //
+//import AuthenticationContext from 'adal-angular' 
 import AdalConfig from '../config/AdalConfig'
 
 if (typeof window !== 'undefined') {

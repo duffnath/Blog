@@ -45,9 +45,9 @@ const Navbar = class extends React.Component {
     const handleLogout = event => {    
       event.preventDefault();
 
-      // if (typeof _adalInstance !== 'undefined') {
-      //   appInsights.trackEvent({ name: 'Logout', properties: { 'User': _adalInstance._user.userName } });
-      // }
+      if (typeof _adalInstance !== 'undefined') {
+        appInsights.trackEvent({ name: 'Logout', properties: { 'User': _adalInstance._user.userName } });
+      }
 
       AuthContext.logOut();
     };

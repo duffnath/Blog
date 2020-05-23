@@ -1,16 +1,12 @@
 ---
 templateKey: index-page
-title: Nate Duff Blog
-image: /img/home-jumbotron.jpg
-heading: Welcome to the Nate Duff Blog!
-subheading: Focusing on M365, SharePoint, Azure DevOps, PowerShell, & Web Technologies
+title: Nate Duff | Home
+image: /img/spartyfam.jpg
+heading: My Resume
+subheading: Blog & Resume Landing Page
 mainpitch:
-  title: About Me
-  description: >
-    Damn Kaldi is the coffee store for everyone who believes that great coffee
-    shouldn't just taste good, it should do good too. We source all of our beans
-    directly from small scale sustainable farmers and make sure part of the
-    profits are reinvested in their communities.
+  title: What's Inside
+  description: Focusing on M365, SharePoint, Azure DevOps, PowerShell, & Web Technologies.
 description: Kaldi is the ultimate spot for coffee lovers who want to learn
   about their java’s origin and support the farmers that grew it. We take coffee
   production, roasting and brewing seriously and we’re glad to pass that

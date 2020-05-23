@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'gatsby'
 import github from '../img/github-icon.svg'
 // import logo from '../img/logo.svg'
-import logo from '../img/DCS_LOGO_BLUE-03.png'
-import darkLogo from '../img/DCS_LOGO_GREY-02.png'
+import logo from '../img/NateDuff.com-w-l.png'
+import darkLogo from '../img/NateDuff.com-w-d.png'
 import DarkModeToggle from '../components/DarkModeToggle'
 
 import { BrowserView } from 'react-device-detect'
@@ -76,8 +76,8 @@ const Navbar = class extends React.Component {
         <div className="container">
           <div className="navbar-brand">
             <Link to="/" className="navbar-item" title="Logo">
-              <img src={logo} className="darkLogo" alt="Kaldi" style={{ width: '88px' }} />
-              <img src={darkLogo} className="lightLogo" alt="NateDuffBlogSiteDark" style={{ width: '88px' }} />              
+              <img src={darkLogo} className="darkLogo" alt="Kaldi" style={{ width: '150px' }} />
+              <img src={logo} className="lightLogo" alt="NateDuffBlogSiteDark" style={{ width: '150px' }} />              
             </Link>
             
             {/* Hamburger menu */}

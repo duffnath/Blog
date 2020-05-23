@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Nate Duff Blog',
+    title: 'Nate Duff Personal Blog & Resume',
     description:
       'Blog site for NateDuff.com built with Gatsby, and Netlify CMS. It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.',
   },

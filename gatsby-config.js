@@ -9,11 +9,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "Nate Duff Blog",
-        short_name: "DuffBlog",
+        name: "Nate Duff Personal Blog & Resume",
+        short_name: "Nate Duff",
         start_url: "/",
-        background_color: "#08a03e",
-        theme_color: "#08a03e",
+        background_color: "#18453b",
+        theme_color: "#18453b",
         display: "standalone",
         icon: "src/img/logo.svg",
         crossOrigin: `use-credentials`,

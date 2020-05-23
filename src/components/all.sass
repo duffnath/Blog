@@ -289,6 +289,9 @@ $menu-label-color: $white-ter
     margin: 0 0 1em;
   .dark-mode-toggle
     margin-left: 40%;
+  .full-width-image.margin-top-0
+    background-size: auto 100% !important;
+    background-attachment: inherit !important;
 
 #navMenu > div.navbar-start > div
   align-items: center;
@@ -354,3 +357,7 @@ body.dark-mode .navbar-menu button
 
 .light-mode .dark-mode-toggle button:nth-child(2)
   color: #666 !important;
+
+a[aria-current="page"]
+    text-decoration: underline solid white !important;
+    text-decoration-style: wavy !important;

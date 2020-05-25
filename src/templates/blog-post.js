@@ -41,6 +41,12 @@ export const BlogPostTemplate = ({
                 </ul>
               </div>
             ) : null}
+            {_adalInstance._user.profile.upn.endsWith("@nateduff.com") ? <div id="promoteBlogSection">
+              <h4>Social Promotion</h4>
+              <button className="button is-link" type="submit">
+                Send Push Notification
+              </button>
+            </div> : null}
           </div>
         </div>
       </div>

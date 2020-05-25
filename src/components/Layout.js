@@ -165,9 +165,9 @@ const TemplateWrapper = ({ children }) => {
                     console.log(this.responseText);\
                    }\
                  };\
-                 xhttp.setRequestHeader('Content-type', 'application/json');\
-                 xhttp.setRequestHeader('Authorization', ('key=' + 'BKT14aRXCrYZ4IrvjgjNCo7jP0lAAnZnJTtHFT3Pi11q9Hh0QAcAX2LoYxrLB51JwywwitgDEFhHDW_vuX9Dfcg'));\
-                xhttp.open('POST', 'https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic, true);\
+                xhttp.open('POST', ('https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic), true);\
+                xhttp.setRequestHeader('Content-type', 'application/json');\
+                xhttp.setRequestHeader('Authorization', ('key=' + 'BKT14aRXCrYZ4IrvjgjNCo7jP0lAAnZnJTtHFT3Pi11q9Hh0QAcAX2LoYxrLB51JwywwitgDEFhHDW_vuX9Dfcg'));\
                 xhttp.send();\
               }\
               if ('serviceWorker' in navigator && firebase) {\

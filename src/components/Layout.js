@@ -11,6 +11,8 @@ import AuthContext from '../services/Auth'
 
 import { BrowserView } from 'react-device-detect'
 
+import $ from 'jquery'
+
 // import * as toastr from 'toastr'
 
 import { appInsights } from '../telemetry'
@@ -49,7 +51,7 @@ const TemplateWrapper = ({ children }) => {
 
           isAuthenticated = true;
 
-          isAdmin = _adalInstance._user.profile.upn?.endsWith("@nateduff.com") ? true : false;
+          isAdmin = true //_adalInstance._user.profile.upn?.endsWith("@nateduff.com") ? true : false;
 
           appInsights.trackPageView({name: window.title, uri: window.location.href, isLoggedIn: true, properties: {User: _adalInstance._user.profile.upn, Token: pushToken}})
         }

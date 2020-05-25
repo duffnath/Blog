@@ -18,6 +18,7 @@ const Navbar = class extends React.Component {
     super(props)
     this.state = {
       active: false,
+      isAdmin: false,
       navBarActiveClass: '',
     }
   }
@@ -109,7 +110,7 @@ const Navbar = class extends React.Component {
                 Contact
               </Link>
               <BrowserView>
-              {this.props.isAuthenticated ? 
+              {this.props.isAuthenticated && this.props.isAdmin ? 
               <Link className="navbar-item" onClick={openAdmin}>
                 Admin
               </Link> : null}</BrowserView>

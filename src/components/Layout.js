@@ -28,6 +28,7 @@ export const onServiceWorkerUpdateReady = () => {
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata()
   let isAuthenticated = false;
+  let isAdmin = false;
 
   let pushToken = "";
   if (typeof window !== 'undefined') {
@@ -47,6 +48,8 @@ const TemplateWrapper = ({ children }) => {
           appInsights.setAuthenticatedUserContext(_adalInstance._user.profile.oid, _adalInstance._user.profile.upn, true);
 
           isAuthenticated = true;
+
+          isAdmin = _adalInstance._user.profile.upn?.endsWith("@nateduff.com") ? true : false;
 
           appInsights.trackPageView({name: window.title, uri: window.location.href, isLoggedIn: true, properties: {User: _adalInstance._user.profile.upn, Token: pushToken}})
         }
@@ -95,7 +98,7 @@ const TemplateWrapper = ({ children }) => {
           />
         </Helmet>
         
-          <Navbar isAuthenticated={isAuthenticated}/>
+          <Navbar isAuthenticated={isAuthenticated} isAdmin={isAdmin}/>
 
           <div>{children}</div>
 

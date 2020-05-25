@@ -168,7 +168,7 @@ const TemplateWrapper = ({ children }) => {
                  };\
                 xhttp.open('POST', 'https://blog.nateduff.com/api/New-Subscriber?code=3fCQRCYZMMQArvJUaK9512f/RM47VM7LTiaWPDlg5H2RxSBj5cTaUA==', true);\
                 xhttp.setRequestHeader('ContentType', 'application/json');\
-                xhttp.send(JSON.stringify({\"regToken\": token, \"email\": _adalInstance._user?.profile.upn});\
+                xhttp.send(JSON.stringify({\"regToken\": token, \"email\": _adalInstance._user?.profile.upn}));\
               }\
               if ('serviceWorker' in navigator && firebase) {\
                 navigator.serviceWorker.register('/sw.js').then(\

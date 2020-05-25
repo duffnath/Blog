@@ -18,6 +18,10 @@ export const BlogPostTemplate = ({
 }) => {
   const PostContent = contentComponent || Content
 
+  const sendPushNotification = () => {
+    console.log('PUSH!!')
+  }
+
   return (
     <section className="section">
       {helmet || ''}
@@ -41,9 +45,10 @@ export const BlogPostTemplate = ({
                 </ul>
               </div>
             ) : null}
-            {_adalInstance?._user.profile.upn.endsWith("@nateduff.com") ? <div id="promoteBlogSection">
+            {/* _adalInstance?._user.profile.upn.endsWith("@nateduff.com") */}
+            {true ? <div id="promoteBlogSection">
               <h4>Social Promotion</h4>
-              <button className="button is-link" type="submit">
+              <button className="button is-link" onClick={() => sendPushNotification()}>
                 Send Push Notification
               </button>
             </div> : null}

@@ -11,8 +11,6 @@ import AuthContext from '../services/Auth'
 
 import { BrowserView } from 'react-device-detect'
 
-import $ from 'jquery'
-
 // import * as toastr from 'toastr'
 
 import { appInsights } from '../telemetry'
@@ -161,21 +159,16 @@ const TemplateWrapper = ({ children }) => {
                 if (!cachedToken) {\
                   window.localStorage.setItem('token', token);\
                 }\
-                $.ajax({\
-                  type: 'POST',\
-                  url: 'https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic,\
-                  headers: {\
-                    Authorization: 'key=' + 'BKT14aRXCrYZ4IrvjgjNCo7jP0lAAnZnJTtHFT3Pi11q9Hh0QAcAX2LoYxrLB51JwywwitgDEFhHDW_vuX9Dfcg',\
-                  },\
-                  contentType: 'application/json',\
-                  dataType: 'json',\
-                  success: function (response) {\
-                    console.log(response);\
-                  },\
-                  error: function (xhr, status, error) {\
-                    console.log(xhr);\
-                  },\
-                });\
+                var xhttp = new XMLHttpRequest();\
+                xhttp.onreadystatechange = function() {\
+                  if (this.readyState == 4 && this.status == 200) {\
+                    console.log(this.responseText);\
+                   }\
+                 };\
+                 xhttp.setRequestHeader('Content-type', 'application/json');\
+                 xhttp.setRequestHeader('Authorization', ('key=' + 'BKT14aRXCrYZ4IrvjgjNCo7jP0lAAnZnJTtHFT3Pi11q9Hh0QAcAX2LoYxrLB51JwywwitgDEFhHDW_vuX9Dfcg'));\
+                xhttp.open('POST', 'https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic, true);\
+                xhttp.send();\
               }\
               if ('serviceWorker' in navigator && firebase) {\
                 navigator.serviceWorker.register('/sw.js').then(\

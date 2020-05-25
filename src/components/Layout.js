@@ -146,14 +146,15 @@ const TemplateWrapper = ({ children }) => {
             script={[{
               type: 'text/javascript', 
               innerHTML: "var firebaseConfig = {\
-                apiKey: 'AIzaSyAyiEi2fGHUVCafFOnjIABB94iibC1Oq8c',\
-                authDomain: 'nateduffpwa.firebaseapp.com',\
-                databaseURL: 'https://nateduffpwa.firebaseio.com',\
-                projectId: 'nateduffpwa',\
-                storageBucket: 'nateduffpwa.appspot.com',\
-                messagingSenderId: '275924356890',\
-                appId: '1:275924356890:web:0e7f2a1d04922879',\
+                apiKey: '" + process.env.firebase_apiKey + "',\
+                authDomain: '" + process.env.firebase_authDomain + "',\
+                databaseURL: '" + process.env.firebase_databaseURL + "',\
+                projectId: '" + process.env.firebase_projectId + "',\
+                storageBucket: '" + process.env.firebase_storageBucket + "',\
+                messagingSenderId: '" + process.env.firebase_messagingSenderId + "',\
+                appId: '" + process.env.firebase_appId + "',\
               };\
+              console.log('" + process.env.NODE_ENV + "');\
               function subscribeToTopic(token, topic) {\
                 let cachedToken = window.localStorage.getItem('token');\
                 if (!cachedToken) {\
@@ -166,8 +167,8 @@ const TemplateWrapper = ({ children }) => {
                    }\
                  };\
                 xhttp.open('POST', ('https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic), true);\
-                xhttp.setRequestHeader('Content-type', 'application/json');\
-                xhttp.setRequestHeader('Authorization', ('key=' + 'BKT14aRXCrYZ4IrvjgjNCo7jP0lAAnZnJTtHFT3Pi11q9Hh0QAcAX2LoYxrLB51JwywwitgDEFhHDW_vuX9Dfcg'));\
+                xhttp.setRequestHeader('ContentType', 'application/json');\
+                xhttp.setRequestHeader('Authorization', ('key=' + '" + process.env.firebase_publicKey + "'));\
                 xhttp.send();\
               }\
               if ('serviceWorker' in navigator && firebase) {\
@@ -179,7 +180,7 @@ const TemplateWrapper = ({ children }) => {
                     const messaging = firebase.messaging();\
                     messaging.useServiceWorker(registration);\
                     messaging.usePublicVapidKey(\
-                      'BKT14aRXCrYZ4IrvjgjNCo7jP0lAAnZnJTtHFT3Pi11q9Hh0QAcAX2LoYxrLB51JwywwitgDEFhHDW_vuX9Dfcg'\
+                      '" + process.env.firebase_publicKey + "'\
                     );\
                     messaging.onTokenRefresh(() => {\
                       messaging\

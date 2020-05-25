@@ -154,6 +154,27 @@ const TemplateWrapper = ({ children }) => {
                 messagingSenderId: '275924356890',\
                 appId: '1:275924356890:web:0e7f2a1d04922879',\
               };\
+              function subscribeToTopic(token, topic) {\
+                let cachedToken = window.localStorage.getItem('token');\
+                if (!cachedToken) {\
+                  window.localStorage.setItem('token', token);\
+                }\
+                $.ajax({\
+                  type: 'POST',\
+                  url: 'https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic,\
+                  headers: {\
+                    Authorization: 'key=' + 'BKT14aRXCrYZ4IrvjgjNCo7jP0lAAnZnJTtHFT3Pi11q9Hh0QAcAX2LoYxrLB51JwywwitgDEFhHDW_vuX9Dfcg',\
+                  },\
+                  contentType: 'application/json',\
+                  dataType: 'json',\
+                  success: function (response) {\
+                    console.log(response);\
+                  },\
+                  error: function (xhr, status, error) {\
+                    console.log(xhr);\
+                  },\
+                });\
+              }\
               if ('serviceWorker' in navigator && firebase) {\
                 navigator.serviceWorker.register('/sw.js').then(\
                   function (registration) {\
@@ -171,6 +192,7 @@ const TemplateWrapper = ({ children }) => {
                         .then((refreshedToken) => {\
                           console.log('Token refreshed.');\
                           localStorage.setItem('token', token);\
+                          subscribeToTopic(token, 'BlogSubscribers');\
                         })\
                         .catch((err) => {\
                           console.log('Unable to retrieve refreshed token ', err);\
@@ -185,6 +207,7 @@ const TemplateWrapper = ({ children }) => {
                           console.log('Token retrieved.');\
                           console.log(token);\
                           localStorage.setItem('token', token);\
+                          subscribeToTopic(token, 'BlogSubscribers');\
                         });\
                   },\
                   function (err) {\

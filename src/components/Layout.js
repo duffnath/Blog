@@ -154,7 +154,7 @@ const TemplateWrapper = ({ children }) => {
                 messagingSenderId: '" + process.env.firebase_messagingSenderId + "',\
                 appId: '" + process.env.firebase_appId + "',\
               };\
-              console.log('" + process.env.NODE_ENV + "');\
+              console.log('" + process.env.firebase_apiKey + "');\
               function subscribeToTopic(token, topic) {\
                 let cachedToken = window.localStorage.getItem('token');\
                 if (!cachedToken) {\
@@ -166,10 +166,9 @@ const TemplateWrapper = ({ children }) => {
                     console.log(this.responseText);\
                    }\
                  };\
-                xhttp.open('POST', ('https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic), true);\
+                xhttp.open('POST', 'https://duff-blog.azurewebsites.net/api/New-Subscriber?code=sAiioLXwpWK4VHROhP7xMYM8cIH4kEQzG4A5BaJOxwAmUMUa/rFokg==', true);\
                 xhttp.setRequestHeader('ContentType', 'application/json');\
-                xhttp.setRequestHeader('Authorization', ('key=' + '" + process.env.firebase_publicKey + "'));\
-                xhttp.send();\
+                xhttp.send({regToken: token});\
               }\
               if ('serviceWorker' in navigator && firebase) {\
                 navigator.serviceWorker.register('/sw.js').then(\

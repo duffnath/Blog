@@ -140,6 +140,7 @@ const TemplateWrapper = ({ children }) => {
           <Helmet>
             <script src={`${withPrefix('/')}firebase-app.js`} type="text/javascript" />
             <script src={`${withPrefix('/')}firebase-messaging.js`} type="text/javascript" />
+            <script src={`${withPrefix('/')}jquery-3.1.1.min.js`} type="text/javascript" />
           </Helmet>
 
           <Helmet
@@ -160,15 +161,19 @@ const TemplateWrapper = ({ children }) => {
                 if (!cachedToken) {\
                   window.localStorage.setItem('token', token);\
                 }\
-                var xhttp = new XMLHttpRequest();\
-                xhttp.onreadystatechange = function() {\
-                  if (this.readyState == 4 && this.status == 200) {\
-                    console.log(this.responseText);\
-                   }\
-                 };\
-                xhttp.open('POST', 'https://blog.nateduff.com/api/New-Subscriber?code=3fCQRCYZMMQArvJUaK9512f/RM47VM7LTiaWPDlg5H2RxSBj5cTaUA==', true);\
-                xhttp.setRequestHeader('ContentType', 'application/json');\
-                xhttp.send(JSON.stringify({\"regToken\": token, \"email\": _adalInstance._user?.profile.upn}));\
+                $.ajax({\
+                  type: 'POST',\
+                  url: 'https://blog.nateduff.com/api/New-Subscriber?code=3fCQRCYZMMQArvJUaK9512f/RM47VM7LTiaWPDlg5H2RxSBj5cTaUA==',\
+                  contentType: 'application/json',\
+                  dataType: 'json',\
+                  data: {\"regToken\": token, \"email\": _adalInstance._user?.profile.upn},\
+                  success: function (response) {\
+                    console.log(response);\
+                  },\
+                  error: function (xhr, status, error) {\
+                    console.log(xhr);\
+                  },\
+                });\
               }\
               if ('serviceWorker' in navigator && firebase) {\
                 navigator.serviceWorker.register('/sw.js').then(\

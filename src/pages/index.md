@@ -3,43 +3,39 @@ templateKey: index-page
 title: Nate Duff | Home
 image: /img/spartyfam.jpg
 heading: My Resume
-subheading: Blog & Resume Landing Page
+subheading: DevOps Cloud Engineer
 mainpitch:
   title: What's Inside
-  description: Focusing on M365, SharePoint, Azure DevOps, PowerShell, & Web Technologies.
-description: Kaldi is the ultimate spot for coffee lovers who want to learn
-  about their java’s origin and support the farmers that grew it. We take coffee
-  production, roasting and brewing seriously and we’re glad to pass that
-  knowledge to anyone.
+  description: The latest and greatest technologies, solutions, and architectures
+    in Azure and Microsoft 365 (my opinion) from SharePoint to Azure DevOps to
+    PowerShell & more.
+description: The services I provide would go below and this would be a long
+  description about why I do what I do and who I do it for.
 intro:
   blurbs:
     - image: /img/coffee.png
-      text: >
-        We sell green and roasted coffee beans that are sourced directly from
-        independent farmers and farm cooperatives. We’re proud to offer a
-        variety of coffee beans grown with great care for the environment and
-        local communities. Check our post or contact us directly for current
-        availability.
+      text: Microsoft 365 is a cloud platform that allows businesses to grow and scale
+        with built-in remote work capabilities that are becoming more and more
+        essential every day. We can help you put together a plan for making the
+        most of the services that are available today while keeping your
+        business productive and secure.
     - image: /img/coffee-gear.png
-      text: >
-        We offer a small, but carefully curated selection of brewing gear and
-        tools for every taste and experience level. No matter if you roast your
-        own beans or just bought your first french press, you’ll find a gadget
-        to fall in love with in our shop.
+      text: Moving from physical servers to the cloud or migrating tenants in
+        Microsoft 365 can be a large undertaking. We've migrated Exchange,
+        Active Directory, SharePoint, & Teams environments across many different
+        platforms and versions, so let us help you get a plan created, started,
+        and finished in no time!
     - image: /img/tutorials.png
-      text: >
-        Love a great cup of coffee, but never knew how to make one? Bought a
-        fancy new Chemex but have no clue how to use it? Don't worry, we’re here
-        to help. You can schedule a custom 1-on-1 consultation with our baristas
-        to learn anything you want to know about coffee roasting and brewing.
-        Email us or call the store for details.
+      text: Deployment and feedback loops should be as short as possible to keep
+        development teams releasing more and better features. By minimizing 3rd
+        party tooling and automating deployment pipelines we can ensure that
+        development and product teams are productive and can easily track the
+        status of bugs and enhancements.
     - image: /img/meeting-space.png
-      text: >
-        We believe that good coffee has the power to bring people together.
-        That’s why we decided to turn a corner of our shop into a cozy meeting
-        space where you can hang out with fellow coffee lovers and learn about
-        coffee making techniques. All of the artwork on display there is for
-        sale. The full price you pay goes to the artist.
+      text: By utilizing a few key services in Azure with low-cost or consumption
+        based pricing options and the JAM stack, a website with full Progressive
+        Web App capabilities can be hosted in Azure for less than $1 per month.
+        We have starting templates for weddings, blogs, event pages and more!
   heading: What we offer
   description: >
     Kaldi is the ultimate spot for coffee lovers who want to learn about their

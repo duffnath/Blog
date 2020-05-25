@@ -10,15 +10,15 @@ variables:
 steps:
 - powershell: |
    New-Item -Path $(System.DefaultWorkingDirectory) -Name ".env.production" -Force -Value @'   
-   firebase_apiKey = "$(firebase_apiKey)"
-   firebase_authDomain = "$(firebase_authDomain)"
-   firebase_databaseURL = "$(firebase_databaseURL)"
-   firebase_projectId = "$(firebase_projectId)"
-   firebase_storageBucket = "$(firebase_storageBucket)"
-   firebase_messagingSenderId = "$(firebase_messagingSenderId)"
-   firebase_appId = "$(firebase_appId)"
-   firebase_publicKey = "$(firebase_publicKey)"
-   appInsightsConnectionString = "$(appInsightsConnectionString)"   
+   firebase_apiKey = $(firebase_apiKey)
+   firebase_authDomain = $(firebase_authDomain)
+   firebase_databaseURL = $(firebase_databaseURL)
+   firebase_projectId = $(firebase_projectId)
+   firebase_storageBucket = $(firebase_storageBucket)
+   firebase_messagingSenderId = $(firebase_messagingSenderId)
+   firebase_appId = $(firebase_appId)
+   firebase_publicKey = $(firebase_publicKey)
+   appInsightsConnectionString = $(appInsightsConnectionString)   
    '@
   displayName: 'Create .env configuration file'
 

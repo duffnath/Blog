@@ -1,17 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import github from '../img/github-icon.svg'
-// import logo from '../img/logo.svg'
 import logo from '../img/NateDuff.com-w-l.png'
 import darkLogo from '../img/NateDuff.com-w-d.png'
 import DarkModeToggle from '../components/DarkModeToggle'
-
-import { BrowserView } from 'react-device-detect'
-
-import AdalConfig from '../config/AdalConfig'
-import AuthContext from '../services/Auth'
-
-import { appInsights } from '../telemetry'
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -44,30 +36,6 @@ const Navbar = class extends React.Component {
   }
 
   render() {      
-    const handleLogout = event => {    
-      event.preventDefault();
-
-      if (typeof _adalInstance !== 'undefined') {
-        appInsights.trackEvent({ name: 'Logout', properties: { 'User': _adalInstance._user.userName } });
-      }
-
-      AuthContext.logOut();
-    };
-
-    const handleLogin = event => {    
-      event.preventDefault();
-
-      appInsights.trackEvent({ name: 'Login' });
-
-      AuthContext.login();
-    };
-
-    const openAdmin = event => {
-      event.preventDefault();
-      
-      window.location.href = "https://duffsitestore.z14.web.core.windows.net/admin/#"
-    }
-
     return (
       <nav
         className="navbar is-transparent"
@@ -77,8 +45,8 @@ const Navbar = class extends React.Component {
         <div className="container">
           <div className="navbar-brand">
             <Link to="/" className="navbar-item" title="Logo">
-              <img src={darkLogo} className="darkLogo" alt="Kaldi" style={{ width: '150px' }} />
-              <img src={logo} className="lightLogo" alt="NateDuffBlogSiteDark" style={{ width: '150px' }} />              
+              <img src={darkLogo} className="darkLogo" alt="NateDuffBlogLogo" style={{ width: '150px' }} />
+              <img src={logo} className="lightLogo" alt="NateDuffBlogLogoDark" style={{ width: '150px' }} />              
             </Link>
             
             {/* Hamburger menu */}
@@ -108,20 +76,7 @@ const Navbar = class extends React.Component {
               </Link>
               <Link className="navbar-item" to="/contact">
                 Contact
-              </Link>
-              <BrowserView>
-              {this.props.isAuthenticated && this.props.isAdmin ? 
-              <Link className="navbar-item" onClick={openAdmin}>
-                Admin
-              </Link> : null}</BrowserView>
-              {this.props.isAuthenticated ? 
-              <Link className="navbar-item" 
-                onClick={handleLogout}>
-                Logout
-              </Link> : <Link className="navbar-item" 
-                onClick={handleLogin}>
-                Login
-              </Link>}
+              </Link>              
             </div>          
             <div className="navbar-end has-text-centered">
               <DarkModeToggle />

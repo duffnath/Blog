@@ -8,8 +8,37 @@ import facebook from '../img/social/facebook.svg'
 import linkedin from '../img/social/linkedin.svg'
 import twitter from '../img/social/twitter.svg'
 
+import { BrowserView } from 'react-device-detect'
+import AdalConfig from '../config/AdalConfig'
+import AuthContext from '../services/Auth'
+import { appInsights } from '../telemetry'
+
 const Footer = class extends React.Component {
   render() {
+    const handleLogout = event => {    
+      event.preventDefault();
+
+      if (typeof _adalInstance !== 'undefined') {
+        appInsights.trackEvent({ name: 'Logout', properties: { 'User': _adalInstance._user.userName } });
+      }
+
+      AuthContext.logOut();
+    };
+
+    const handleLogin = event => {    
+      event.preventDefault();
+
+      appInsights.trackEvent({ name: 'Login' });
+
+      AuthContext.login();
+    };
+
+    const openAdmin = event => {
+      event.preventDefault();
+      
+      window.location.href = "https://duffsitestore.z14.web.core.windows.net/admin/#"
+    }
+
     return (
       <footer className="footer has-background-black has-text-white-ter">
         <div className="content has-text-centered">
@@ -63,6 +92,23 @@ const Footer = class extends React.Component {
                         Contact
                       </Link>
                     </li>
+                    
+                    <BrowserView>
+                      {this.props.isAuthenticated && this.props.isAdmin ? 
+                      <li><Link className="navbar-item" onClick={openAdmin}>
+                        Admin
+                      </Link></li> : null}
+                    </BrowserView>
+                    {this.props.isAuthenticated ? 
+                      <li><Link className="navbar-item" 
+                        onClick={handleLogout}>
+                        Logout
+                      </Link></li> : <li><Link className="navbar-item" 
+                        onClick={handleLogin}>
+                        Login
+                      </Link></li>
+                    }
+                    
                   </ul>
                 </section>
               </div>

@@ -154,7 +154,7 @@ const TemplateWrapper = ({ children }) => {
                 messagingSenderId: '275924356890',\
                 appId: '1:275924356890:web:0e7f2a1d04922879',\
               };\
-              if ('serviceWorker' in navigator) {\
+              if ('serviceWorker' in navigator && firebase) {\
                 navigator.serviceWorker.register('/sw.js').then(\
                   function (registration) {\
                     console.log('Registration successful, scope is:', registration.scope);\
@@ -193,7 +193,7 @@ const TemplateWrapper = ({ children }) => {
                 )}" 
             }]}/>
 
-          <Footer />   
+          <Footer isAuthenticated={isAuthenticated} isAdmin={isAdmin} />   
       </div>
   )
 }

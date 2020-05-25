@@ -3,6 +3,10 @@ const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 

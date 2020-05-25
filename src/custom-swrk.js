@@ -8,6 +8,10 @@ firebase.initializeApp({
 const messaging = firebase.messaging();
 
 self.addEventListener("fetch", function (event) {
+  if (event.request.url.endsWith('index.html')) {
+    return false;
+  }
+
   event.respondWith(
     caches.match(event.request).then(function (response) {
       return response || fetch(event.request);

@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet'
 
 import Layout from '../components/Layout'
 import Features from '../components/Features'
-import BlogRoll from '../components/BlogRoll'
+import BlogRollPreview from '../components/BlogRollPreview'
 import useSiteMetadata from '../components/SiteMetadata'
 
 export const IndexPageTemplate = ({
@@ -104,7 +104,7 @@ export const IndexPageTemplate = ({
                   <h3 className="has-text-weight-semibold is-size-2">
                     Latest stories
                   </h3>
-                  <BlogRoll />
+                  <BlogRollPreview />
                   <div className="column is-12 has-text-centered">
                     <Link className="btn" to="/blog">
                       Read more

@@ -21,6 +21,11 @@ export const BlogPostTemplate = ({
 
   const sendPushNotification = () => {
     console.log('PUSH!!');
+    var imagePath = $("section > div > div > div > div:nth-child(3) img")[0].src;
+    var title = $("h1.title")[0].innerText;
+    var body = $("#gatsby-focus-wrapper > div > div > section > div > div > div > p")[0].innerText;
+    var pagePath = window?.location.pathname.substring(1);
+
     $.ajax({
       type: "POST",
       url: "https://fcm.googleapis.com/fcm/send",
@@ -32,20 +37,20 @@ export const BlogPostTemplate = ({
       data: JSON.stringify({
         to: `/topics/BlogSubscribers`,
         notification: {
-          body: `Lorem ipsum dolor sit amet, consectetur adipiscing elit...`,
-          title: `How to run a CMS in Azure`,
+          body: body,
+          title: title,
           icon: "https://blog.nateduff.com/img/logo-whitebackground.png",
-          image: "https://blog.nateduff.com/img/blog_screenshot.png",
+          image: imagePath,
           tag:  "message-tag-01",
           forceClick: true,
-          click_action: "blog/2020-05-17-run-a-cms-in-azure",
+          click_action: pagePath,
           actionTitle: "Read More",
           actionIcon: "https://blog.nateduff.com/img/logo.png",
           badge: "https://blog.nateduff.com/img/logo.png"
         },
         webpush: {
           fcm_options: {
-            link: "https://blog.nateduff.com/blog/2020-05-17-run-a-cms-in-azure",
+            link: pagePath,
           },
         },
       }),

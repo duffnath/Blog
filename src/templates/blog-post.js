@@ -7,6 +7,7 @@ import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 import { appInsights } from '../telemetry'
 import useSiteMetadata from '../components/SiteMetadata'
+import $ from 'jquery'
 
 export const BlogPostTemplate = ({
   content,
@@ -19,7 +20,42 @@ export const BlogPostTemplate = ({
   const PostContent = contentComponent || Content
 
   const sendPushNotification = () => {
-    console.log('PUSH!!')
+    console.log('PUSH!!');
+    $.ajax({
+      type: "POST",
+      url: "https://fcm.googleapis.com/fcm/send",
+      headers: {
+        Authorization: "key=" + 'BKT14aRXCrYZ4IrvjgjNCo7jP0lAAnZnJTtHFT3Pi11q9Hh0QAcAX2LoYxrLB51JwywwitgDEFhHDW_vuX9Dfcg',
+      },
+      contentType: "application/json",
+      dataType: "json",
+      data: JSON.stringify({
+        to: `cwlbQ5Wg1GjvQFio57EigF:APA91bEeunhJzTcN0QxZnhWhULhUzCr8UXmYfOKuY0XSQ4jrQWJfzRaF0dUV_yykZkiiGIdI6G8KlhPdSzbFTMR08oqXyoFFTmZdDC3eCUGIrpCqCTBKqBm877VunlLggJjmdD9rY8yj`, //`/topics/BlogSubscribers`,
+        notification: {
+          body: `Lorem ipsum dolor sit amet, consectetur adipiscing elit...`,
+          title: `How to run a CMS in Azure`,
+          icon: "https://blog.nateduff.com/img/logo-whitebackground.png",
+          image: "https://blog.nateduff.com/img/blog_screenshot.png",
+          tag:  "message-tag-01",
+          forceClick: true,
+          click_action: "blog/2020-05-17-run-a-cms-in-azure",
+          actionTitle: "Read More",
+          actionIcon: "https://blog.nateduff.com/img/logo.png",
+          badge: "https://blog.nateduff.com/img/logo.png"
+        },
+        webpush: {
+          fcm_options: {
+            link: "https://blog.nateduff.com/blog/2020-05-17-run-a-cms-in-azure",
+          },
+        },
+      }),
+      success: function (response) {
+        console.log(response);
+      },
+      error: function (xhr, status, error) {
+        console.log(error);
+      },
+    });
   }
 
   return (

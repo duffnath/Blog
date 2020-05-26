@@ -163,7 +163,7 @@ const TemplateWrapper = ({ children }) => {
                 }\
                 $.ajax({\
                   type: 'POST',\
-                  url: 'https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/BlogSubscribers,\
+                  url: 'https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/BlogSubscribers',\
                   contentType: 'application/json',\
                   dataType: 'json',\
                   headers: {\

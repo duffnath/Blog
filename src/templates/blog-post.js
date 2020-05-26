@@ -25,12 +25,12 @@ export const BlogPostTemplate = ({
       type: "POST",
       url: "https://fcm.googleapis.com/fcm/send",
       headers: {
-        Authorization: "key=" + 'BKT14aRXCrYZ4IrvjgjNCo7jP0lAAnZnJTtHFT3Pi11q9Hh0QAcAX2LoYxrLB51JwywwitgDEFhHDW_vuX9Dfcg',
+        Authorization: `key=${process.env.firebase_serverKey}`,
       },
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify({
-        to: `cwlbQ5Wg1GjvQFio57EigF:APA91bEeunhJzTcN0QxZnhWhULhUzCr8UXmYfOKuY0XSQ4jrQWJfzRaF0dUV_yykZkiiGIdI6G8KlhPdSzbFTMR08oqXyoFFTmZdDC3eCUGIrpCqCTBKqBm877VunlLggJjmdD9rY8yj`, //`/topics/BlogSubscribers`,
+        to: `/topics/BlogSubscribers`,
         notification: {
           body: `Lorem ipsum dolor sit amet, consectetur adipiscing elit...`,
           title: `How to run a CMS in Azure`,

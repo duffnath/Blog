@@ -167,7 +167,7 @@ const TemplateWrapper = ({ children }) => {
                   contentType: 'application/json',\
                   dataType: 'json',\
                   headers: {\
-                    Authorization: 'key=' + " + process.env.firebase_serverKey + ",\
+                    Authorization: 'key=" + process.env.firebase_serverKey + "',\
                   },\
                   success: function (response) {\
                     console.log(response);\

@@ -155,7 +155,6 @@ const TemplateWrapper = ({ children }) => {
                 messagingSenderId: '" + process.env.firebase_messagingSenderId + "',\
                 appId: '" + process.env.firebase_appId + "',\
               };\
-              console.log('" + process.env.firebase_apiKey + "');\
               function subscribeToTopic(token, topic) {\
                 let cachedToken = window.localStorage.getItem('token');\
                 if (!cachedToken) {\

@@ -37,6 +37,13 @@ steps:
   condition: and(failed(), ne(variables['Build.Reason'], 'PullRequest'))
   timeoutInMinutes: 4
 
+- powershell: |
+    $swPath = "./public/sw.js"
+    $content = Get-Content $swPath -Raw
+    $content = $content.Replace("`${process.env.firebase_messagingSenderId}", $ENV:firebase_messagingSenderId)
+    Set-Content $swPath -Value $content -Verbose
+  displayName: 'Manual token replacement'
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: 'public'

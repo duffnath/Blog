@@ -68,7 +68,7 @@ self.addEventListener("notificationclick", function (e) {
   if (action === "close") {
     notification.close();
   } else {
-    console.log(`SW Opening App from Notification: ${notification}`);
+    console.log(`SW Opening App from Notification: ${JSON.stringify(notification)}`);
     clients.openWindow("https://blog.nateduff.com");
     notification.close();
   }

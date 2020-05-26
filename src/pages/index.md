@@ -13,25 +13,25 @@ description: The services I provide would go below and this would be a long
   description about why I do what I do and who I do it for.
 intro:
   blurbs:
-    - image: /img/coffee.png
+    - image: /img/logo_sharepoint.png
       text: Microsoft 365 is a cloud platform that allows businesses to grow and scale
         with built-in remote work capabilities that are becoming more and more
         essential every day. We can help you put together a plan for making the
         most of the services that are available today while keeping your
         business productive and secure.
-    - image: /img/coffee-gear.png
+    - image: /img/logo_teams.png
       text: Moving from physical servers to the cloud or migrating tenants in
         Microsoft 365 can be a large undertaking. We've migrated Exchange,
         Active Directory, SharePoint, & Teams environments across many different
         platforms and versions, so let us help you get a plan created, started,
         and finished in no time!
-    - image: /img/tutorials.png
+    - image: /img/logo_azuredevops.png
       text: Deployment and feedback loops should be as short as possible to keep
         development teams releasing more and better features. By minimizing 3rd
         party tooling and automating deployment pipelines we can ensure that
         development and product teams are productive and can easily track the
         status of bugs and enhancements.
-    - image: /img/meeting-space.png
+    - image: /img/logo_azure.png
       text: By utilizing a few key services in Azure with low-cost or consumption
         based pricing options and the JAM stack, a website with full Progressive
         Web App capabilities can be hosted in Azure for less than $1 per month.

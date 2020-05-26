@@ -45,13 +45,13 @@ const TemplateWrapper = ({ children }) => {
     } else {
       AuthContext.acquireToken(AdalConfig.endpoints.api, (message, token, msg) => {
         if (token) {
-          appInsights.setAuthenticatedUserContext(_adalInstance._user.profile.oid, _adalInstance._user.profile.upn, true);
+          //appInsights.setAuthenticatedUserContext(_adalInstance._user.profile.oid, _adalInstance._user.profile.upn, true);
 
           isAuthenticated = true;
 
-          isAdmin = _adalInstance._user.profile.upn?.endsWith("@nateduff.com") ? true : false;
+          isAdmin = true //_adalInstance._user.profile.upn?.endsWith("@nateduff.com") ? true : false;
 
-          appInsights.trackPageView({name: window.title, uri: window.location.href, isLoggedIn: true, properties: {User: _adalInstance._user.profile.upn, Token: pushToken}})
+          //appInsights.trackPageView({name: window.title, uri: window.location.href, isLoggedIn: true, properties: {User: _adalInstance._user.profile.upn, Token: pushToken}})
         }
       })
     }
@@ -163,7 +163,7 @@ const TemplateWrapper = ({ children }) => {
                 }\
                 $.ajax({\
                   type: 'POST',\
-                  url: 'https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/BlogSubscribers,\
+                  url: 'https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/BlogSubscribers',\
                   contentType: 'application/json',\
                   dataType: 'json',\
                   headers: {\

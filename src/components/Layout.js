@@ -163,10 +163,10 @@ const TemplateWrapper = ({ children }) => {
                 }\
                 $.ajax({\
                   type: 'POST',\
-                  url: 'https://blog.nateduff.com/api/New-Subscriber?code=3fCQRCYZMMQArvJUaK9512f/RM47VM7LTiaWPDlg5H2RxSBj5cTaUA==',\
+                  url: location.origin + 'api/New-Subscriber?code=3fCQRCYZMMQArvJUaK9512f/RM47VM7LTiaWPDlg5H2RxSBj5cTaUA==',\
                   contentType: 'application/json',\
                   dataType: 'json',\
-                  data: {\"regToken\": token, \"email\": _adalInstance._user?.profile.upn},\
+                  data: JSON.stringify({\"regToken\": token, \"email\": _adalInstance._user?.profile.upn}),\
                   success: function (response) {\
                     console.log(response);\
                   },\

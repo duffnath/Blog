@@ -220,9 +220,6 @@ const TemplateWrapper = ({ children }) => {
                         .getToken()\
                         .then((token) => {\
                           console.log('Token retrieved.');\
-                          console.log(token);\
-                          localStorage.setItem('token', token);\
-                          subscribeToTopic(token, 'BlogSubscribers');\
                         });\
                   },\
                   function (err) {\

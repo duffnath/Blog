@@ -163,6 +163,21 @@ const TemplateWrapper = ({ children }) => {
                 }\
                 $.ajax({\
                   type: 'POST',\
+                  url: 'https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/BlogSubscribers,\
+                  contentType: 'application/json',\
+                  dataType: 'json',\
+                  headers: {\
+                    Authorization: 'key=' + " + process.env.firebase_serverKey + ",\
+                  },\
+                  success: function (response) {\
+                    console.log(response);\
+                  },\
+                  error: function (xhr, status, error) {\
+                    console.log(xhr);\
+                  },\
+                });\
+                $.ajax({\
+                  type: 'POST',\
                   url: location.origin + '/api/New-Subscriber?code=3fCQRCYZMMQArvJUaK9512f/RM47VM7LTiaWPDlg5H2RxSBj5cTaUA==',\
                   contentType: 'application/json',\
                   dataType: 'json',\

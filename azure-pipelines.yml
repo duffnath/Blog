@@ -19,6 +19,7 @@ steps:
    firebase_appId = $(firebase_appId)
    firebase_publicKey = $(firebase_publicKey)
    appInsightsConnectionString = $(appInsightsConnectionString)   
+   firebase_serverKey = $(firebase_serverKey)
    '@
   displayName: 'Create .env configuration file'
 

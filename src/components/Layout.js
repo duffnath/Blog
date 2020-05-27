@@ -105,37 +105,37 @@ const TemplateWrapper = ({ children }) => {
           <Helmet 
             script={[{ 
               type: 'text/javascript', 
-              innerHTML: "var classNameDark = 'dark-mode';\
-              var classNameLight = 'light-mode';\
-              function setClassOnDocumentBody(darkMode) {\
-                if (document.body) {\
-                document.body.classList.add(\
-                  darkMode ? classNameDark : classNameLight\
-                );\
-                document.body.classList.remove(\
-                  darkMode ? classNameLight : classNameDark\
-                );\
-              }\
-              var preferDarkQuery = '(prefers-color-scheme: dark)';\
-              var mql = window.matchMedia(preferDarkQuery);\
-              var supportsColorSchemeQuery = mql.media === preferDarkQuery;\
-              var localStorageTheme = null;\
-              try {\
-                localStorageTheme = localStorage.getItem('darkMode');\
-              } catch (err) {}\
-              var localStorageExists = localStorageTheme !== null;\
-              if (localStorageExists) {\
-                localStorageTheme = JSON.parse(localStorageTheme);\
-              }\
-              if (localStorageExists) {\
-                setClassOnDocumentBody(localStorageTheme);\
-              } else if (supportsColorSchemeQuery) {\
-                setClassOnDocumentBody(mql.matches);\
-                localStorage.setItem('darkMode', mql.matches);\
-              } else {\
-                var isDarkMode = document.body.classList.contains(classNameDark);\
-                localStorage.setItem('darkMode', JSON.stringify(isDarkMode));\
-              }}"}]} />              
+              innerHTML: `var classNameDark = 'dark-mode';
+              var classNameLight = 'light-mode';
+              function setClassOnDocumentBody(darkMode) {
+                if (document.body) {
+                document.body.classList.add(
+                  darkMode ? classNameDark : classNameLight
+                );
+                document.body.classList.remove(
+                  darkMode ? classNameLight : classNameDark
+                );
+              }
+              var preferDarkQuery = '(prefers-color-scheme: dark)';
+              var mql = window.matchMedia(preferDarkQuery);
+              var supportsColorSchemeQuery = mql.media === preferDarkQuery;
+              var localStorageTheme = null;
+              try {
+                localStorageTheme = localStorage.getItem('darkMode');
+              } catch (err) {}
+              var localStorageExists = localStorageTheme !== null;
+              if (localStorageExists) {
+                localStorageTheme = JSON.parse(localStorageTheme);
+              }
+              if (localStorageExists) {
+                setClassOnDocumentBody(localStorageTheme);
+              } else if (supportsColorSchemeQuery) {
+                setClassOnDocumentBody(mql.matches);
+                localStorage.setItem('darkMode', mql.matches);
+              } else {
+                var isDarkMode = document.body.classList.contains(classNameDark);
+                localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
+              }}`}]} />              
 
           <Helmet>
             <script src={`${withPrefix('/')}firebase-app.js`} type="text/javascript" />
@@ -146,93 +146,93 @@ const TemplateWrapper = ({ children }) => {
           <Helmet
             script={[{
               type: 'text/javascript', 
-              innerHTML: "var firebaseConfig = {\
-                apiKey: '" + process.env.firebase_apiKey + "',\
-                authDomain: '" + process.env.firebase_authDomain + "',\
-                databaseURL: '" + process.env.firebase_databaseURL + "',\
-                projectId: '" + process.env.firebase_projectId + "',\
-                storageBucket: '" + process.env.firebase_storageBucket + "',\
-                messagingSenderId: '" + process.env.firebase_messagingSenderId + "',\
-                appId: '" + process.env.firebase_appId + "',\
-              };\
-              function subscribeToTopic(token, topic) {\
-                let cachedToken = window.localStorage.token;\
-                let cachedUser = window.localStorage.upn;\
-                if (!cachedToken || (!cachedUser && typeof _adalInstance !== 'undefined' && _adalInstance._user !== null)) {\
-                  window.localStorage.setItem('token', token);\
-                  if (!cachedUser && typeof _adalInstance !== 'undefined' && _adalInstance._user !== null) {\
-                    window.localStorage.setItem('upn', _adalInstance._user.profile.upn);\
-                  }\
-                  $.ajax({\
-                    type: 'POST',\
-                    url: 'https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/BlogSubscribers',\
-                    contentType: 'application/json',\
-                    dataType: 'json',\
-                    headers: {\
-                      Authorization: 'key=" + process.env.firebase_serverKey + "',\
-                    },\
-                    success: function (response) {\
-                      console.log(response);\
-                    },\
-                    error: function (xhr, status, error) {\
-                      console.log(xhr);\
-                    },\
-                  });\
-                  $.ajax({\
-                    type: 'POST',\
-                    url: location.origin + '/api/New-Subscriber?code=3fCQRCYZMMQArvJUaK9512f/RM47VM7LTiaWPDlg5H2RxSBj5cTaUA==',\
-                    contentType: 'application/json',\
-                    dataType: 'json',\
-                    data: JSON.stringify({\"regToken\": token, \"email\": _adalInstance._user?.profile.upn}),\
-                    success: function (response) {\
-                      console.log(response);\
-                    },\
-                    error: function (xhr, status, error) {\
-                      console.log(xhr);\
-                    },\
-                  });\
-                }\
-              }\
-              if ('serviceWorker' in navigator && typeof firebase !== 'undefined') {\
-                navigator.serviceWorker.register('/sw.js').then(\
-                  function (registration) {\
-                    console.log('Registration successful, scope is:', registration.scope);\
-                    console.log('Setting up Firebase');\
-                    firebase.initializeApp(firebaseConfig);\
-                    const messaging = firebase.messaging();\
-                    messaging.useServiceWorker(registration);\
-                    messaging.usePublicVapidKey(\
-                      '" + process.env.firebase_publicKey + "'\
-                    );\
-                    messaging.onTokenRefresh(() => {\
-                      messaging\
-                        .getToken()\
-                        .then((refreshedToken) => {\
-                          console.log('Token refreshed.');\
-                          localStorage.setItem('token', token);\
-                          subscribeToTopic(token, 'BlogSubscribers');\
-                        })\
-                        .catch((err) => {\
-                          console.log('Unable to retrieve refreshed token ', err);\
-                        });\
-                    });\
-                    messaging.onMessage((payload) => {\
-                      console.log('Client Message received. ', payload);\
-                    });\
-                    messaging\
-                        .getToken()\
-                        .then((token) => {\
-                          subscribeToTopic(token, 'BlogSubscribers');\
-                        });\
-                  },\
-                  function (err) {\
-                    console.log('ServiceWorker registration failed: ', err);\
-                  }\
-                )\
-                navigator.serviceWorker.addEventListener('message', (event) => {\
-                  console.log(`Client side message received: ${event.data}`);\
-                });\
-              }" 
+              innerHTML: `var firebaseConfig = {
+                apiKey: '${process.env.firebase_apiKey}',
+                authDomain: '${process.env.firebase_authDomain}',
+                databaseURL: '${process.env.firebase_databaseURL}',
+                projectId: '${process.env.firebase_projectId}',
+                storageBucket: '${process.env.firebase_storageBucket}',
+                messagingSenderId: '${process.env.firebase_messagingSenderId}',
+                appId: '${process.env.firebase_appId}',
+              };
+              function subscribeToTopic(token, topic) {
+                let cachedToken = window.localStorage.token;
+                let cachedUser = window.localStorage.upn;
+                if (!cachedToken || (!cachedUser && typeof _adalInstance !== 'undefined' && _adalInstance._user !== null)) {
+                  window.localStorage.setItem('token', token);
+                  if (!cachedUser && typeof _adalInstance !== 'undefined' && _adalInstance._user !== null) {
+                    window.localStorage.setItem('upn', _adalInstance._user.profile.upn);
+                  }
+                  $.ajax({
+                    type: 'POST',
+                    url: 'https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/BlogSubscribers',
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    headers: {
+                      Authorization: 'key=${process.env.firebase_serverKey}',
+                    },
+                    success: function (response) {
+                      console.log(response);
+                    },
+                    error: function (xhr, status, error) {
+                      console.log(xhr);
+                    },
+                  });
+                  $.ajax({
+                    type: 'POST',
+                    url: location.origin + '/api/New-Subscriber?code=3fCQRCYZMMQArvJUaK9512f/RM47VM7LTiaWPDlg5H2RxSBj5cTaUA==',
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    data: JSON.stringify({"regToken": token, "email": window.localStorage.upn}),
+                    success: function (response) {
+                      console.log(response);
+                    },
+                    error: function (xhr, status, error) {
+                      console.log(xhr);
+                    },
+                  });
+                }
+              }
+              if ('serviceWorker' in navigator && typeof firebase !== 'undefined') {
+                navigator.serviceWorker.register('/sw.js').then(
+                  function (registration) {
+                    console.log('Registration successful, scope is:', registration.scope);
+                    console.log('Setting up Firebase');
+                    firebase.initializeApp(firebaseConfig);
+                    const messaging = firebase.messaging();
+                    messaging.useServiceWorker(registration);
+                    messaging.usePublicVapidKey(
+                      '${process.env.firebase_publicKey}'
+                    );
+                    messaging.onTokenRefresh(() => {
+                      messaging
+                        .getToken()
+                        .then((refreshedToken) => {
+                          console.log('Token refreshed.');
+                          localStorage.setItem('token', token);
+                          subscribeToTopic(token, 'BlogSubscribers');
+                        })
+                        .catch((err) => {
+                          console.log('Unable to retrieve refreshed token ', err);
+                        });
+                    });
+                    messaging.onMessage((payload) => {
+                      console.log('Client Message received. ', payload);
+                    });
+                    messaging
+                        .getToken()
+                        .then((token) => {
+                          subscribeToTopic(token, 'BlogSubscribers');
+                        });
+                  },
+                  function (err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                  }
+                );
+                navigator.serviceWorker.addEventListener('message', (event) => {
+                  console.log(\`Client side message received: \${event.data}\`);
+                });
+              }` 
             }]}/>
 
           <Footer isAuthenticated={isAuthenticated} isAdmin={isAdmin} />   

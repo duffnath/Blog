@@ -156,38 +156,42 @@ const TemplateWrapper = ({ children }) => {
                 appId: '" + process.env.firebase_appId + "',\
               };\
               function subscribeToTopic(token, topic) {\
-                let cachedToken = window.localStorage.getItem('token');\
-                if (!cachedToken) {\
+                let cachedToken = window.localStorage.token;\
+                let cachedUser = window.localStorage.upn;\
+                if (!cachedToken || !cachedUser && _adalInstance?._user) {\
                   window.localStorage.setItem('token', token);\
+                  if (!cachedUser) {\
+                    window.localStorage.setItem('upn', _adalInstance._user.profile.upn);\
+                  }\
+                  $.ajax({\
+                    type: 'POST',\
+                    url: 'https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/BlogSubscribers',\
+                    contentType: 'application/json',\
+                    dataType: 'json',\
+                    headers: {\
+                      Authorization: 'key=" + process.env.firebase_serverKey + "',\
+                    },\
+                    success: function (response) {\
+                      console.log(response);\
+                    },\
+                    error: function (xhr, status, error) {\
+                      console.log(xhr);\
+                    },\
+                  });\
+                  $.ajax({\
+                    type: 'POST',\
+                    url: location.origin + '/api/New-Subscriber?code=3fCQRCYZMMQArvJUaK9512f/RM47VM7LTiaWPDlg5H2RxSBj5cTaUA==',\
+                    contentType: 'application/json',\
+                    dataType: 'json',\
+                    data: JSON.stringify({\"regToken\": token, \"email\": _adalInstance._user?.profile.upn}),\
+                    success: function (response) {\
+                      console.log(response);\
+                    },\
+                    error: function (xhr, status, error) {\
+                      console.log(xhr);\
+                    },\
+                  });\
                 }\
-                $.ajax({\
-                  type: 'POST',\
-                  url: 'https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/BlogSubscribers',\
-                  contentType: 'application/json',\
-                  dataType: 'json',\
-                  headers: {\
-                    Authorization: 'key=" + process.env.firebase_serverKey + "',\
-                  },\
-                  success: function (response) {\
-                    console.log(response);\
-                  },\
-                  error: function (xhr, status, error) {\
-                    console.log(xhr);\
-                  },\
-                });\
-                $.ajax({\
-                  type: 'POST',\
-                  url: location.origin + '/api/New-Subscriber?code=3fCQRCYZMMQArvJUaK9512f/RM47VM7LTiaWPDlg5H2RxSBj5cTaUA==',\
-                  contentType: 'application/json',\
-                  dataType: 'json',\
-                  data: JSON.stringify({\"regToken\": token, \"email\": _adalInstance._user?.profile.upn}),\
-                  success: function (response) {\
-                    console.log(response);\
-                  },\
-                  error: function (xhr, status, error) {\
-                    console.log(xhr);\
-                  },\
-                });\
               }\
               if ('serviceWorker' in navigator && firebase) {\
                 navigator.serviceWorker.register('/sw.js').then(\
@@ -218,11 +222,7 @@ const TemplateWrapper = ({ children }) => {
                     messaging\
                         .getToken()\
                         .then((token) => {\
-                          var cachedToken = localStorage.token;\
-                          if (!cachedToken) {\
-                            localStorage.setItem('token', token);\
-                            subscribeToTopic(token, 'BlogSubscribers');\
-                          }\
+                          subscribeToTopic(token, 'BlogSubscribers');\
                         });\
                   },\
                   function (err) {\

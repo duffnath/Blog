@@ -31,6 +31,7 @@ self.addEventListener("fetch", function (event) {
 messaging.setBackgroundMessageHandler(function(payload) {
   console.log('[firebase-messaging-sw.js] Received background message ', payload);
 
+
   return showLocalNotification(payload.data.text(), self.registration);
 });
 
@@ -89,11 +90,11 @@ self.addEventListener("notificationclick", function (e) {
   }
 });
 
-if (typeof document.addEventListener === "undefined" || hidden === undefined) {
-  console.log("This demo requires a browser, such as Google Chrome or Firefox, that supports the Page Visibility API.");
-} else {
-  // Handle page visibility change   
-  document.addEventListener(visibilityChange, handleVisibilityChange, false);
+// if (typeof document.addEventListener === "undefined" || hidden === undefined) {
+//   console.log("This demo requires a browser, such as Google Chrome or Firefox, that supports the Page Visibility API.");
+// } else {
+//   // Handle page visibility change   
+//   document.addEventListener(visibilityChange, handleVisibilityChange, false);
 
 // register a custom navigation route
 const customRoute = new workbox.routing.NavigationRoute(({ event }) => {

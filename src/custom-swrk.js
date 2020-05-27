@@ -25,17 +25,16 @@ self.addEventListener('fetch', function(event) {
 messaging.setBackgroundMessageHandler(function(payload) {
   console.log('[firebase-messaging-sw.js] Received background message ', payload);
 
-
-  return showLocalNotification(payload.data.text(), self.registration);
+  return showLocalNotification(payload.data.text(), messaging.registration);
 });
 
-//  self.addEventListener("push", function (event) {
-//    if (event.data) {
-//      showLocalNotification(event.data.text(), self.registration);
-//    } else {
-//      console.log("Push event contains no data");
-//    }
-//  });
+self.addEventListener("push", function (event) {
+  if (event.data) {
+    showLocalNotification(event.data.text(), self.registration);
+  } else {
+    console.log("Push event contains no data");
+  }
+});
 
 const showLocalNotification = (notificationBody, swRegistration) => {
   const body = JSON.parse(notificationBody);

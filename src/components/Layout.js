@@ -14,6 +14,7 @@ import { BrowserView } from 'react-device-detect'
 // import * as toastr from 'toastr'
 
 import { appInsights } from '../telemetry'
+import { getUserName, getUserId, isAdmin } from './Authorization'
 
 export const onServiceWorkerUpdateReady = () => {
   const answer = window.confirm(
@@ -39,19 +40,17 @@ const TemplateWrapper = ({ children }) => {
 
   if (typeof window !== 'undefined' && (window === window.parent) && window === window.top && !AuthContext.isCallback(window.location.hash)) {
     if (!AuthContext.getCachedToken(AdalConfig.clientId) || !AuthContext.getCachedUser()) {
-      console.log('Not logged in');
-
       appInsights.trackPageView({name: window.title, uri: window.location.href, isLoggedIn: false, properties: {Token: pushToken}})
     } else {
       AuthContext.acquireToken(AdalConfig.endpoints.api, (message, token, msg) => {
         if (token) {
-          appInsights.setAuthenticatedUserContext(_adalInstance._user.profile.oid, _adalInstance._user.profile.upn, true);
+          appInsights.setAuthenticatedUserContext(getUserId(), getUserName(), true);
 
           isAuthenticated = true;
 
-          isAdmin = _adalInstance._user.profile.upn?.endsWith("@nateduff.com") ? true : false;
+          isAdmin = isAdmin;
 
-          appInsights.trackPageView({name: window.title, uri: window.location.href, isLoggedIn: true, properties: {User: _adalInstance._user.profile.upn, Token: pushToken}})
+          appInsights.trackPageView({name: window.title, uri: window.location.href, isLoggedIn: true, properties: {User: getUserName(), Token: pushToken}})
         }
       })
     }

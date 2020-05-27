@@ -8,5 +8,5 @@ export default {
     tenant: '52a6b4f9-ebe5-40c8-96c1-51a352fbe525',
     // 'cacheLocation' is set to 'sessionStorage' by default (see https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context#configurable-options.
     // We change it to'localStorage' because 'sessionStorage' does not work when our app is served on 'localhost' in development.
-    cacheLocation: 'localStorage'
+    cacheLocation: 'sessionStorage'
   }

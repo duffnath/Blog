@@ -12,15 +12,19 @@ import { BrowserView } from 'react-device-detect'
 import AdalConfig from '../config/AdalConfig'
 import AuthContext from '../services/Auth'
 import { appInsights } from '../telemetry'
+import { isLoggedIn, getUserName } from './Authorization'
 
 const Footer = class extends React.Component {
   render() {
     const handleLogout = event => {    
       event.preventDefault();
 
-      if (typeof _adalInstance !== 'undefined') {
-       appInsights.trackEvent({ name: 'Logout', properties: { 'User': _adalInstance._user.userName } });
+      let logoutProps = {};
+      if (isLoggedIn()) {
+        logoutProps = { 'User': getUserName() }        
       }
+
+      appInsights.trackEvent({ name: 'Logout', properties: logoutProps });
 
       AuthContext.logOut();
     };
@@ -135,7 +139,7 @@ const Footer = class extends React.Component {
                     style={{ width: '1em', height: '1em' }}
                   />
                 </a>
-                { this.props.isAuthenticated ? 
+                { this.props.isAuthenticated  ? 
                   <div><br /><br />
                     <img id="buildStatusBadge" src="https://dev.azure.com/NateDuff/Netlify/_apis/build/status/duffnath.Blog?branchName=master"></img>
                   <br /><br />

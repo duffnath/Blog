@@ -3,6 +3,7 @@ import React from 'react';
 import Toggle from './Toggle';
 import useDarkMode from 'use-dark-mode';
 import { appInsights } from '../telemetry'
+import { isLoggedIn, getUserName } from './Authorization'
 
 const DarkModeToggle = () => {
   const darkMode = useDarkMode(false);
@@ -16,8 +17,8 @@ const DarkModeToggle = () => {
       action = 'Disable'
     }
 
-    if (_adalInstance?._user) {
-      appInsights.trackEvent({ name: 'DarkMode', properties: { 'Action': action, 'User': _adalInstance._user.userName } })
+    if (isLoggedIn()) {
+      appInsights.trackEvent({ name: 'DarkMode', properties: { 'Action': action, 'User': getUserName() } })
     } else {
       appInsights.trackEvent({ name: 'DarkMode', properties: { 'Action': action } })
     }

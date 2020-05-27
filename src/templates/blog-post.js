@@ -86,7 +86,6 @@ export const BlogPostTemplate = ({
                 </ul>
               </div>
             ) : null}
-            {/* _adalInstance?._user.profile.upn.endsWith("@nateduff.com") */}
             {isAdmin() ? <div id="promoteBlogSection">
               <h4>Social Promotion</h4>
               <button className="button is-link" onClick={() => sendPushNotification()}>

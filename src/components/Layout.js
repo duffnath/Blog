@@ -148,6 +148,7 @@ const TemplateWrapper = ({ children }) => {
                 width: 28em !important;
                 margin-top: 50px !important;
                 padding-left: 65px !important;
+                opacity: 1 !important;
               }
               @media (max-width: 700px) {
                 .toast-info {

@@ -228,7 +228,11 @@ const TemplateWrapper = ({ children }) => {
                   function (err) {\
                     console.log('ServiceWorker registration failed: ', err);\
                   }\
-                )}" 
+                )\
+                navigator.serviceWorker.addEventListener('message', (event) => {\
+                  console.log(`Client side message received: ${event.data}`);\
+                });\
+              }" 
             }]}/>
 
           <Footer isAuthenticated={isAuthenticated} isAdmin={isAdmin} />   

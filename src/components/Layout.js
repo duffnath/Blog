@@ -160,7 +160,7 @@ const TemplateWrapper = ({ children }) => {
                 let cachedUser = window.localStorage.upn;\
                 if (!cachedToken || !cachedUser && _adalInstance?._user) {\
                   window.localStorage.setItem('token', token);\
-                  if (!cachedUser) {\
+                  if (!cachedUser && _adalInstance?._user) {\
                     window.localStorage.setItem('upn', _adalInstance._user.profile.upn);\
                   }\
                   $.ajax({\
@@ -193,7 +193,7 @@ const TemplateWrapper = ({ children }) => {
                   });\
                 }\
               }\
-              if ('serviceWorker' in navigator && firebase) {\
+              if ('serviceWorker' in navigator && typeof firebase !== 'undefined') {\
                 navigator.serviceWorker.register('/sw.js').then(\
                   function (registration) {\
                     console.log('Registration successful, scope is:', registration.scope);\

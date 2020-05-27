@@ -137,10 +137,11 @@ const TemplateWrapper = ({ children }) => {
                 localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
               }}`}]} />              
 
-          <Helmet>
+          <Helmet>          
             <script src={`${withPrefix('/')}firebase-app.js`} type="text/javascript" />
             <script src={`${withPrefix('/')}firebase-messaging.js`} type="text/javascript" />
             <script src={`${withPrefix('/')}jquery-3.1.1.min.js`} type="text/javascript" />
+            <script src={`${withPrefix('/')}toastr.js`} type="text/javascript" />
           </Helmet>
 
           <Helmet
@@ -154,6 +155,18 @@ const TemplateWrapper = ({ children }) => {
                 storageBucket: '${process.env.firebase_storageBucket}',
                 messagingSenderId: '${process.env.firebase_messagingSenderId}',
                 appId: '${process.env.firebase_appId}',
+              };
+              function showInAppNotification(data) {
+                console.log(data);
+              
+                let notification = data.firebaseMessagingData.notification;
+              
+                toastr.options = {
+                  timeOut: 0,
+                  extendedTimeOut: 0,
+                };
+              
+                toastr.info(notification.body, notification.title);
               };
               function subscribeToTopic(token, topic) {
                 let cachedToken = window.localStorage.token;
@@ -216,9 +229,6 @@ const TemplateWrapper = ({ children }) => {
                           console.log('Unable to retrieve refreshed token ', err);
                         });
                     });
-                    messaging.onMessage((payload) => {
-                      console.log('Client Message received. ', payload);
-                    });
                     messaging
                         .getToken()
                         .then((token) => {
@@ -230,7 +240,7 @@ const TemplateWrapper = ({ children }) => {
                   }
                 ).then(() => {
                   navigator.serviceWorker.addEventListener('message', (event) => {
-                    console.log(\`Client side message received: \${event.data}\`);
+                    showInAppNotification(event.data);
                   });
                 });                
               }` 

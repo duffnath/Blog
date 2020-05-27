@@ -8,6 +8,7 @@ import Content, { HTMLContent } from '../components/Content'
 import { appInsights } from '../telemetry'
 import useSiteMetadata from '../components/SiteMetadata'
 import $ from 'jquery'
+import { isAdmin } from '../components/Authorization'
 
 export const BlogPostTemplate = ({
   content,
@@ -20,7 +21,6 @@ export const BlogPostTemplate = ({
   const PostContent = contentComponent || Content
 
   const sendPushNotification = () => {
-    console.log('PUSH!!');
     var imagePath = $("section > div > div > div > div:nth-child(3) img")[0].src;
     var title = $("h1.title")[0].innerText;
     var body = $("#gatsby-focus-wrapper > div > div > section > div > div > div > p")[0].innerText;
@@ -55,7 +55,7 @@ export const BlogPostTemplate = ({
         },
       }),
       success: function (response) {
-        console.log(response);
+        appInsights.trackEvent(`Push for ${pagePath}`, {"reponse": response});
       },
       error: function (xhr, status, error) {
         console.log(error);
@@ -87,7 +87,7 @@ export const BlogPostTemplate = ({
               </div>
             ) : null}
             {/* _adalInstance?._user.profile.upn.endsWith("@nateduff.com") */}
-            {true ? <div id="promoteBlogSection">
+            {isAdmin ? <div id="promoteBlogSection">
               <h4>Social Promotion</h4>
               <button className="button is-link" onClick={() => sendPushNotification()}>
                 Send Push Notification

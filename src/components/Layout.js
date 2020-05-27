@@ -213,12 +213,16 @@ const TemplateWrapper = ({ children }) => {
                         });\
                     });\
                     messaging.onMessage((payload) => {\
-                      console.log('Message received. ', payload);\
+                      console.log('Client Message received. ', payload);\
                     });\
                     messaging\
                         .getToken()\
                         .then((token) => {\
-                          console.log('Token retrieved.');\
+                          var cachedToken = localStorage.token;\
+                          if (!cachedToken) {\
+                            localStorage.setItem('token', token);\
+                            subscribeToTopic(token, 'BlogSubscribers');\
+                          }\
                         });\
                   },\
                   function (err) {\

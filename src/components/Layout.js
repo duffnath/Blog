@@ -141,7 +141,7 @@ const TemplateWrapper = ({ children }) => {
             style={[{
               "cssText": `
               .toast-info {
-                background-image: url('${withPrefix('/')}/img/logo.png')!important;       
+                background-image: url('https://blog.nateduff.com/img/logo.png')!important;       
                 background-size: 2.5rem !important;         
                 background-color: #cacaca !important;
                 color: #161b1f !important;

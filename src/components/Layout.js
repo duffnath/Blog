@@ -251,11 +251,12 @@ const TemplateWrapper = ({ children }) => {
             style={[{
               "cssText": `
               .toast-info {
-                background-image: url('img/logo.png')!important;                
+                background-image: url('img/logo.png')!important;       
+                background-size: 2.5rem !important;         
                 background-color: #cacaca !important;
                 color: #161b1f !important;
                 width: 28em !important;
-                margin-top: 40px !important;
+                margin-top: 50px !important;
                 padding-left: 65px !important;
               }
               `

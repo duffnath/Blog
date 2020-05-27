@@ -149,6 +149,11 @@ const TemplateWrapper = ({ children }) => {
                 margin-top: 50px !important;
                 padding-left: 65px !important;
               }
+              @media (max-width: 700px) {
+                .toast-info {
+                  width: 20em !important;
+                }
+              }
               `
             }]}>
           </Helmet>

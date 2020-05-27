@@ -12,11 +12,13 @@ self.addEventListener("fetch", function (event) {
     return false;
   }
 
-  event.respondWith(
-    caches.match(event.request).then(function (response) {
-      return response || fetch(event.request);
-    })
-  );
+  if (event.request.cache === 'only-if-cached' && event.request.mode !== 'same-origin') {
+    event.respondWith(
+      caches.match(event.request).then(function (response) {
+        return response || fetch(event.request);
+      })
+    );
+  }
 });
 
  self.addEventListener("push", function (event) {

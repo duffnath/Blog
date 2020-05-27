@@ -159,7 +159,7 @@ const TemplateWrapper = ({ children }) => {
               function showInAppNotification(data) {
                 console.log(data);
               
-                let notification = data.firebaseMessagingData.notification;
+                let notification = data.firebaseMessagingData.payload.notification;
               
                 toastr.options = {
                   timeOut: 0,

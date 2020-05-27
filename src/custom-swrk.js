@@ -51,6 +51,7 @@ const showLocalNotification = (notificationBody, swRegistration) => {
     tag: tag,
     requireInteraction: forceClick,
     actions: [{ action: "Detail", title: actionTitle, icon: actionIcon }],
+    data: body
   };
 
   swRegistration.showNotification(message_title, options);

@@ -72,7 +72,7 @@ self.addEventListener("notificationclick", function (e) {
     notification.close();
   } else {
     console.log(`SW Opening App from Notification: ${JSON.stringify(notification)}`);
-    clients.openWindow("https://blog.nateduff.com");
+    clients.openWindow(`https://blog.nateduff.com/${notification.data.notification.click_action}`);
     notification.close();
   }
 });

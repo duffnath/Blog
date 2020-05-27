@@ -146,22 +146,6 @@ const TemplateWrapper = ({ children }) => {
           </Helmet>
 
           <Helmet
-            style={[{
-              "cssText": `
-              .toast-info {
-                background-image: url('~/img/logo.png')!important;
-                background-size: 2.5rem;
-                background-color: #cacaca;
-                color: #161b1f;
-                width: 28em;
-                margin-top: 40px;
-                padding-left: 65px !important;
-              }
-              `
-            }]}>
-          </Helmet>
-
-          <Helmet
             script={[{
               type: 'text/javascript', 
               innerHTML: `var firebaseConfig = {
@@ -262,6 +246,21 @@ const TemplateWrapper = ({ children }) => {
                 });                
               }` 
             }]}/>
+
+          <Helmet
+            style={[{
+              "cssText": `
+              .toast-info {
+                background-image: url('img/logo.png')!important;                
+                background-color: #cacaca !important;
+                color: #161b1f !important;
+                width: 28em !important;
+                margin-top: 40px !important;
+                padding-left: 65px !important;
+              }
+              `
+            }]}>
+          </Helmet>
 
           <Footer isAuthenticated={isAuthenticated} isAdmin={isAdmin} />   
       </div>

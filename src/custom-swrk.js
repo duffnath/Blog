@@ -14,18 +14,12 @@ firebase.initializeApp({
 
 const messaging = firebase.messaging();
 
-self.addEventListener("fetch", function (event) {
-  if (event.request.url.endsWith('index.html')) {
-    return false;
-  }
-
-  if (event.request.cache === 'only-if-cached' && event.request.mode !== 'same-origin') {
-    event.respondWith(
-      caches.match(event.request).then(function (response) {
-        return response || fetch(event.request);
-      })
-    );
-  }
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      return response || fetch(event.request);
+    })
+  );
 });
 
 messaging.setBackgroundMessageHandler(function(payload) {

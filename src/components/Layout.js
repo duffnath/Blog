@@ -181,6 +181,7 @@ const TemplateWrapper = ({ children }) => {
               };
               function showInAppNotification(data, from) {
                 console.log(data);
+                console.log(\`From: \${from}\`);
                 let notification = "";
               
                 if (from !== 'firebase') {
@@ -268,13 +269,11 @@ const TemplateWrapper = ({ children }) => {
                   },
                   function (err) {
                     console.log('ServiceWorker registration failed: ', err);
-                  }
-                ).then(() => {
-                  navigator.serviceWorker.addEventListener('message', (event) => {
-                    //showInAppNotification(event.data, 'client');
-                    console.log('Client side message received (skipped)');
-                  });
-                });                
+                  }                  
+                ); 
+                navigator.serviceWorker.addEventListener('message', (event) => {
+                  showInAppNotification(event.data, 'client');                    
+                });                               
               }` 
             }]}/>         
 

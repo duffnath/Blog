@@ -141,9 +141,24 @@ const TemplateWrapper = ({ children }) => {
             <script src={`${withPrefix('/')}firebase-app.js`} type="text/javascript" />
             <script src={`${withPrefix('/')}firebase-messaging.js`} type="text/javascript" />
             <script src={`${withPrefix('/')}jquery-3.1.1.min.js`} type="text/javascript" />
-            <script src={`${withPrefix('/')}toastr.js`} type="text/javascript" />
-            
+            <script src={`${withPrefix('/')}toastr.js`} type="text/javascript" />            
             <link rel="stylesheet" type="text/css" href="toastr.min.css" />
+          </Helmet>
+
+          <Helmet
+            style={[{
+              "cssText": `
+              .toast-info {
+                background-image: url('~/img/logo.png')!important;
+                background-size: 2.5rem;
+                background-color: #cacaca;
+                color: #161b1f;
+                width: 28em;
+                margin-top: 40px;
+                padding-left: 65px !important;
+              }
+              `
+            }]}>
           </Helmet>
 
           <Helmet

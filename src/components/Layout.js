@@ -251,6 +251,9 @@ const TemplateWrapper = ({ children }) => {
                           console.log('Unable to retrieve refreshed token ', err);
                         });
                     });
+                    messaging.onMessage((payload) => {
+                      console.log('Client Message received. ', payload);
+                    });
                     messaging
                         .getToken()
                         .then((token) => {

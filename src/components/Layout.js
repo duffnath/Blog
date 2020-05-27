@@ -258,9 +258,9 @@ const TemplateWrapper = ({ children }) => {
                           console.log('Unable to retrieve refreshed token ', err);
                         });
                     });
-                    messaging.onMessage((payload) => {
-                      showInAppNotification(payload, 'firebase');
-                    });
+                    //messaging.onMessage((payload) => {
+                      //showInAppNotification(payload, 'firebase');
+                    //});
                     messaging
                         .getToken()
                         .then((token) => {

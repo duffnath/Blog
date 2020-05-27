@@ -271,7 +271,8 @@ const TemplateWrapper = ({ children }) => {
                   }
                 ).then(() => {
                   navigator.serviceWorker.addEventListener('message', (event) => {
-                    showInAppNotification(event.data, 'client');
+                    //showInAppNotification(event.data, 'client');
+                    console.log('Client side message received (skipped)');
                   });
                 });                
               }` 

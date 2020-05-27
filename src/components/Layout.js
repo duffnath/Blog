@@ -152,7 +152,7 @@ const TemplateWrapper = ({ children }) => {
               }
               @media (max-width: 700px) {
                 .toast-info {
-                  width: 20em !important;
+                  width: 24em !important;
                 }
               }
               `

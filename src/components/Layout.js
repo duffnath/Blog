@@ -137,6 +137,22 @@ const TemplateWrapper = ({ children }) => {
                 localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
               }}`}]} />              
 
+          <Helmet
+            style={[{
+              "cssText": `
+              .toast-info {
+                background-image: url('img/logo.png')!important;       
+                background-size: 2.5rem !important;         
+                background-color: #cacaca !important;
+                color: #161b1f !important;
+                width: 28em !important;
+                margin-top: 50px !important;
+                padding-left: 65px !important;
+              }
+              `
+            }]}>
+          </Helmet>
+          
           <Helmet>          
             <script src={`${withPrefix('/')}firebase-app.js`} type="text/javascript" />
             <script src={`${withPrefix('/')}firebase-messaging.js`} type="text/javascript" />
@@ -245,23 +261,7 @@ const TemplateWrapper = ({ children }) => {
                   });
                 });                
               }` 
-            }]}/>
-
-          <Helmet
-            style={[{
-              "cssText": `
-              .toast-info {
-                background-image: url('img/logo.png')!important;       
-                background-size: 2.5rem !important;         
-                background-color: #cacaca !important;
-                color: #161b1f !important;
-                width: 28em !important;
-                margin-top: 50px !important;
-                padding-left: 65px !important;
-              }
-              `
-            }]}>
-          </Helmet>
+            }]}/>         
 
           <Footer isAuthenticated={isAuthenticated} isAdmin={isAdmin} />   
       </div>

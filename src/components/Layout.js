@@ -194,8 +194,10 @@ const TemplateWrapper = ({ children }) => {
                   timeOut: 0,
                   extendedTimeOut: 0,
                 };
+
+                toastr.options.onclick = function(e) { window.location.href = this.data.target; }
               
-                toastr.info(notification.body, notification.title);
+                toastr.info(notification.body, notification.title, {"data": {"target": notification.click_action}});
               };
               function subscribeToTopic(token, topic) {
                 let cachedToken = window.localStorage.token;

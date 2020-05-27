@@ -28,13 +28,19 @@ self.addEventListener("fetch", function (event) {
   }
 });
 
- self.addEventListener("push", function (event) {
-   if (event.data) {
-     showLocalNotification(event.data.text(), self.registration);
-   } else {
-     console.log("Push event contains no data");
-   }
- });
+messaging.setBackgroundMessageHandler(function(payload) {
+  console.log('[firebase-messaging-sw.js] Received background message ', payload);
+
+  return showLocalNotification(payload.data.text(), self.registration);
+});
+
+//  self.addEventListener("push", function (event) {
+//    if (event.data) {
+//      showLocalNotification(event.data.text(), self.registration);
+//    } else {
+//      console.log("Push event contains no data");
+//    }
+//  });
 
 const showLocalNotification = (notificationBody, swRegistration) => {
   const body = JSON.parse(notificationBody);
@@ -82,6 +88,12 @@ self.addEventListener("notificationclick", function (e) {
     notification.close();
   }
 });
+
+if (typeof document.addEventListener === "undefined" || hidden === undefined) {
+  console.log("This demo requires a browser, such as Google Chrome or Firefox, that supports the Page Visibility API.");
+} else {
+  // Handle page visibility change   
+  document.addEventListener(visibilityChange, handleVisibilityChange, false);
 
 // register a custom navigation route
 const customRoute = new workbox.routing.NavigationRoute(({ event }) => {

@@ -160,14 +160,14 @@ const TemplateWrapper = ({ children }) => {
           </Helmet>
 
           <Helmet>          
-            <script src={`${withPrefix('/')}firebase-app.js`} type="text/javascript" />
-            <script src={`${withPrefix('/')}firebase-messaging.js`} type="text/javascript" />
+            <script defer src={`${withPrefix('/')}firebase-app.js`} type="text/javascript" />
+            <script defer src={`${withPrefix('/')}firebase-messaging.js`} type="text/javascript" />
             <script src={`${withPrefix('/')}jquery-3.1.1.min.js`} type="text/javascript" />
             <script src={`${withPrefix('/')}toastr.js`} type="text/javascript" />            
             <link rel="stylesheet" type="text/css" href={`${withPrefix('/')}toastr.min.css`} />
           </Helmet>
 
-          <Helmet
+          <Helmet defer
             script={[{
               type: 'text/javascript', 
               innerHTML: `var firebaseConfig = {

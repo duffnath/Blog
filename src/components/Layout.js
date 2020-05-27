@@ -158,9 +158,9 @@ const TemplateWrapper = ({ children }) => {
               function subscribeToTopic(token, topic) {\
                 let cachedToken = window.localStorage.token;\
                 let cachedUser = window.localStorage.upn;\
-                if (!cachedToken || !cachedUser && _adalInstance?._user) {\
+                if (!cachedToken || (!cachedUser && typeof _adalInstance !== 'undefined' && _adalInstance._user !== null)) {\
                   window.localStorage.setItem('token', token);\
-                  if (!cachedUser && _adalInstance?._user) {\
+                  if (!cachedUser && typeof _adalInstance !== 'undefined' && _adalInstance._user !== null) {\
                     window.localStorage.setItem('upn', _adalInstance._user.profile.upn);\
                   }\
                   $.ajax({\

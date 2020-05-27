@@ -182,7 +182,8 @@ const TemplateWrapper = ({ children }) => {
               function showInAppNotification(data) {
                 console.log(data);
               
-                let notification = data.firebaseMessaging.payload.notification;
+                //let notification = data.firebaseMessaging.payload.notification;
+                let notification = data.notification;
               
                 toastr.options = {
                   timeOut: 0,
@@ -253,7 +254,7 @@ const TemplateWrapper = ({ children }) => {
                         });
                     });
                     messaging.onMessage((payload) => {
-                      console.log('Client Message received. ', payload);
+                      showInAppNotification(payload);
                     });
                     messaging
                         .getToken()
@@ -265,9 +266,9 @@ const TemplateWrapper = ({ children }) => {
                     console.log('ServiceWorker registration failed: ', err);
                   }
                 ).then(() => {
-                  navigator.serviceWorker.addEventListener('message', (event) => {
-                    showInAppNotification(event.data);
-                  });
+                  //navigator.serviceWorker.addEventListener('message', (event) => {
+                    //showInAppNotification(event.data);
+                  //});
                 });                
               }` 
             }]}/>         

@@ -194,7 +194,9 @@ const TemplateWrapper = ({ children }) => {
                   extendedTimeOut: 0,
                 };
 
-                toastr.options.onclick = function(e) { window.location.href = this.data.target; }
+                toastr.options.onclick = function(e) { 
+                  window.location.href = \`\${window.location.origin}/\${this.data.target}\`;
+                }
               
                 toastr.info(notification.body, notification.title, {"data": {"target": notification.click_action}});
               };

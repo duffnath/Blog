@@ -179,11 +179,15 @@ const TemplateWrapper = ({ children }) => {
                 messagingSenderId: '${process.env.firebase_messagingSenderId}',
                 appId: '${process.env.firebase_appId}',
               };
-              function showInAppNotification(data) {
+              function showInAppNotification(data, from) {
                 console.log(data);
+                let notification = "";
               
-                //let notification = data.firebaseMessaging.payload.notification;
-                let notification = data.notification;
+                if (from !== 'firebase') {
+                  notification = data.firebaseMessaging.payload.notification;
+                } else {
+                  notification = data.notification;
+                }                
               
                 toastr.options = {
                   timeOut: 0,
@@ -254,7 +258,7 @@ const TemplateWrapper = ({ children }) => {
                         });
                     });
                     messaging.onMessage((payload) => {
-                      showInAppNotification(payload);
+                      showInAppNotification(payload, 'firebase');
                     });
                     messaging
                         .getToken()
@@ -266,9 +270,9 @@ const TemplateWrapper = ({ children }) => {
                     console.log('ServiceWorker registration failed: ', err);
                   }
                 ).then(() => {
-                  //navigator.serviceWorker.addEventListener('message', (event) => {
-                    //showInAppNotification(event.data);
-                  //});
+                  navigator.serviceWorker.addEventListener('message', (event) => {
+                    showInAppNotification(event.data, 'client');
+                  });
                 });                
               }` 
             }]}/>         

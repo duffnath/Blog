@@ -234,7 +234,7 @@ const TemplateWrapper = ({ children }) => {
                   });
                 }
               }
-              if ('serviceWorker' in navigator && typeof firebase !== 'undefined') {
+              if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('/sw.js').then(
                   function (registration) {
                     console.log('Registration successful, scope is:', registration.scope);

@@ -41,13 +41,6 @@ steps:
     $swPath = "./public/sw.js"
     $content = Get-Content $swPath -Raw
     $content = $content.Replace("`${process.env.firebase_messagingSenderId}", "$(firebase_messagingSenderId)")
-    $content = $content.Replace("`${process.env.firebase_apiKey}", "$(firebase_apiKey)")
-    $content = $content.Replace("`${process.env.firebase_authDomain}", "$(firebase_authDomain)")
-    $content = $content.Replace("`${process.env.firebase_databaseURL}", "$(firebase_databaseURL)")
-    $content = $content.Replace("`${process.env.firebase_projectId}", "$(firebase_projectId)")
-    $content = $content.Replace("`${process.env.firebase_storageBucket}", "$(firebase_storageBucket)")
-    $content = $content.Replace("`${process.env.firebase_messagingSenderId}", "$(firebase_messagingSenderId)")
-    $content = $content.Replace("`${process.env.firebase_appId}", "$(firebase_appId)")
     Set-Content $swPath -Value $content -Verbose
   displayName: 'Manual token replacement'
 

@@ -206,7 +206,11 @@ const TemplateWrapper = ({ children }) => {
                 };
 
                 toastr.options.onclick = function(e) { 
-                  window.location.href = \`\${window.location.origin}/\${this.data.target}\`;
+                  if (this.data.refresh) {
+                    window.location.reload();
+                  } else {
+                    window.location.href = \`\${window.location.origin}/\${this.data.target}\`;
+                  }                  
                 }
               
                 toastr.info(notification.body, notification.title, {"data": {"target": notification.click_action}});
@@ -313,7 +317,7 @@ const TemplateWrapper = ({ children }) => {
                           installingWorker.onstatechange = () => {
                             switch (installingWorker.state) {
                               case 'installed':
-                                toastr.info('New Update available! Click here to refresh.');
+                                toastr.info('Click here to refresh.', 'New Update available!', {"data": {"refresh": true}});
                                 if (navigator.serviceWorker.controller) {
                                   resolve(true);
                                 } else {

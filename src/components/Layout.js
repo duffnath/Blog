@@ -190,6 +190,7 @@ const TemplateWrapper = ({ children }) => {
                 }                
               
                 toastr.options = {
+                  closeButton: true,
                   timeOut: 0,
                   extendedTimeOut: 0,
                 };

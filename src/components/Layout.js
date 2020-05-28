@@ -294,7 +294,13 @@ const TemplateWrapper = ({ children }) => {
                 ); 
                 navigator.serviceWorker.addEventListener('message', (event) => {
                   showInAppNotification(event.data, 'client');                    
-                });                               
+                });             
+                window['isUpdateAvailable']
+                .then(isAvailable => {
+                  if (isAvailable) {                    
+                    toastr.info('New Update available! Click here to refresh.');
+                  }
+                });       
               }` 
             }]}/>         
 

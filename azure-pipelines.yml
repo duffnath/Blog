@@ -50,7 +50,7 @@ steps:
     $content = $content.Replace("`${process.env.firebase_storageBucket}", "$(firebase_storageBucket)")
     $content = $content.Replace("`${process.env.firebase_messagingSenderId}", "$(firebase_messagingSenderId)")
     $content = $content.Replace("`${process.env.firebase_appId}", "$(firebase_appId)")
-    $content = $content.Replace("${process.env.BUILD_NUMBER}", "$(Build.BuildNumber)")
+    $content = $content.Replace("process.env.BUILD_NUMBER", "'$(Build.BuildNumber)'")
     Set-Content $swPath -Value $content -Verbose
   displayName: 'Manual token replacement'
 

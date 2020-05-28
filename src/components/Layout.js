@@ -317,6 +317,21 @@ const TemplateWrapper = ({ children }) => {
                           installingWorker.onstatechange = () => {
                             switch (installingWorker.state) {
                               case 'installed':
+                                toastr.options = {
+                                  closeButton: true,
+                                  timeOut: 0,
+                                  extendedTimeOut: 0,
+                                  preventDuplicates: true
+                                };
+                
+                                toastr.options.onclick = function(e) { 
+                                  if (this.data.refresh) {
+                                    window.location.reload();
+                                  } else {
+                                    window.location.href = \`\${window.location.origin}/\${this.data.target}\`;
+                                  }                  
+                                }
+                                
                                 toastr.info('Click here to refresh.', 'New Update available!', {"data": {"refresh": true}});
                                 if (navigator.serviceWorker.controller) {
                                   resolve(true);

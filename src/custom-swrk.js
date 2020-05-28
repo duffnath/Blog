@@ -1,7 +1,7 @@
 importScripts('firebase-app.js');
 importScripts('firebase-messaging.js');
 
-const version = process.env.BUILD_NUMBER
+const version = `${process.env.BUILD_NUMBER}`;
 
 firebase.initializeApp({
   'messagingSenderId': `${process.env.firebase_messagingSenderId}`,

@@ -271,6 +271,22 @@ const TemplateWrapper = ({ children }) => {
                         .then((token) => {
                           subscribeToTopic(token, 'BlogSubscribers');
                         });
+                    registration.onupdatefound = () => {
+                      const installingWorker = registration.installing;
+                      installingWorker.onstatechange = () => {
+                        switch (installingWorker.state) {
+                          case 'installed':
+                            if (navigator.serviceWorker.controller) {
+                              // new update available
+                              resolve(true);
+                            } else {
+                              // no update available
+                              resolve(false);
+                            }
+                            break;
+                        }
+                      };
+                    };
                   },
                   function (err) {
                     console.log('ServiceWorker registration failed: ', err);

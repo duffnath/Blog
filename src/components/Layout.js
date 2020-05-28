@@ -295,12 +295,28 @@ const TemplateWrapper = ({ children }) => {
                 navigator.serviceWorker.addEventListener('message', (event) => {
                   showInAppNotification(event.data, 'client');                    
                 });             
-                window['isUpdateAvailable']
-                .then(isAvailable => {
-                  if (isAvailable) {                    
-                    toastr.info('New Update available! Click here to refresh.');
-                  }
-                });       
+                window.isUpdateAvailable = new Promise(function(resolve, reject) {
+                  if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.register('/sw.js').then(
+                      function (registration) {
+                        registration.onupdatefound = () => {
+                          const installingWorker = registration.installing;
+                          installingWorker.onstatechange = () => {
+                            switch (installingWorker.state) {
+                              case 'installed':
+                                toastr.info('New Update available! Click here to refresh.');
+                                if (navigator.serviceWorker.controller) {
+                                  resolve(true);
+                                } else {
+                                  resolve(false);
+                                }
+                                break;
+                            }
+                          };
+                        };
+                      }
+                    );                  
+                });    
               }` 
             }]}/>         
 

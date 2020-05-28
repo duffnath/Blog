@@ -139,6 +139,11 @@ const TemplateWrapper = ({ children }) => {
           <Helmet
             style={[{
               "cssText": `
+              button.toast-close-button {
+                color: #000;
+                font-size: 2em;
+                margin-top: -8px;
+              }
               .toast-info {
                 background-image: url('https://blog.nateduff.com/img/logo.png')!important;       
                 background-size: 2.5rem !important;         

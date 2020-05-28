@@ -158,6 +158,10 @@ const TemplateWrapper = ({ children }) => {
                 .toast-info {
                   width: 24em !important;
                 }
+                button.toast-close-button {
+                  font-size: 2.5em;
+                  margin-top: -8px;
+                }
               }
               `
             }]}>

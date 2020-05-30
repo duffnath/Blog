@@ -8,7 +8,7 @@ import facebook from '../img/social/facebook.svg'
 import linkedin from '../img/social/linkedin.svg'
 import twitter from '../img/social/twitter.svg'
 
-import { BrowserView } from 'react-device-detect'
+import { BrowserView, CustomView, isMobileOnly } from 'react-device-detect'
 import AdalConfig from '../config/AdalConfig'
 import AuthContext from '../services/Auth'
 import { appInsights } from '../telemetry'
@@ -97,12 +97,18 @@ const Footer = class extends React.Component {
                       </Link>
                     </li>
                     
-                    <BrowserView>
+                    <CustomView condition={isMobileOnly	 === false}>
+                    {this.props.isAuthenticated && this.props.isAdmin ? 
+                      <li><Link className="navbar-item" onClick={openAdmin}>
+                        Admin
+                      </Link></li> : null}
+                    </CustomView>
+                    {/* <BrowserView>
                       {this.props.isAuthenticated && this.props.isAdmin ? 
                       <li><Link className="navbar-item" onClick={openAdmin}>
                         Admin
                       </Link></li> : null}
-                    </BrowserView>
+                    </BrowserView> */}
                     {this.props.isAuthenticated ? 
                       <li><Link className="navbar-item" 
                         onClick={handleLogout}>

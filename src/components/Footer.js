@@ -97,8 +97,8 @@ const Footer = class extends React.Component {
                       </Link>
                     </li>
                     
-                    <CustomView condition={browserName === "Chrome"}>
-                    {this.props.isAuthenticated && this.props.isAdmin ? 
+                    <CustomView condition={navigator.platform === "Win32"}>
+                      {this.props.isAuthenticated && this.props.isAdmin ? 
                       <li><Link className="navbar-item" onClick={openAdmin}>
                         Admin
                       </Link></li> : null}

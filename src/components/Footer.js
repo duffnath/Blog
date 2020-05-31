@@ -95,7 +95,7 @@ const Footer = class extends React.Component {
                         Contact
                       </Link>
                     </li>
-                    {this.props.isAuthenticated && isAdmin ? 
+                    {this.props.isAuthenticated && isAdmin() ? 
                       <li><Link className="navbar-item" onClick={openAdmin} to="#">
                         Admin
                       </Link></li> : null}

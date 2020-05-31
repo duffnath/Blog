@@ -8,7 +8,6 @@ import facebook from '../img/social/facebook.svg'
 import linkedin from '../img/social/linkedin.svg'
 import twitter from '../img/social/twitter.svg'
 
-import { BrowserView, CustomView } from 'react-device-detect'
 import AdalConfig from '../config/AdalConfig'
 import AuthContext from '../services/Auth'
 import { appInsights } from '../telemetry'
@@ -96,13 +95,10 @@ const Footer = class extends React.Component {
                         Contact
                       </Link>
                     </li>
-                    <CustomView condition={typeof navigator !== "undefined" && typeof window !== "undefined" && 
-                      (window.matchMedia('(display-mode: standalone)').matches || navigator.platform !== "Android")}>
-                      {this.props.isAuthenticated && isAdmin ? 
+                    {this.props.isAuthenticated && isAdmin ? 
                       <li><Link className="navbar-item" onClick={openAdmin} to="#">
                         Admin
                       </Link></li> : null}
-                    </CustomView>
                     {this.props.isAuthenticated ? 
                       <li><Link className="navbar-item" 
                         onClick={handleLogout} to="#logout">

@@ -102,10 +102,10 @@ export const BlogPostTemplate = ({
                 </ul>
               </div>
             ) : null}
-            {isLoggedIn ? <div id="promoteBlogSection">
+            {isLoggedIn() ? <div id="promoteBlogSection">
               <h4>Social Promotion</h4>
               {
-                isAdmin ? <button className="button is-link" onClick={() => sendPushNotification()}>
+                isAdmin() ? <button className="button is-link" onClick={() => sendPushNotification()}>
                 Send Push Notification
                 </button> : null
               }

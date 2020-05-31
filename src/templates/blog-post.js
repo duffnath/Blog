@@ -8,7 +8,7 @@ import Content, { HTMLContent } from '../components/Content'
 import { appInsights } from '../telemetry'
 import useSiteMetadata from '../components/SiteMetadata'
 import $ from 'jquery'
-import { isAdmin } from '../components/Authorization'
+import { isAdmin, isLoggedIn } from '../components/Authorization'
 
 export const BlogPostTemplate = ({
   content,
@@ -102,11 +102,13 @@ export const BlogPostTemplate = ({
                 </ul>
               </div>
             ) : null}
-            {isAdmin() ? <div id="promoteBlogSection">
+            {isLoggedIn ? <div id="promoteBlogSection">
               <h4>Social Promotion</h4>
-              <button className="button is-link" onClick={() => sendPushNotification()}>
+              {
+                isAdmin ? <button className="button is-link" onClick={() => sendPushNotification()}>
                 Send Push Notification
-              </button>
+                </button> : null
+              }
               <button className="button is-link" onClick={() => sendToFacebook()}>
                 Share on Facebook
               </button>

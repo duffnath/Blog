@@ -63,6 +63,14 @@ export const BlogPostTemplate = ({
     });
   }
 
+  const sendToFacebook = () => {
+    if (typeof window !== 'undefined')
+      var url = `https://www.facebook.com/dialog/share?app_id=246272106789439&display=page&href=${window.location.href}&redirect_uri=https://blog.nateduff.com/blog/`;
+
+      var win = window.open(url, '_blank');
+      win.focus();
+  };
+
   return (
     <section className="section">
       {helmet || ''}
@@ -90,6 +98,9 @@ export const BlogPostTemplate = ({
               <h4>Social Promotion</h4>
               <button className="button is-link" onClick={() => sendPushNotification()}>
                 Send Push Notification
+              </button>
+              <button className="button is-link" onClick={() => sendToFacebook()}>
+                Share on Facebook
               </button>
             </div> : null}
           </div>

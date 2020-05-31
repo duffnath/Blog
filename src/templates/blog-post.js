@@ -71,6 +71,14 @@ export const BlogPostTemplate = ({
       win.focus();
   };
 
+  const sendToLinkedin = () => {
+    if (typeof window !== 'undefined')
+      var url = `https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}`;
+
+      var win = window.open(url, '_blank');
+      win.focus();
+  };
+
   return (
     <section className="section">
       {helmet || ''}
@@ -101,6 +109,9 @@ export const BlogPostTemplate = ({
               </button>
               <button className="button is-link" onClick={() => sendToFacebook()}>
                 Share on Facebook
+              </button>
+              <button className="button is-link" onClick={() => sendToLinkedin()}>
+                Share on LinkedIn
               </button>
             </div> : null}
           </div>

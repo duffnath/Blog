@@ -319,9 +319,11 @@ const TemplateWrapper = ({ children }) => {
                               case 'installed':
                                 toastr.options = {
                                   closeButton: true,
-                                  timeOut: 0,
-                                  extendedTimeOut: 0,
-                                  preventDuplicates: true
+                                  timeOut: 5000,
+                                  extendedTimeOut: 1000,
+                                  preventDuplicates: true,
+                                  positionClass: "toast-bottom-full-width",
+                                  progressBar: true
                                 };
                 
                                 toastr.options.onclick = function(e) { 
@@ -332,7 +334,7 @@ const TemplateWrapper = ({ children }) => {
                                   }                  
                                 }
                                 
-                                toastr.info('Click here to refresh.', 'New Update available!', {"data": {"refresh": true}});
+                                toastr.info(null, 'New Version available! Click to refresh', {"data": {"refresh": true}});
                                 if (navigator.serviceWorker.controller) {
                                   resolve(true);
                                 } else {

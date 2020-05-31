@@ -97,24 +97,24 @@ const Footer = class extends React.Component {
                       </Link>
                     </li>
                     
-                    <CustomView condition={typeof navigator !== "undefined" && navigator.platform === "Win32"}>
+                    {/* <CustomView condition={typeof navigator !== "undefined" && navigator.platform === "Win32"}>
                       {this.props.isAuthenticated && this.props.isAdmin ? 
-                      <li><Link className="navbar-item" onClick={openAdmin}>
+                      <li><Link className="navbar-item" onClick={openAdmin} to="#">
                         Admin
                       </Link></li> : null}
-                    </CustomView>
+                    </CustomView> */}
                     <BrowserView>
                       {this.props.isAuthenticated && this.props.isAdmin ? 
-                      <li><Link className="navbar-item" onClick={openAdmin}>
+                      <li><Link className="navbar-item" onClick={openAdmin} to="#admin">
                         Admin
                       </Link></li> : null}
                     </BrowserView>
                     {this.props.isAuthenticated ? 
                       <li><Link className="navbar-item" 
-                        onClick={handleLogout}>
+                        onClick={handleLogout} to="#logout">
                         Logout
                       </Link></li> : <li><Link className="navbar-item" 
-                        onClick={handleLogin}>
+                        onClick={handleLogin} to="#login">
                         Login
                       </Link></li>
                     }

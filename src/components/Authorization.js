@@ -8,7 +8,7 @@ export const isLoggedIn = () => {
     if (!isBrowser) return false
     if (!isReadyForAuth) return false
 
-    return adal?._user?.profile?.upn
+    return adal?._user?.profile?.upn || adal?._user?.profile?.email
         ? true : false
 }
 
@@ -16,7 +16,7 @@ export const isAdmin = () => {
   if (!isBrowser) return false
   if (!isReadyForAuth) return false
 
-  return adal?._user?.profile.upn.endsWith("@nateduff.com") || process.env.NODE_ENV === 'development'
+  return adal?._user?.profile.upn || process.env.NODE_ENV === 'development'
     ? true : false
 }
 

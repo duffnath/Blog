@@ -102,12 +102,10 @@ const Footer = class extends React.Component {
                         Admin
                       </Link></li> : null}
                     </CustomView>
-                    <BrowserView>
-                      {isAdmin ? 
+                    {isAdmin ? 
                       <li><Link className="navbar-item" onClick={openAdmin} to="#admin">
                         Admin
                       </Link></li> : null}
-                    </BrowserView>
                     {this.props.isAuthenticated ? 
                       <li><Link className="navbar-item" 
                         onClick={handleLogout} to="#logout">

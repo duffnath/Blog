@@ -137,9 +137,29 @@ const BlogPost = ({ data }) => {
               content={`${post.frontmatter.description}`}
             />
             <meta
-            property="og:image"
-            content={`../../${post.frontmatter.featuredimage}`}
-          />
+              property="og:image"
+              content={`../../${post.frontmatter.featuredimage}`}
+            />
+            <meta
+              property="og:title"
+              content={`${useSiteMetadata().title} | ${post.frontmatter.title}`}
+            />
+            <meta
+              property="og:description"
+              content={`${post.frontmatter.description}`}
+            />
+            <meta
+              property="og:type"
+              content={"article"}
+            />
+            <meta
+              property="article:publisher"
+              content={`Nathan Duff`}
+            />
+            <meta
+              property="article:author"
+              content={`https://www.facebook.com/n8duff`}
+            />
           </Helmet>
         }
         tags={post.frontmatter.tags}

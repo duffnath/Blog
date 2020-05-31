@@ -96,16 +96,13 @@ const Footer = class extends React.Component {
                         Contact
                       </Link>
                     </li>
-                    <CustomView condition={typeof navigator !== "undefined" && navigator.platform === "Win32"}>
+                    <CustomView condition={typeof navigator !== "undefined" && typeof window !== "undefined" && 
+                      (window.matchMedia('(display-mode: standalone)').matches || navigator.platform !== "Android")}>
                       {isAdmin ? 
                       <li><Link className="navbar-item" onClick={openAdmin} to="#">
                         Admin
                       </Link></li> : null}
                     </CustomView>
-                    {isAdmin ? 
-                      <li><Link className="navbar-item" onClick={openAdmin} to="#admin">
-                        Admin
-                      </Link></li> : null}
                     {this.props.isAuthenticated ? 
                       <li><Link className="navbar-item" 
                         onClick={handleLogout} to="#logout">

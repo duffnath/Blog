@@ -23,8 +23,12 @@ export const isAdmin = () => {
 export const getUserName = () => {
     if (!isBrowser) return false
     if (!isReadyForAuth) return false
-  
-    return adal?._user?.profile.upn
+
+    if (adal?._user?.profile.upn !== undefined) {
+        return adal?._user?.profile.upn
+    } else {
+        return adal?._user?.profile?.email
+    }
 }
 
 export const getUserId = () => {

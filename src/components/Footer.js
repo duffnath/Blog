@@ -98,7 +98,7 @@ const Footer = class extends React.Component {
                     </li>
                     <CustomView condition={typeof navigator !== "undefined" && typeof window !== "undefined" && 
                       (window.matchMedia('(display-mode: standalone)').matches || navigator.platform !== "Android")}>
-                      {isAdmin ? 
+                      {isLoggedIn && isAdmin ? 
                       <li><Link className="navbar-item" onClick={openAdmin} to="#">
                         Admin
                       </Link></li> : null}

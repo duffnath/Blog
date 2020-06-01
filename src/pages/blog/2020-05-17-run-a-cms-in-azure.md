@@ -1,8 +1,11 @@
 ---
 templateKey: blog-post
-title: Run a CMS in Azure
+title: Running a CMS from an Azure Function - Part 1
 date: 2020-05-17T13:10:44.123Z
-description: Blog post - test, test, test...
+description: "I'll walk through the steps it takes to build a static website in
+  Azure from a Storage Account and integrate that with an Azure Function &
+  Proxy. In part 2 we'll build a static website using React from a Gatsby
+  Netlify starter kit. "
 featuredpost: true
 featuredimage: /img/blog_screenshot.png
 tags:

@@ -9,9 +9,11 @@ description: "I'll walk through the steps it takes to build a static website in
 featuredpost: true
 featuredimage: /img/blog_screenshot.png
 tags:
-  - blog
-  - cms
-  - lorem ipsum
+  - Azure
+  - Functions
+  - PowerShell
+  - Gatsby
+  - Netlify
 ---
 ![Blog Screenshot](/img/blog_screenshot.png "Blog Screenshot")
 

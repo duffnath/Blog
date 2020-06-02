@@ -90,6 +90,9 @@ const Footer = class extends React.Component {
                         About
                       </Link>
                     </li>
+                    <Link className="navbar-item" to="/services">
+                        Services  
+                    </Link>
                     {this.props.isAuthenticated && isAdmin() ? 
                     <li>
                       <Link className="navbar-item" to="/products">

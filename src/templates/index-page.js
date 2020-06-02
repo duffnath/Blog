@@ -7,6 +7,7 @@ import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRollPreview from '../components/BlogRollPreview'
 import useSiteMetadata from '../components/SiteMetadata'
+import { isLoggedIn, isAdmin } from '../components/Authorization'
 
 export const IndexPageTemplate = ({
   image,
@@ -93,13 +94,15 @@ export const IndexPageTemplate = ({
                   </div>
                 </div>
                 <Features gridItems={intro.blurbs} />
-                <div className="columns">
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/products">
-                      See all products
-                    </Link>
+                {isLoggedIn() && isAdmin() ? 
+                  <div className="columns">
+                    <div className="column is-12 has-text-centered">
+                      <Link className="btn" to="/products">
+                        See all products
+                      </Link>
+                    </div>
                   </div>
-                </div>
+                : null}
                 <div className="column is-12">
                   <h3 className="has-text-weight-semibold is-size-2">
                     Blog

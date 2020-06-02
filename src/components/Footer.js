@@ -44,7 +44,7 @@ const Footer = class extends React.Component {
 
     const openBuild = () => {
       if (typeof window !== 'undefined')
-        var url = `${process.env.Build_BuildUri}`;
+        var url = `${process.env.BUILD_URL}`;
   
         var win = window.open(url, '_blank');
         win.focus();
@@ -90,17 +90,19 @@ const Footer = class extends React.Component {
                         About
                       </Link>
                     </li>
+                    {this.props.isAuthenticated && isAdmin() ? 
                     <li>
                       <Link className="navbar-item" to="/products">
                         Products
                       </Link>
-                    </li>
+                    </li> : null
+                    }
                   </ul>
                 </section>
               </div>
               <div className="column is-4">
                 <section>
-                  <ul className="menu-list">
+                  <ul className="menu-list">                    
                     <li>
                       <Link className="navbar-item" to="/blog">
                         Blog
@@ -129,14 +131,14 @@ const Footer = class extends React.Component {
                 </section>
               </div>
               <div className="column is-4 social">
-                <a title="facebook" href="https://www.facebook.com/n8duff">
+                <a title="Follow us on Facebook" href="https://www.facebook.com/n8duff">
                   <img
                     src={facebook}
                     alt="Facebook"
                     style={{ width: '1em', height: '1em' }}
                   />
                 </a>
-                <a title="twitter" href="https://twitter.com/n8duff">
+                <a title="Follow us on Twitter" href="https://twitter.com/n8duff">
                   <img
                     className="fas fa-lg"
                     src={twitter}
@@ -144,7 +146,7 @@ const Footer = class extends React.Component {
                     style={{ width: '1em', height: '1em' }}
                   />
                 </a>
-                <a title="linkedin" href="http://www.linkedin.com/in/nate-duff">
+                <a title="Follow us on Linkedin" href="http://www.linkedin.com/in/nate-duff">
                   <img
                     src={linkedin}
                     alt="LinkedIn"

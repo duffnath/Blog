@@ -4,6 +4,7 @@ import github from '../img/github-icon.svg'
 import logo from '../img/NateDuff.com-w-l.png'
 import darkLogo from '../img/NateDuff.com-w-d.png'
 import DarkModeToggle from '../components/DarkModeToggle'
+import { isAdmin } from './Authorization'
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -68,9 +69,10 @@ const Navbar = class extends React.Component {
               <Link className="navbar-item" to="/about">
                 About
               </Link>
-              <Link className="navbar-item" to="/products">
-                Products
-              </Link>
+              {this.props.isAuthenticated && isAdmin() ? 
+                <Link className="navbar-item" to="/products">
+                  Products
+                </Link> : null}
               <Link className="navbar-item" to="/blog">
                 Blog
               </Link>

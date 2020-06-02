@@ -162,7 +162,7 @@ const BlogPost = ({ data }) => {
             />
             <meta
               property="og:image"
-              content={`../../${post.frontmatter.featuredimage}`}
+              content={`${typeof window !== 'undefined' ? window.location.origin : null}/${post.frontmatter.featuredimage}`}
             />
             <meta
               property="og:title"
@@ -189,7 +189,8 @@ const BlogPost = ({ data }) => {
             <meta property="twitter:creator" content={"@N8Duff"} />
             <meta property="twitter:title" content={`${post.frontmatter.title}`} />
             <meta property="twitter:description" content={`${post.frontmatter.description}`} />
-            <meta property="twitter:image" content={`../../${post.frontmatter.featuredimage}`} />
+            <meta property="twitter:image" content={
+              `${typeof window !== 'undefined' ? window.location.origin : null}/${post.frontmatter.featuredimage}`} />
           </Helmet>
         }
         tags={post.frontmatter.tags}

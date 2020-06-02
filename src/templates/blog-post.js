@@ -79,6 +79,14 @@ export const BlogPostTemplate = ({
       win.focus();
   };
 
+  const sendToTwitter = () => {
+    if (typeof window !== 'undefined')
+      var url = `https://twitter.com/share?url=${window.location.href}`;
+
+      var win = window.open(url, '_blank');
+      win.focus();
+  };
+
   return (
     <section className="section">
       {helmet || ''}
@@ -114,6 +122,9 @@ export const BlogPostTemplate = ({
               </button>
               <button className="button is-link" onClick={() => sendToLinkedin()}>
                 Share on LinkedIn
+              </button>
+              <button className="button is-link" onClick={() => sendToTwitter()}>
+                Share on Twitter
               </button>
             </div> : null}
           </div>

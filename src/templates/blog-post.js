@@ -184,6 +184,12 @@ const BlogPost = ({ data }) => {
               property="article:author"
               content={`https://www.facebook.com/n8duff`}
             />
+            <meta property="twitter:card" content={"summary_large_image"} />
+            {/* <meta property="twitter:site" content={"@N8Duff"} /> */}
+            <meta property="twitter:creator" content={"@N8Duff"} />
+            <meta property="twitter:title" content={`${post.frontmatter.title}`} />
+            <meta property="twitter:description" content={`${post.frontmatter.description}`} />
+            <meta property="twitter:image" content={`../../${post.frontmatter.featuredimage}`} />
           </Helmet>
         }
         tags={post.frontmatter.tags}

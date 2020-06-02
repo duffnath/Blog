@@ -158,25 +158,25 @@ const BlogPost = ({ data }) => {
             <title>{`${useSiteMetadata().title} | ${post.frontmatter.title}`}</title>
             <meta
               name="description"
+              property="og:description"
               content={`${post.frontmatter.description}`}
             />
             <meta
+              name="image"
               property="og:image"
               content={`${typeof window !== 'undefined' ? window.location.origin : null}/${post.frontmatter.featuredimage}`}
             />
             <meta
+              name="title"
               property="og:title"
               content={`${useSiteMetadata().title} | ${post.frontmatter.title}`}
-            />
-            <meta
-              property="og:description"
-              content={`${post.frontmatter.description}`}
             />
             <meta
               property="og:type"
               content={"article"}
             />
             <meta
+              name="author"
               property="article:publisher"
               content={`Nathan Duff`}
             />

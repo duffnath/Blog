@@ -42,6 +42,22 @@ const Footer = class extends React.Component {
       window.location.href = "https://duffsitestore.z14.web.core.windows.net/admin/#"
     }
 
+    const openBuild = () => {
+      if (typeof window !== 'undefined')
+        var url = `${process.env.Build_BuildUri}`;
+  
+        var win = window.open(url, '_blank');
+        win.focus();
+    };
+
+    const openRelease = () => {
+      if (typeof window !== 'undefined')
+        var url = `${process.env.RELEASE_URL}`;
+  
+        var win = window.open(url, '_blank');
+        win.focus();
+    };
+
     return (
       <footer className="footer has-background-black has-text-white-ter">
         <div className="content has-text-centered">
@@ -137,9 +153,9 @@ const Footer = class extends React.Component {
                 </a>
                 { this.props.isAuthenticated  ? 
                   <div><br /><br />
-                    <img id="buildStatusBadge" src="https://dev.azure.com/NateDuff/Netlify/_apis/build/status/duffnath.Blog?branchName=master"></img>
+                    <img id="buildStatusBadge" src="https://dev.azure.com/NateDuff/Netlify/_apis/build/status/duffnath.Blog?branchName=master" onClick={openBuild}></img>
                   <br /><br />
-                  <img id="releaseStatusBadge" src="https://vsrm.dev.azure.com/NateDuff/_apis/public/Release/badge/d73e4336-92ad-4fee-b549-9b78fbc20fe1/2/2"></img>
+                  <img id="releaseStatusBadge" src="https://vsrm.dev.azure.com/NateDuff/_apis/public/Release/badge/d73e4336-92ad-4fee-b549-9b78fbc20fe1/2/2" onClick={openRelease}></img>
                   </div> : null }
               </div>
             </div>

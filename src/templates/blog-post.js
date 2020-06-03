@@ -157,7 +157,18 @@ const BlogPost = ({ data }) => {
           <Helmet>
             <title>{`${useSiteMetadata().title} | ${post.frontmatter.title}`}</title>
             <meta
+              name="title"
+              content={`${useSiteMetadata().title} | ${post.frontmatter.title}`}
+            />
+            <meta
+              property="og:title"
+              content={`${useSiteMetadata().title} | ${post.frontmatter.title}`}
+            />
+            <meta
               name="description"
+              content={`${post.frontmatter.description}`}
+            />
+            <meta
               property="og:description"
               content={`${post.frontmatter.description}`}
             />
@@ -165,11 +176,14 @@ const BlogPost = ({ data }) => {
               name="image"
               property="og:image"
               content={`${typeof window !== 'undefined' ? window.location.origin : null}/${post.frontmatter.featuredimage}`}
+            />          
+            <meta
+              property="og:image:width"
+              content={`500`}
             />
             <meta
-              name="title"
-              property="og:title"
-              content={`${useSiteMetadata().title} | ${post.frontmatter.title}`}
+              property="og:image:height"
+              content={`500`}
             />
             <meta
               property="og:type"
@@ -177,6 +191,9 @@ const BlogPost = ({ data }) => {
             />
             <meta
               name="author"
+              content={`Nathan Duff`}
+            />
+            <meta
               property="article:publisher"
               content={`Nathan Duff`}
             />

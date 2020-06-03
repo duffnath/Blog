@@ -157,21 +157,23 @@ const BlogPost = ({ data }) => {
           <Helmet>
             <title>{`${useSiteMetadata().title} | ${post.frontmatter.title}`}</title>
             <meta
-              name="title"
-              content={`${useSiteMetadata().title} | ${post.frontmatter.title}`}
-            />
-            <meta
               property="og:title"
               content={`${useSiteMetadata().title} | ${post.frontmatter.title}`}
             />
+
             <meta
-              name="description"
-              content={`${post.frontmatter.description}`}
+              name="title"
+              content={`${useSiteMetadata().title} | ${post.frontmatter.title}`}
             />
             <meta
               property="og:description"
               content={`${post.frontmatter.description}`}
             />
+            <meta
+              name="description"
+              content={`${post.frontmatter.description}`}
+            />
+            
             <meta
               name="image"
               property="og:image"

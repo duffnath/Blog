@@ -206,7 +206,7 @@ const BlogPost = ({ data }) => {
             <meta
               name="image"
               property="og:image"
-              content={`${typeof window !== 'undefined' ? window.location.origin : '../..'}/img/${featuredImage}`}
+              content={`${typeof window !== 'undefined' ? window.location.origin : 'https://blog.nateduff.com'}/img/${featuredImage}`}
             />          
             <meta
               property="og:image:width"
@@ -238,7 +238,7 @@ const BlogPost = ({ data }) => {
             <meta property="twitter:title" content={`${useSiteMetadata().title} | ${post.frontmatter.title}`} />
             <meta property="twitter:description" content={`${post.frontmatter.description}`} />
             <meta property="twitter:image" content={
-              `${typeof window !== 'undefined' ? window.location.origin : '../..'}/img/${featuredImage}`} />
+              `${typeof window !== 'undefined' ? window.location.origin : 'https://blog.nateduff.com'}/img/${featuredImage}`} />
           </Helmet>
         }
         tags={post.frontmatter.tags}

@@ -198,7 +198,7 @@ const BlogPost = ({ data }) => {
             <meta
               name="image"
               property="og:image"
-              content={`${typeof window !== 'undefined' ? window.location.origin : null}/${post.frontmatter.featuredimage}`}
+              content={`${typeof window !== 'undefined' ? window.location.origin : '../..'}/${post.frontmatter.featuredimage}`}
             />          
             <meta
               property="og:image:width"

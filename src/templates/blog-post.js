@@ -9,6 +9,10 @@ import { appInsights } from '../telemetry'
 import useSiteMetadata from '../components/SiteMetadata'
 import $ from 'jquery'
 import { isAdmin, isLoggedIn } from '../components/Authorization'
+import facebook from '../img/social/facebook.svg'
+import linkedin from '../img/social/linkedin.svg'
+import twitter from '../img/social/twitter.svg'
+import bell from '../img/social/bell.svg'
 
 export const BlogPostTemplate = ({
   content,
@@ -110,23 +114,40 @@ export const BlogPostTemplate = ({
                 </ul>
               </div>
             ) : null}
-            {isLoggedIn() ? <div id="promoteBlogSection">
-              <h4>Social Promotion</h4>
+            <div id="promoteBlogSection">              
+              <h4>Spread the word!</h4>
+              <div className="column social">
               {
-                isAdmin() ? <button className="button is-link" onClick={() => sendPushNotification()}>
-                Send Push Notification
-                </button> : null
+                isAdmin() ? <a title="Send Push Notification" onClick={() => sendPushNotification()}>
+                <img
+                  src={bell}
+                  alt="Send Push Notification"
+                  style={{ width: '1em', height: '1em' }}
+                />
+              </a> : null
               }
-              <button className="button is-link" onClick={() => sendToFacebook()}>
-                Share on Facebook
-              </button>
-              <button className="button is-link" onClick={() => sendToLinkedin()}>
-                Share on LinkedIn
-              </button>
-              <button className="button is-link" onClick={() => sendToTwitter()}>
-                Share on Twitter
-              </button>
-            </div> : null}
+              <a title="Share on Facebook" onClick={() => sendToFacebook()}>
+                <img
+                  src={facebook}
+                  alt="Share on Facebook"
+                  style={{ width: '1em', height: '1em' }}
+                />
+              </a>
+              <a title="Share on LinkedIn" onClick={() => sendToLinkedin()}>
+                <img
+                  src={linkedin}
+                  alt="Share on LinkedIn"
+                  style={{ width: '1em', height: '1em' }}
+                />
+              </a>
+              <a title="Share on Twitter" onClick={() => sendToTwitter()}>
+                <img
+                  src={twitter}
+                  alt="Share on Twitter"
+                  style={{ width: '1em', height: '1em' }}
+                />
+              </a>
+              </div></div>
           </div>
         </div>
       </div>

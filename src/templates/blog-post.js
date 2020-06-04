@@ -258,6 +258,13 @@ export const pageQuery = graphql`
         title
         description
         tags
+        featuredimage {
+          childImageSharp {
+            sizes(maxWidth: 630) {
+              ...GatsbyImageSharpSizes
+            }
+          }
+        }
       }
     }
   }

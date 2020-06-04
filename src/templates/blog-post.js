@@ -227,10 +227,10 @@ const BlogPost = ({ data }) => {
             <meta property="twitter:card" content={"summary_large_image"} />
             {/* <meta property="twitter:site" content={"@N8Duff"} /> */}
             <meta property="twitter:creator" content={"@N8Duff"} />
-            <meta property="twitter:title" content={`${post.frontmatter.title}`} />
+            <meta property="twitter:title" content={`${useSiteMetadata().title} | ${post.frontmatter.title}`} />
             <meta property="twitter:description" content={`${post.frontmatter.description}`} />
             <meta property="twitter:image" content={
-              `${typeof window !== 'undefined' ? window.location.origin : null}/${post.frontmatter.featuredimage}`} />
+              `${typeof window !== 'undefined' ? window.location.origin : '../..'}/${post.frontmatter.featuredimage}`} />
           </Helmet>
         }
         tags={post.frontmatter.tags}

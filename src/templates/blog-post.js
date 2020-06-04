@@ -7,6 +7,7 @@ import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 import { appInsights } from '../telemetry'
 import useSiteMetadata from '../components/SiteMetadata'
+import Img from "gatsby-image"
 import $ from 'jquery'
 import { isAdmin, isLoggedIn } from '../components/Authorization'
 import facebook from '../img/social/facebook.svg'
@@ -20,6 +21,7 @@ export const BlogPostTemplate = ({
   description,
   tags,
   title,
+  featuredImage,
   helmet,
 }) => {
   const PostContent = contentComponent || Content
@@ -100,6 +102,7 @@ export const BlogPostTemplate = ({
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
+            {/* <Img src={featuredImage} /> */}
             <p>{description}</p>
             <PostContent content={content} />
             {tags && tags.length ? (
@@ -168,12 +171,17 @@ const BlogPost = ({ data }) => {
 
   appInsights.trackPageView();
 
+  let blogPost = data.markdownRemark
+
+  let featuredImage = blogPost.frontmatter.featuredimage.relativePath
+
   return (
     <Layout>
       <BlogPostTemplate
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
+        featuredImage={typeof featuredImage === 'string' ? featuredImage : null}
         helmet={
           <Helmet>
             <title>{`${useSiteMetadata().title} | ${post.frontmatter.title}`}</title>
@@ -198,7 +206,7 @@ const BlogPost = ({ data }) => {
             <meta
               name="image"
               property="og:image"
-              content={`${typeof window !== 'undefined' ? window.location.origin : '../..'}/${post.frontmatter.featuredimage}`}
+              content={`${typeof window !== 'undefined' ? window.location.origin : '../..'}/img/${featuredImage}`}
             />          
             <meta
               property="og:image:width"
@@ -230,7 +238,7 @@ const BlogPost = ({ data }) => {
             <meta property="twitter:title" content={`${useSiteMetadata().title} | ${post.frontmatter.title}`} />
             <meta property="twitter:description" content={`${post.frontmatter.description}`} />
             <meta property="twitter:image" content={
-              `${typeof window !== 'undefined' ? window.location.origin : '../..'}/${post.frontmatter.featuredimage}`} />
+              `${typeof window !== 'undefined' ? window.location.origin : '../..'}/img/${featuredImage}`} />
           </Helmet>
         }
         tags={post.frontmatter.tags}
@@ -259,11 +267,7 @@ export const pageQuery = graphql`
         description
         tags
         featuredimage {
-          childImageSharp {
-            sizes(maxWidth: 630) {
-              ...GatsbyImageSharpSizes
-            }
-          }
+          relativePath
         }
       }
     }

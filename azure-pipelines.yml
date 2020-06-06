@@ -23,7 +23,7 @@ steps:
    appInsightsConnectionString = $(appInsightsConnectionString)   
    firebase_serverKey = $(firebase_serverKey)
    BUILD_NUMBER = $(BUILD_NUMBER)
-   RELEASE_URL = ($(SYSTEM_TEAMFOUNDATIONCOLLECTIONURI) + "_release")
+   RELEASE_URL = $(RELEASE_URL)
    HOSTNAME = $(HOSTNAME)
    TwitterHandle = $(TwitterHandle)
    AuthorName = $(AuthorName)

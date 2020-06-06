@@ -144,7 +144,7 @@ const TemplateWrapper = ({ children }) => {
                 margin-top: -8px;
               }
               .toast-info {
-                background-image: url('https://blog.nateduff.com/img/logo.png')!important;       
+                background-image: url('${process.env.HOSTNAME}/img/logo.png')!important;       
                 background-size: 2.5rem !important;         
                 background-color: #cacaca !important;
                 color: #161b1f !important;
@@ -239,7 +239,7 @@ const TemplateWrapper = ({ children }) => {
                   });
                   $.ajax({
                     type: 'POST',
-                    url: location.origin + '/api/New-Subscriber?code=3fCQRCYZMMQArvJUaK9512f/RM47VM7LTiaWPDlg5H2RxSBj5cTaUA==',
+                    url: location.origin + '${process.env.NewSubscriberAPI}',
                     contentType: 'application/json',
                     dataType: 'json',
                     data: JSON.stringify({"regToken": token, "email": window.localStorage.upn}),

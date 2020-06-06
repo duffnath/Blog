@@ -3,8 +3,6 @@ import { navigate } from 'gatsby-link'
 import Layout from '../../components/Layout'
 import { appInsights } from '../../telemetry'
 
-appInsights.loadAppInsights();
-
 function encode(data) {
   return Object.keys(data)
     .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))

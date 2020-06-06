@@ -22,6 +22,20 @@ steps:
    firebase_publicKey = $(firebase_publicKey)
    appInsightsConnectionString = $(appInsightsConnectionString)   
    firebase_serverKey = $(firebase_serverKey)
+   BUILD_NUMBER = $(BUILD_NUMBER)
+   BUILD_URL = $(BUILD_URL)
+   RELEASE_URL = $(RELEASE_URL)
+   HOSTNAME = $(HOSTNAME)
+   TwitterHandle = $(TwitterHandle)
+   AuthorName = $(AuthorName)
+   FacebookPage = $(FacebookPage)
+   FacebookAppID = $(FacebookAppID)
+   LinkedInPage = $(LinkedInPage)
+   NewContactSubmissionURL = $(NewContactSubmissionURL)
+   NewSubscriberAPI = $(NewSubscriberAPI)
+   CmsAdminURL = $(CmsAdminURL)
+   BuildStatusBadge = $(BuildStatusBadge)
+   ReleaseStatusBadge = $(ReleaseStatusBadge)
    '@
   displayName: 'Create .env configuration file'
 

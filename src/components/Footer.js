@@ -38,24 +38,39 @@ const Footer = class extends React.Component {
 
     const openAdmin = event => {
       event.preventDefault();
+
+      appInsights.trackEvent({ name: 'Admin' });
       
       window.location.href = `${process.env.CmsAdminURL}`;
     }
 
-    const openBuild = () => {
+    const openNewTab = (url) => {
       if (typeof window !== 'undefined')
-        var url = `${process.env.SYSTEM_TEAMFOUNDATIONCOLLECTIONURI}`;
+        var url = `${url}`;
   
         var win = window.open(url, '_blank');
         win.focus();
     };
 
     const openRelease = () => {
-      if (typeof window !== 'undefined')
-        var url = `${process.env.RELEASE_URL}`;
-  
-        var win = window.open(url, '_blank');
-        win.focus();
+      appInsights.trackEvent({ name: 'Release' });
+      openNewTab(`${process.env.RELEASE_URL}`);
+    };
+
+    const openLinkedIn = () => {
+      appInsights.trackEvent({ name: 'LinkedIn' });
+      openNewTab(`${process.env.LinkedInPage}`);
+    };
+
+    const openTwitter = () => {
+      appInsights.trackEvent({ name: 'Twitter' });
+      openNewTab(`https://twitter.com/${process.env.TwitterHandle}`);
+    };
+
+    const openFacebook = () => {
+      appInsights.trackEvent({ name: 'Facebook' });
+
+      openNewTab(`${process.env.FacebookPage}`);
     };
 
     return (
@@ -135,14 +150,14 @@ const Footer = class extends React.Component {
               </div>
               <div className="column is-4 social">
                 <span>Follow me!</span><br /><br />
-                <a title="Follow us on Facebook" href={process.env.FacebookPage}>
+                <a title="Follow us on Facebook" onClick={openFacebook}>
                   <img
                     src={facebook}
                     alt="Facebook"
                     style={{ width: '1em', height: '1em' }}
                   />
                 </a>
-                <a title="Follow us on Twitter" href={`https://twitter.com/${process.env.TwitterHandle}`}>
+                <a title="Follow us on Twitter" onClick={openTwitter}>
                   <img
                     className="fas fa-lg"
                     src={twitter}
@@ -150,16 +165,16 @@ const Footer = class extends React.Component {
                     style={{ width: '1em', height: '1em' }}
                   />
                 </a>
-                <a title="Follow us on Linkedin" href={process.env.LinkedInPage}>
+                <a title="Follow us on Linkedin" onClick={openLinkedIn}>
                   <img
                     src={linkedin}
                     alt="LinkedIn"
                     style={{ width: '1em', height: '1em' }}
                   />
                 </a>
-                { this.props.isAuthenticated  ? 
-                  <div><br /><br />
-                    <img id="buildStatusBadge" src={process.env.BuildStatusBadge} onClick={openBuild}></img>
+                { this.props.isAuthenticated || process.env.NODE_ENV === 'development'  ? 
+                  <div><br />
+                    <span>Version: {process.env.BUILD_NUMBER}</span>
                   <br /><br />
                   <img id="releaseStatusBadge" src={process.env.ReleaseStatusBadge} onClick={openRelease}></img>
                   </div> : null }

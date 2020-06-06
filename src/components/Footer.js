@@ -142,7 +142,7 @@ const Footer = class extends React.Component {
                     style={{ width: '1em', height: '1em' }}
                   />
                 </a>
-                <a title="Follow us on Twitter" href={`https://twitter.com/${process.env.TwitterHandle.toLowerCase()}`}>
+                <a title="Follow us on Twitter" href={`https://twitter.com/${process.env.TwitterHandle}`}>
                   <img
                     className="fas fa-lg"
                     src={twitter}

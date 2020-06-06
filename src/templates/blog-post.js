@@ -233,8 +233,8 @@ const BlogPost = ({ data }) => {
               content={process.env.FacebookPage}
             />
             <meta property="twitter:card" content={"summary_large_image"} />
-            <meta property="twitter:creator" content={process.env.TwitterHandle} />
-            <meta property="twitter:site" content={process.env.TwitterHandle} />
+            <meta property="twitter:creator" content={`@${process.env.TwitterHandle}`} />
+            <meta property="twitter:site" content={`@${process.env.TwitterHandle}`} />
             <meta property="twitter:title" content={`${useSiteMetadata().title} | ${post.frontmatter.title}`} />
             <meta property="twitter:description" content={`${post.frontmatter.description}`} />
             <meta property="twitter:image" content={

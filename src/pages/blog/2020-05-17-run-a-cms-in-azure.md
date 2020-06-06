@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: Running a CMS from an Azure Function - Part 1
+title: Building a Serverless CMS in Azure - Part 1
 date: 2020-05-17T13:10:44.123Z
 description: "I'll walk through the steps it takes to build a static website in
   Azure from a Storage Account and integrate that with an Azure Function &

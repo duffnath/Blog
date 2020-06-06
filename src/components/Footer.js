@@ -39,12 +39,12 @@ const Footer = class extends React.Component {
     const openAdmin = event => {
       event.preventDefault();
       
-      window.location.href = "https://duffsitestore.z14.web.core.windows.net/admin/#"
+      window.location.href = `${process.env.CmsAdminURL}`;
     }
 
     const openBuild = () => {
       if (typeof window !== 'undefined')
-        var url = `${process.env.BUILD_URL}`;
+        var url = `${process.env.SYSTEM_TEAMFOUNDATIONCOLLECTIONURI}`;
   
         var win = window.open(url, '_blank');
         win.focus();
@@ -135,14 +135,14 @@ const Footer = class extends React.Component {
               </div>
               <div className="column is-4 social">
                 <span>Follow me!</span><br /><br />
-                <a title="Follow us on Facebook" href="https://www.facebook.com/n8duff">
+                <a title="Follow us on Facebook" href={process.env.FacebookPage}>
                   <img
                     src={facebook}
                     alt="Facebook"
                     style={{ width: '1em', height: '1em' }}
                   />
                 </a>
-                <a title="Follow us on Twitter" href="https://twitter.com/n8duff">
+                <a title="Follow us on Twitter" href={`https://twitter.com/${process.env.TwitterHandle.toLowerCase()}`}>
                   <img
                     className="fas fa-lg"
                     src={twitter}
@@ -150,7 +150,7 @@ const Footer = class extends React.Component {
                     style={{ width: '1em', height: '1em' }}
                   />
                 </a>
-                <a title="Follow us on Linkedin" href="http://www.linkedin.com/in/nate-duff">
+                <a title="Follow us on Linkedin" href={process.env.LinkedInPage}>
                   <img
                     src={linkedin}
                     alt="LinkedIn"
@@ -159,9 +159,9 @@ const Footer = class extends React.Component {
                 </a>
                 { this.props.isAuthenticated  ? 
                   <div><br /><br />
-                    <img id="buildStatusBadge" src="https://dev.azure.com/NateDuff/Netlify/_apis/build/status/duffnath.Blog?branchName=master" onClick={openBuild}></img>
+                    <img id="buildStatusBadge" src={process.env.BuildStatusBadge} onClick={openBuild}></img>
                   <br /><br />
-                  <img id="releaseStatusBadge" src="https://vsrm.dev.azure.com/NateDuff/_apis/public/Release/badge/d73e4336-92ad-4fee-b549-9b78fbc20fe1/2/2" onClick={openRelease}></img>
+                  <img id="releaseStatusBadge" src={process.env.ReleaseStatusBadge} onClick={openRelease}></img>
                   </div> : null }
               </div>
             </div>

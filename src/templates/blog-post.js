@@ -45,14 +45,14 @@ export const BlogPostTemplate = ({
         notification: {
           body: body,
           title: title,
-          icon: "https://blog.nateduff.com/img/logo-whitebackground.png",
+          icon: `${process.env.HOSTNAME}/img/logo-whitebackground.png`,
           image: imagePath,
-          tag:  "message-tag-01",
+          tag:  `push-${pagePath}`,
           forceClick: true,
           click_action: pagePath,
           actionTitle: "Read More",
-          actionIcon: "https://blog.nateduff.com/img/logo.png",
-          badge: "https://blog.nateduff.com/img/logo.png"
+          actionIcon: `${process.env.HOSTNAME}/img/logo.png`,
+          badge: `${process.env.HOSTNAME}/img/logo.png`
         },
         webpush: {
           fcm_options: {
@@ -71,7 +71,7 @@ export const BlogPostTemplate = ({
 
   const sendToFacebook = () => {
     if (typeof window !== 'undefined')
-      var url = `https://www.facebook.com/dialog/share?app_id=246272106789439&display=page&href=${window.location.href}&redirect_uri=https://blog.nateduff.com/blog/`;
+      var url = `https://www.facebook.com/dialog/share?app_id=${process.env.FacebookAppID}&display=page&href=${window.location.href}&redirect_uri=${process.env.HOSTNAME}/blog/`;
 
       var win = window.open(url, '_blank');
       win.focus();
@@ -206,7 +206,7 @@ const BlogPost = ({ data }) => {
             <meta
               name="image"
               property="og:image"
-              content={`${typeof window !== 'undefined' ? window.location.origin : 'https://blog.nateduff.com'}/img/${featuredImage}`}
+              content={`${process.env.HOSTNAME}/img/${featuredImage}`}
             />          
             <meta
               property="og:image:width"
@@ -222,23 +222,23 @@ const BlogPost = ({ data }) => {
             />
             <meta
               name="author"
-              content={`Nathan Duff`}
+              content={process.env.AuthorName}
             />
             <meta
               property="article:publisher"
-              content={`Nathan Duff`}
+              content={process.env.AuthorName}
             />
             <meta
               property="article:author"
-              content={`https://www.facebook.com/n8duff`}
+              content={process.env.FacebookPage}
             />
             <meta property="twitter:card" content={"summary_large_image"} />
-            {/* <meta property="twitter:site" content={"@N8Duff"} /> */}
-            <meta property="twitter:creator" content={"@N8Duff"} />
+            <meta property="twitter:creator" content={process.env.TwitterHandle} />
+            <meta property="twitter:site" content={process.env.TwitterHandle} />
             <meta property="twitter:title" content={`${useSiteMetadata().title} | ${post.frontmatter.title}`} />
             <meta property="twitter:description" content={`${post.frontmatter.description}`} />
             <meta property="twitter:image" content={
-              `${typeof window !== 'undefined' ? window.location.origin : 'https://blog.nateduff.com'}/img/${featuredImage}`} />
+              `${process.env.HOSTNAME}/img/${featuredImage}`} />
           </Helmet>
         }
         tags={post.frontmatter.tags}

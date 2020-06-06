@@ -1,11 +1,7 @@
 import React from 'react'
 import { navigate } from 'gatsby-link'
 import Layout from '../../components/Layout'
-import { ApplicationInsights } from '@microsoft/applicationinsights-web'
-
-const appInsights = new ApplicationInsights({ config: {
-  connectionString: "InstrumentationKey=837dcc30-21da-4252-8d67-d27f19a0c049"
-} });
+import { appInsights } from '../../telemetry'
 
 appInsights.loadAppInsights();
 
@@ -28,7 +24,7 @@ export default class Index extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     const form = e.target
-    fetch('https://duff-blog.azurewebsites.net/api/New-ContactSubmission?code=iGyCE0Q0E2kuFzcJtQxAPaijuBL9GoaVVuLQoDuamViN42O8dWapGA==', {
+    fetch(process.env.NewContactSubmissionURL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({

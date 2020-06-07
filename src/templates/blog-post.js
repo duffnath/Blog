@@ -121,13 +121,15 @@ export const BlogPostTemplate = ({
               <h4>Spread the word!</h4>
               <div className="column social">
                 {
-                  isLoggedIn() && isAdmin() ? <a title="Send Push Notification" onClick={() => sendPushNotification()}>
+                  <a title="Send Push Notification" onClick={() => sendPushNotification()} hidden={
+                    isLoggedIn() && isAdmin() ? true : false
+                  }>
                   <img
                     src={bell}
                     alt="Send Push Notification"
                     style={{ width: '1em', height: '1em' }}
                   />
-                </a> : null
+                </a>
                 }
                 <a title="Share on Facebook" onClick={() => sendToFacebook()}>
                   <img

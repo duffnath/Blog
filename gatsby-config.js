@@ -15,7 +15,7 @@ module.exports = {
         background_color: "#18453b",
         theme_color: "#18453b",
         display: "standalone",
-        icon: "src/img/logo-whitebackground.png",
+        icon: "src/img/logo.png",
         crossOrigin: `use-credentials`,
         gcm_sender_id: "275924356890"
       },

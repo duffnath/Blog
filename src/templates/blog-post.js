@@ -122,7 +122,7 @@ export const BlogPostTemplate = ({
               <div className="column social">
                 {
                   <a title="Send Push Notification" onClick={() => sendPushNotification()} hidden={
-                    isLoggedIn() && isAdmin() ? true : false
+                    isAdmin() ? true : false
                   }>
                   <img
                     src={bell}

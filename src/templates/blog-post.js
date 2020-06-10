@@ -120,13 +120,14 @@ export const BlogPostTemplate = ({
             <div id="promoteBlogSection">              
               <h4>Spread the word!</h4>
               <div className="column social">                  
-                  <a title="Send Push Notification" onClick={() => sendPushNotification()}>
+                  <a title="Send Push Notification" onClick={() => sendPushNotification()}
+                   style={{ display: 
+                   isLoggedIn() && isAdmin() ? 'initial' : 'none'
+                 }}>
                   <img
                     src={bell}
                     alt="Send Push Notification"
-                    style={{ width: '1em', height: '1em', display: 
-                      isLoggedIn() && isAdmin() ? 'initial' : 'none'
-                    }}
+                    style={{ width: '1em', height: '1em' }}
                   />
                 </a>
                 <a title="Share on Facebook" onClick={() => sendToFacebook()}>

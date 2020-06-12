@@ -1,9 +1,5 @@
 ## Script to update Procuts page with reviews from Google
-param (
-    $projRoot = "$HOME/Sources/repos/gatsby-starter-netlify-cms"
-)
-
-$pageLocation = "$projRoot/src/pages/products/index.md"
+$pageLocation = "./src/pages/products/index.md"
 
 $productsContent = Get-Content $pageLocation -Raw
 

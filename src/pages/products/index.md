@@ -5,10 +5,7 @@ title: Our Products
 image: /img/jumbotron.jpg
 heading: Great coffee with a conscience
 description: >-
-  Kaldi is the ultimate spot for coffee lovers who want to learn about their
-  java’s origin and support the farmers that grew it. We take coffee production,
-  roasting and brewing seriously and we’re glad to pass that knowledge to
-  anyone.
+  Products page description
 intro:
   blurbs:
     - image: /img/coffee.png
@@ -60,15 +57,6 @@ main:
   image3:
     alt: Coffee beans
     image: /img/products-grid1.jpg
-testimonials:
-  - author: Elisabeth Kaurismäki
-    quote: >-
-      The first time I tried Kaldi’s coffee, I couldn’t even believe that was
-      the same thing I’ve been drinking every morning.
-  - author: Philipp Trommler
-    quote: >-
-      Kaldi is the place to go if you want the best quality coffee. I love their
-      stance on empowering farmers and transparency.
 full_image: /img/products-full-width.jpg
 pricing:
   heading: Monthly subscriptions
@@ -98,4 +86,20 @@ pricing:
         - Unlimited varieties
       plan: Custom
       price: '??'
+testimonials:
+  - author: Alias Pseudonym
+    quote: >-
+      Doctor P is the MAN! Extremely personable and compassionate while maintaining professionalism. His staff are courteous as they are kind, friendly, and absolutely delightful. If you're looking for a physician who far surpasses the emotionally absent "doctors" who only see you as a list of symptoms or medications, he's your man.
+  - author: Karen Supert
+    quote: >-
+      Wonderful doctor.  I can't say enough good about him. Was seeing another internist for years. In the mid 90's I started to notice fatique and progressively getting worse. Was checked by my primary physician at the time.  He did no testing  I knew something was very wrong so I found and saw Dr Pirzada.  On that first appointment he checked for Lupus in  blood work, found I was "borderline" for Systemic Lupus at which time he sent me to a Rheumatologist. The Rheumatologist performed the very specific blood work and came back as SLE Systemic Lupus,  and confirmed.  I am forever in Dr Pirzada's debt  He's truly a caring and kind physician. I would refer anyone to him. Half of my family sees him now too.
+  - author: Vijay swamidoss
+    quote: >-
+      Very nice and cordial, listen sincerely my concerns and take time to explain. Encouraging to go with natural way to cure instead of prescribe crazy dosage of medicine. Effective and practical. I just approached this Dr for just a basic physical exam, but his approach and effectiveness made me to accept him as my primary care physician.
+  - author: Alora Wallace
+    quote: >-
+      Dr. Prizada is so caring and personable. Best primary doctor I've had, hands down.  He takes his time talking with you, doesn't rush. He genuinely cares about his patients. I highly recommend him!
+  - author: lorenc quni
+    quote: >-
+      Great doctor easy to talk too and takes his time listening . Really pushed me to work on my diet so I could avoid taking medicine for my issues
 ---

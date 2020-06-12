@@ -6,8 +6,8 @@ $productsContent = Get-Content $pageLocation -Raw
 $testimonialsIndex = $productsContent.IndexOf("testimonials:")
 
 ## Get reviews
-$placeID = $ENV:google_placeID
-$apiKey = $ENV:google_apiKey
+$placeID = "$(google_placeID)"
+$apiKey = "$(google_apiKey)"
 $queryString = "place_id=$placeID&fields=name,rating,formatted_phone_number,reviews&key=$apiKey"
 
 $placeUri = "https://maps.googleapis.com/maps/api/place/details/json?$queryString"
@@ -22,15 +22,7 @@ $content += "testimonials:`n"
 foreach ($review in $reviews) {
     $content += "  - author: $($review.author_name)`n"
     $content += "    quote: >-`n"
-    $body = $review.text
-    $len = $body.length
-
-    if ($len -lt 85) {
-        $content += "      $body`n"
-    }
-    else {
-        $content += "      $($body.Substring(0, 85))`n"
-    }
+    $content += "      $($review.text)`n"
 }
 
 $content += "---"

@@ -38,4 +38,4 @@ foreach ($review in $reviews) {
 
 $content += "---"
 
-Set-Content $pageLocation -Value ($productsContent.substring(0,$testimonialsIndex) + $content)
+Set-Content $pageLocation -Value ($productsContent.substring(0,$testimonialsIndex) + $content) -Force -Verbose

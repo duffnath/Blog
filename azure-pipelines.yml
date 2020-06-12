@@ -76,4 +76,12 @@ steps:
     PathtoPublish: 'public'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-  condition: ne(variables['Build.Reason'], 'PullRequest')
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '.'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+  condition: and(failed(), ne(variables['Build.Reason'], 'PullRequest'))
+

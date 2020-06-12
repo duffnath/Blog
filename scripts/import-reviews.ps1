@@ -22,7 +22,15 @@ $content += "testimonials:`n"
 foreach ($review in $reviews) {
     $content += "  - author: $($review.author_name)`n"
     $content += "    quote: >-`n"
-    $content += "      $($review.text)`n"
+    $body = $review.text
+    $len = $body.length
+
+    if ($len -lt 85) {
+        $content += "      $body`n"
+    }
+    else {
+        $content += "      $($body.Substring(0, 85))`n"
+    }
 }
 
 $content += "---"

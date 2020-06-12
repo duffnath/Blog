@@ -4,6 +4,8 @@ param (
     $apiKey = $ENV:google_apiKey
 )
 
+Write-Output "PID - $placeID API - $apiKey"
+
 $pageLocation = "./src/pages/products/index.md"
 
 $productsContent = Get-Content $pageLocation -Raw
@@ -16,6 +18,10 @@ $queryString = "place_id=$placeID&fields=name,rating,formatted_phone_number,revi
 $placeUri = "https://maps.googleapis.com/maps/api/place/details/json?$queryString"
 
 $reviews = ((IWR $placeUri).Content | Convertfrom-Json).result.reviews
+
+if ($reviews.Count -lt 1) {
+    throw "No reviews found"
+}
 
 ## Append reviews to site page
 $content = ""

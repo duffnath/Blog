@@ -10,6 +10,11 @@ variables:
   YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
 
 steps:
+- task: PowerShell@2
+  inputs:
+    filePath: $(Pipeline.Workspace)/scripts/import-reviews.ps1
+    arguments: '-projRoot "$(Pipeline.Workspace)"'
+
 - powershell: |
    New-Item -Path $(System.DefaultWorkingDirectory) -Name ".env.production" -Force -Value @'   
    firebase_apiKey = $(firebase_apiKey)

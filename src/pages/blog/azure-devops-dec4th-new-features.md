@@ -3,7 +3,7 @@ templateKey: blog-post
 title: Azure DevOps Dec4th New Features
 date: 2018-12-21T14:01:00.000Z
 description: Automatic Rollback? Awesome. YAML Build Definitions? Game changer.
-  Talking about new features coming to Azure DevOps!
+  Talking about new features coming to Azure DevOps!z
 featuredpost: false
 featuredimage: /img/blogimage.png
 tags:
